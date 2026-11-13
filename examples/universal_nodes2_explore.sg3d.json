@@ -1,0 +1,353 @@
+{
+  "name": "Universal Nodes 2.0 Exploration",
+  "objects": [
+    {
+      "name": "Programmable Avatar",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        0,
+        7
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.8,
+      "mode": "texture",
+      "texture": "checker.png",
+      "physics": {
+        "dynamic": false,
+        "solid": true
+      },
+      "properties": {
+        "speed": 0.09
+      }
+    }
+  ],
+  "camera": {
+    "position": [
+      0,
+      1,
+      0
+    ],
+    "rotation": [
+      0,
+      0
+    ]
+  },
+  "scripts": {
+    "nodes": [
+      {
+        "id": "1",
+        "type": "OnStart",
+        "x": 75,
+        "y": 100,
+        "params": {}
+      },
+      {
+        "id": "2",
+        "type": "CallFunction",
+        "x": 290,
+        "y": 100,
+        "params": {
+          "function": "AddTwo",
+          "argument": "5",
+          "result": "score"
+        }
+      },
+      {
+        "id": "3",
+        "type": "Repeat",
+        "x": 505,
+        "y": 100,
+        "params": {
+          "count": "3"
+        }
+      },
+      {
+        "id": "4",
+        "type": "LoopIndex",
+        "x": 720,
+        "y": 100,
+        "params": {}
+      },
+      {
+        "id": "5",
+        "type": "AddVariable",
+        "x": 935,
+        "y": 100,
+        "params": {
+          "variable": "score",
+          "value": "0"
+        }
+      },
+      {
+        "id": "6",
+        "type": "FunctionDefinition",
+        "x": 75,
+        "y": 250,
+        "params": {
+          "function": "AddTwo"
+        }
+      },
+      {
+        "id": "7",
+        "type": "ReturnFunction",
+        "x": 290,
+        "y": 250,
+        "params": {
+          "value": "0"
+        }
+      },
+      {
+        "id": "8",
+        "type": "FunctionArgument",
+        "x": 505,
+        "y": 250,
+        "params": {}
+      },
+      {
+        "id": "9",
+        "type": "Number",
+        "x": 720,
+        "y": 250,
+        "params": {
+          "value": "2"
+        }
+      },
+      {
+        "id": "10",
+        "type": "MathAdd",
+        "x": 935,
+        "y": 250,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "11",
+        "type": "OnKeyHeld",
+        "x": 75,
+        "y": 400,
+        "params": {
+          "key": "UP"
+        }
+      },
+      {
+        "id": "12",
+        "type": "MoveLocal",
+        "x": 290,
+        "y": 400,
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "0.09"
+        }
+      },
+      {
+        "id": "13",
+        "type": "OnKeyHeld",
+        "x": 505,
+        "y": 400,
+        "params": {
+          "key": "DOWN"
+        }
+      },
+      {
+        "id": "14",
+        "type": "MoveLocal",
+        "x": 720,
+        "y": 400,
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "-0.09"
+        }
+      },
+      {
+        "id": "15",
+        "type": "OnKeyHeld",
+        "x": 935,
+        "y": 400,
+        "params": {
+          "key": "LEFT"
+        }
+      },
+      {
+        "id": "16",
+        "type": "RotateObject",
+        "x": 75,
+        "y": 550,
+        "params": {
+          "object": "0",
+          "yaw": "-4",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "17",
+        "type": "OnKeyHeld",
+        "x": 290,
+        "y": 550,
+        "params": {
+          "key": "RIGHT"
+        }
+      },
+      {
+        "id": "18",
+        "type": "RotateObject",
+        "x": 505,
+        "y": 550,
+        "params": {
+          "object": "0",
+          "yaw": "4",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "19",
+        "type": "OnUpdate",
+        "x": 720,
+        "y": 550,
+        "params": {}
+      },
+      {
+        "id": "20",
+        "type": "IfBool",
+        "x": 935,
+        "y": 550,
+        "params": {
+          "value": "1"
+        }
+      },
+      {
+        "id": "21",
+        "type": "GetKeyHeld",
+        "x": 75,
+        "y": 700,
+        "params": {
+          "key": "A"
+        }
+      },
+      {
+        "id": "22",
+        "type": "SetObjectScale",
+        "x": 290,
+        "y": 700,
+        "params": {
+          "object": "0",
+          "value": "1.2"
+        }
+      },
+      {
+        "id": "23",
+        "type": "SetObjectScale",
+        "x": 505,
+        "y": 700,
+        "params": {
+          "object": "0",
+          "value": "0.8"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "1",
+        "to": "2",
+        "port": "next"
+      },
+      {
+        "from": "2",
+        "to": "3",
+        "port": "next"
+      },
+      {
+        "from": "3",
+        "to": "5",
+        "port": "body"
+      },
+      {
+        "from": "6",
+        "to": "7",
+        "port": "next"
+      },
+      {
+        "from": "11",
+        "to": "12",
+        "port": "next"
+      },
+      {
+        "from": "13",
+        "to": "14",
+        "port": "next"
+      },
+      {
+        "from": "15",
+        "to": "16",
+        "port": "next"
+      },
+      {
+        "from": "17",
+        "to": "18",
+        "port": "next"
+      },
+      {
+        "from": "19",
+        "to": "20",
+        "port": "next"
+      },
+      {
+        "from": "20",
+        "to": "22",
+        "port": "true"
+      },
+      {
+        "from": "20",
+        "to": "23",
+        "port": "false"
+      }
+    ],
+    "data_links": [
+      {
+        "from": "4",
+        "to": "5",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "8",
+        "to": "10",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "9",
+        "to": "10",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "10",
+        "to": "7",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "21",
+        "to": "20",
+        "port": "value",
+        "input": "value"
+      }
+    ]
+  },
+  "variables": {
+    "score": 0
+  },
+  "settings": {
+    "title": "NODE EXPLORE",
+    "code": "NS20",
+    "maker": "00"
+  }
+}

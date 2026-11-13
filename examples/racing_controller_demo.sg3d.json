@@ -1,0 +1,189 @@
+{
+  "name": "Race Controller Lab",
+  "camera": {
+    "position": [
+      0,
+      1,
+      0
+    ],
+    "rotation": [
+      0,
+      0
+    ],
+    "orbit": {
+      "enabled": true,
+      "target": 0,
+      "auto_move": false,
+      "sync_yaw": true,
+      "distance": 7,
+      "height": 2,
+      "pitch": -7,
+      "turn_speed": 2
+    }
+  },
+  "skybox": {
+    "file": "pastel_panorama.png"
+  },
+  "variables": {
+    "laps": 0
+  },
+  "physics": {
+    "gravity": 0
+  },
+  "objects": [
+    {
+      "name": "Car",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        0,
+        7
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.7,
+      "mode": "flat",
+      "physics": {
+        "dynamic": false,
+        "solid": true
+      }
+    },
+    {
+      "name": "Ground",
+      "mesh": "platform.obj",
+      "position": [
+        0,
+        -2,
+        7
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 9,
+      "mode": "flat",
+      "physics": {
+        "solid": false
+      }
+    },
+    {
+      "name": "Checkpoint",
+      "mesh": "pyramid.obj",
+      "position": [
+        3,
+        0,
+        14
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1,
+      "mode": "flat",
+      "physics": {
+        "solid": false
+      }
+    }
+  ],
+  "scripts": {
+    "nodes": [
+      {
+        "id": "update",
+        "type": "OnUpdate",
+        "params": {}
+      },
+      {
+        "id": "drive",
+        "type": "DriveVehicle",
+        "params": {
+          "object": "0",
+          "acceleration": "0.02",
+          "maxspeed": "0.3",
+          "drag": "0.009",
+          "turn": "2"
+        }
+      },
+      {
+        "id": "touch",
+        "type": "OnCollision",
+        "params": {
+          "object": "0",
+          "other": "2"
+        }
+      },
+      {
+        "id": "count",
+        "type": "AddVariable",
+        "params": {
+          "variable": "laps",
+          "value": "1"
+        }
+      },
+      {
+        "id": "score",
+        "type": "SetUIValue",
+        "params": {
+          "element": "0",
+          "value": "0"
+        }
+      },
+      {
+        "id": "getlaps",
+        "type": "GetVariable",
+        "params": {
+          "variable": "laps"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "update",
+        "to": "drive",
+        "port": "next"
+      },
+      {
+        "from": "touch",
+        "to": "count",
+        "port": "next"
+      },
+      {
+        "from": "count",
+        "to": "score",
+        "port": "next"
+      }
+    ],
+    "data_links": [
+      {
+        "from": "getlaps",
+        "port": "value",
+        "to": "score",
+        "input": "value"
+      }
+    ]
+  },
+  "sounds": [],
+  "hud": [
+    {
+      "name": "Lap counter",
+      "type": "text",
+      "x": 3,
+      "y": 3,
+      "w": 60,
+      "h": 8,
+      "fg": 255,
+      "bg": 1,
+      "text": "Laps: ",
+      "maximum": 99,
+      "value": 0,
+      "visible": true
+    }
+  ],
+  "animations": [],
+  "settings": {
+    "title": "SG3D RACING",
+    "code": "SRAC",
+    "maker": "00"
+  }
+}

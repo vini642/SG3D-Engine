@@ -1,0 +1,714 @@
+{
+  "name": "Universal Nodes 3 \u2014 Generic Spatial Queries",
+  "settings": {
+    "title": "NODE QUERY",
+    "code": "NQ30",
+    "maker": "00",
+    "profiler": false
+  },
+  "variables": {
+    "count": 0,
+    "pos": 0,
+    "hit": 0,
+    "result": 0,
+    "box_hit": 0,
+    "event_result": 0
+  },
+  "sounds": [],
+  "objects": [
+    {
+      "name": "Probe",
+      "mesh": "cube.obj",
+      "mode": "flat",
+      "position": [
+        0,
+        0,
+        5
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.5,
+      "properties": {
+        "golf_tile": 0
+      }
+    },
+    {
+      "name": "Platform",
+      "mesh": "cube.obj",
+      "mode": "flat",
+      "position": [
+        0,
+        0,
+        6
+      ],
+      "rotation": [
+        90,
+        0
+      ],
+      "scale": 1,
+      "properties": {
+        "golf_tile": 1
+      }
+    },
+    {
+      "name": "Wall",
+      "mesh": "cube.obj",
+      "mode": "flat",
+      "position": [
+        1,
+        0,
+        6
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1,
+      "properties": {
+        "golf_tile": 1
+      }
+    }
+  ],
+  "camera": {
+    "position": [
+      0,
+      2,
+      -1
+    ],
+    "rotation": [
+      0,
+      -10
+    ]
+  },
+  "scripts": {
+    "nodes": [
+      {
+        "id": "n1",
+        "type": "OnStart",
+        "x": 50,
+        "y": 60,
+        "params": {}
+      },
+      {
+        "id": "n2",
+        "type": "ForEachObject",
+        "x": 300,
+        "y": 60,
+        "params": {
+          "property": "golf_tile"
+        }
+      },
+      {
+        "id": "n3",
+        "type": "LoopObject",
+        "x": 550,
+        "y": 60,
+        "params": {}
+      },
+      {
+        "id": "n4",
+        "type": "GetProperty",
+        "x": 800,
+        "y": 60,
+        "params": {
+          "object": "0",
+          "property": "golf_tile"
+        }
+      },
+      {
+        "id": "n5",
+        "type": "AddVariable",
+        "x": 1050,
+        "y": 60,
+        "params": {
+          "variable": "count",
+          "value": "1"
+        }
+      },
+      {
+        "id": "n6",
+        "type": "OnUpdate",
+        "x": 1300,
+        "y": 60,
+        "params": {}
+      },
+      {
+        "id": "n7",
+        "type": "CircleSegmentOverlap",
+        "x": 1550,
+        "y": 60,
+        "params": {
+          "point": "0,0,0",
+          "a": "0",
+          "b": "0",
+          "radius": "0.14"
+        }
+      },
+      {
+        "id": "n8",
+        "type": "GetObjectVector",
+        "x": 1800,
+        "y": 60,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "n9",
+        "type": "MakeVector",
+        "x": 50,
+        "y": 240,
+        "params": {
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      },
+      {
+        "id": "n10",
+        "type": "MakeVector",
+        "x": 300,
+        "y": 240,
+        "params": {
+          "x": "0",
+          "y": "0",
+          "z": "1"
+        }
+      },
+      {
+        "id": "n11",
+        "type": "IfBool",
+        "x": 550,
+        "y": 240,
+        "params": {
+          "value": "1"
+        }
+      },
+      {
+        "id": "n12",
+        "type": "GetVariable",
+        "x": 800,
+        "y": 240,
+        "params": {
+          "variable": "count"
+        }
+      },
+      {
+        "id": "n13",
+        "type": "SetVariable",
+        "x": 1050,
+        "y": 240,
+        "params": {
+          "variable": "hit",
+          "value": "1"
+        }
+      },
+      {
+        "id": "n14",
+        "type": "WorldToLocal",
+        "x": 1300,
+        "y": 240,
+        "params": {
+          "object": "0",
+          "vector": "0,0,0"
+        }
+      },
+      {
+        "id": "n15",
+        "type": "VectorX",
+        "x": 1550,
+        "y": 240,
+        "params": {
+          "vector": "0,0,0"
+        }
+      },
+      {
+        "id": "n16",
+        "type": "SetVariable",
+        "x": 1800,
+        "y": 240,
+        "params": {
+          "variable": "pos",
+          "value": "1"
+        }
+      },
+      {
+        "id": "n17",
+        "type": "FunctionDefinition",
+        "x": 50,
+        "y": 420,
+        "params": {
+          "function": "Mix"
+        }
+      },
+      {
+        "id": "n18",
+        "type": "FunctionArgument",
+        "x": 300,
+        "y": 420,
+        "params": {}
+      },
+      {
+        "id": "n19",
+        "type": "FunctionArgumentB",
+        "x": 550,
+        "y": 420,
+        "params": {}
+      },
+      {
+        "id": "n20",
+        "type": "FunctionArgumentVector",
+        "x": 800,
+        "y": 420,
+        "params": {}
+      },
+      {
+        "id": "n21",
+        "type": "VectorX",
+        "x": 1050,
+        "y": 420,
+        "params": {
+          "vector": "0,0,0"
+        }
+      },
+      {
+        "id": "n22",
+        "type": "MathAdd",
+        "x": 1300,
+        "y": 420,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "n23",
+        "type": "MathMultiply",
+        "x": 1550,
+        "y": 420,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "n24",
+        "type": "ReturnFunction",
+        "x": 1800,
+        "y": 420,
+        "params": {
+          "value": "1"
+        }
+      },
+      {
+        "id": "n25",
+        "type": "CallFunction",
+        "x": 50,
+        "y": 600,
+        "params": {
+          "function": "Mix",
+          "argument": "2",
+          "argument_b": "3",
+          "argument_vector": "0,0,0",
+          "argument_object": "0",
+          "result": "result"
+        }
+      },
+      {
+        "id": "n26",
+        "type": "SphereBoxOverlap",
+        "x": 300,
+        "y": 600,
+        "params": {
+          "object": "1",
+          "point": "0,0,0",
+          "radius": "0.2"
+        }
+      },
+      {
+        "id": "n27",
+        "type": "RaycastBox",
+        "x": 550,
+        "y": 600,
+        "params": {
+          "object": "1",
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "n28",
+        "type": "LogicAnd",
+        "x": 800,
+        "y": 600,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "n29",
+        "type": "IfBool",
+        "x": 1050,
+        "y": 600,
+        "params": {
+          "value": "1"
+        }
+      },
+      {
+        "id": "n30",
+        "type": "SetVariable",
+        "x": 1300,
+        "y": 600,
+        "params": {
+          "variable": "box_hit",
+          "value": "1"
+        }
+      },
+      {
+        "id": "evt_start",
+        "type": "OnStart",
+        "x": 50,
+        "y": 1500,
+        "params": {}
+      },
+      {
+        "id": "evt_emit",
+        "type": "EmitEvent",
+        "x": 320,
+        "y": 1500,
+        "params": {
+          "event": "Boost",
+          "value": "3",
+          "object": "0"
+        }
+      },
+      {
+        "id": "evt_on",
+        "type": "OnEvent",
+        "x": 50,
+        "y": 1700,
+        "params": {
+          "event": "Boost"
+        }
+      },
+      {
+        "id": "evt_value",
+        "type": "EventValue",
+        "x": 280,
+        "y": 1700,
+        "params": {}
+      },
+      {
+        "id": "evt_call",
+        "type": "CallFunction",
+        "x": 540,
+        "y": 1700,
+        "params": {
+          "function": "Triple",
+          "argument": "0",
+          "argument_b": "0",
+          "argument_vector": "0,0,0",
+          "argument_object": "0",
+          "result": "event_result"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "n1",
+        "port": "next",
+        "to": "n2"
+      },
+      {
+        "from": "n2",
+        "port": "body",
+        "to": "n5"
+      },
+      {
+        "from": "n6",
+        "port": "next",
+        "to": "n11"
+      },
+      {
+        "from": "n11",
+        "port": "true",
+        "to": "n13"
+      },
+      {
+        "from": "n5",
+        "port": "next",
+        "to": "n16"
+      },
+      {
+        "from": "n17",
+        "port": "next",
+        "to": "n24"
+      },
+      {
+        "from": "n13",
+        "port": "next",
+        "to": "n25"
+      },
+      {
+        "from": "n25",
+        "port": "next",
+        "to": "n29"
+      },
+      {
+        "from": "n29",
+        "port": "true",
+        "to": "n30"
+      },
+      {
+        "from": "evt_start",
+        "port": "next",
+        "to": "evt_emit"
+      },
+      {
+        "from": "evt_on",
+        "port": "next",
+        "to": "evt_call"
+      }
+    ],
+    "data_links": [
+      {
+        "from": "n3",
+        "to": "n4",
+        "port": "value",
+        "input": "object"
+      },
+      {
+        "from": "n4",
+        "to": "n5",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "n8",
+        "to": "n7",
+        "port": "value",
+        "input": "point"
+      },
+      {
+        "from": "n9",
+        "to": "n7",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "n10",
+        "to": "n7",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "n7",
+        "to": "n11",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "n12",
+        "to": "n13",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "n3",
+        "to": "n14",
+        "port": "value",
+        "input": "object"
+      },
+      {
+        "from": "n8",
+        "to": "n14",
+        "port": "value",
+        "input": "vector"
+      },
+      {
+        "from": "n14",
+        "to": "n15",
+        "port": "value",
+        "input": "vector"
+      },
+      {
+        "from": "n15",
+        "to": "n16",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "n20",
+        "to": "n21",
+        "port": "value",
+        "input": "vector"
+      },
+      {
+        "from": "n18",
+        "to": "n22",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "n21",
+        "to": "n22",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "n22",
+        "to": "n23",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "n19",
+        "to": "n23",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "n23",
+        "to": "n24",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "n10",
+        "to": "n25",
+        "port": "value",
+        "input": "argument_vector"
+      },
+      {
+        "from": "n8",
+        "to": "n26",
+        "port": "value",
+        "input": "point"
+      },
+      {
+        "from": "n9",
+        "to": "n27",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "n10",
+        "to": "n27",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "n26",
+        "to": "n28",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "n27",
+        "to": "n28",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "n28",
+        "to": "n29",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "evt_value",
+        "port": "value",
+        "to": "evt_call",
+        "input": "argument"
+      }
+    ]
+  },
+  "physics": {
+    "gravity": 0
+  },
+  "hud": [],
+  "skybox": {},
+  "node_components": [
+    {
+      "name": "MathFunctions",
+      "scripts": {
+        "nodes": [
+          {
+            "id": "lib_def",
+            "type": "FunctionDefinition",
+            "x": 50,
+            "y": 50,
+            "params": {
+              "function": "Triple"
+            }
+          },
+          {
+            "id": "lib_arg",
+            "type": "FunctionArgument",
+            "x": 50,
+            "y": 50,
+            "params": {}
+          },
+          {
+            "id": "lib_three",
+            "type": "Number",
+            "x": 50,
+            "y": 50,
+            "params": {
+              "value": "3"
+            }
+          },
+          {
+            "id": "lib_mul",
+            "type": "MathMultiply",
+            "x": 50,
+            "y": 50,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "lib_ret",
+            "type": "ReturnFunction",
+            "x": 50,
+            "y": 50,
+            "params": {
+              "value": "1"
+            }
+          }
+        ],
+        "links": [
+          {
+            "from": "lib_def",
+            "port": "next",
+            "to": "lib_ret"
+          }
+        ],
+        "data_links": [
+          {
+            "from": "lib_arg",
+            "port": "value",
+            "to": "lib_mul",
+            "input": "a"
+          },
+          {
+            "from": "lib_three",
+            "port": "value",
+            "to": "lib_mul",
+            "input": "b"
+          },
+          {
+            "from": "lib_mul",
+            "port": "value",
+            "to": "lib_ret",
+            "input": "value"
+          }
+        ]
+      }
+    }
+  ]
+}

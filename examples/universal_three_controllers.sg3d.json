@@ -1,0 +1,244 @@
+{
+  "name": "Universal Controllers Lab",
+  "variables": {},
+  "sounds": [],
+  "settings": {
+    "title": "UNIVERSAL",
+    "code": "SGUV",
+    "maker": "00"
+  },
+  "scenes": [
+    {
+      "name": "Explore",
+      "objects": [
+        {
+          "name": "Explore avatar",
+          "mesh": "cube.obj",
+          "mode": "texture",
+          "position": [
+            0,
+            1,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.7,
+          "texture": "checker.png",
+          "physics": {
+            "dynamic": true,
+            "solid": true,
+            "half_extents": [
+              0.35,
+              0.35,
+              0.35
+            ]
+          },
+          "c_scripts": [
+            "scripts/explore.c"
+          ],
+          "properties": {
+            "speed": 0.08
+          }
+        },
+        {
+          "name": "floor",
+          "mesh": "platform.obj",
+          "mode": "flat",
+          "position": [
+            0,
+            -1,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 3,
+          "physics": {
+            "dynamic": false,
+            "solid": true
+          }
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2,
+          0
+        ],
+        "rotation": [
+          0,
+          0
+        ]
+      },
+      "scripts": {
+        "nodes": [],
+        "links": []
+      },
+      "physics": {
+        "gravity": -0.025
+      },
+      "animations": [],
+      "hud": [],
+      "skybox": {}
+    },
+    {
+      "name": "Race",
+      "objects": [
+        {
+          "name": "Race avatar",
+          "mesh": "cube.obj",
+          "mode": "texture",
+          "position": [
+            0,
+            1,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.7,
+          "texture": "checker.png",
+          "physics": {
+            "dynamic": false,
+            "solid": true,
+            "half_extents": [
+              0.35,
+              0.35,
+              0.35
+            ]
+          },
+          "c_scripts": [
+            "scripts/arcade_car.c"
+          ],
+          "properties": {
+            "speed": 0,
+            "accel": 0.012,
+            "top": 0.16
+          }
+        },
+        {
+          "name": "floor",
+          "mesh": "platform.obj",
+          "mode": "flat",
+          "position": [
+            0,
+            -1,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 3,
+          "physics": {
+            "dynamic": false,
+            "solid": true
+          }
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2,
+          0
+        ],
+        "rotation": [
+          0,
+          0
+        ]
+      },
+      "scripts": {
+        "nodes": [],
+        "links": []
+      },
+      "physics": {
+        "gravity": -0.025
+      },
+      "animations": [],
+      "hud": [],
+      "skybox": {}
+    },
+    {
+      "name": "Fly",
+      "objects": [
+        {
+          "name": "Fly avatar",
+          "mesh": "cube.obj",
+          "mode": "texture",
+          "position": [
+            0,
+            1,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.7,
+          "texture": "checker.png",
+          "physics": {
+            "dynamic": false,
+            "solid": true,
+            "half_extents": [
+              0.35,
+              0.35,
+              0.35
+            ]
+          },
+          "c_scripts": [
+            "scripts/free_flight.c"
+          ],
+          "properties": {
+            "speed": 0.08
+          }
+        },
+        {
+          "name": "floor",
+          "mesh": "platform.obj",
+          "mode": "flat",
+          "position": [
+            0,
+            -1,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 3,
+          "physics": {
+            "dynamic": false,
+            "solid": true
+          }
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2,
+          0
+        ],
+        "rotation": [
+          0,
+          0
+        ]
+      },
+      "scripts": {
+        "nodes": [],
+        "links": []
+      },
+      "physics": {
+        "gravity": -0.025
+      },
+      "animations": [],
+      "hud": [],
+      "skybox": {}
+    }
+  ],
+  "active_scene": 0,
+  "initial_scene": 0
+}

@@ -1,0 +1,313 @@
+{
+  "name": "Universal Nodes Arrays and Vectors",
+  "objects": [
+    {
+      "name": "Avatar",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        0,
+        7
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1,
+      "mode": "texture",
+      "texture": "checker.png",
+      "physics": {
+        "solid": true,
+        "dynamic": false
+      },
+      "properties": {}
+    }
+  ],
+  "camera": {
+    "position": [
+      0,
+      1,
+      0
+    ],
+    "rotation": [
+      0,
+      0
+    ]
+  },
+  "variables": {
+    "score": 0
+  },
+  "arrays": {
+    "waypoints": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "scripts": {
+    "nodes": [
+      {
+        "id": "1",
+        "type": "OnStart",
+        "x": 60,
+        "y": 80,
+        "params": {}
+      },
+      {
+        "id": "2",
+        "type": "SetArray",
+        "x": 280,
+        "y": 80,
+        "params": {
+          "array": "waypoints",
+          "index": "0",
+          "value": "1.5"
+        }
+      },
+      {
+        "id": "3",
+        "type": "OnUpdate",
+        "x": 500,
+        "y": 80,
+        "params": {}
+      },
+      {
+        "id": "4",
+        "type": "IfBool",
+        "x": 720,
+        "y": 80,
+        "params": {
+          "value": "1"
+        }
+      },
+      {
+        "id": "5",
+        "type": "GetKeyHeld",
+        "x": 940,
+        "y": 80,
+        "params": {
+          "key": "A"
+        }
+      },
+      {
+        "id": "6",
+        "type": "MoveObjectVector",
+        "x": 60,
+        "y": 220,
+        "params": {
+          "object": "0",
+          "vector": "0,0,0"
+        }
+      },
+      {
+        "id": "7",
+        "type": "MakeVector",
+        "x": 280,
+        "y": 220,
+        "params": {
+          "x": "0",
+          "y": "0.02",
+          "z": "0.07"
+        }
+      },
+      {
+        "id": "8",
+        "type": "OnKeyPressed",
+        "x": 500,
+        "y": 220,
+        "params": {
+          "key": "B"
+        }
+      },
+      {
+        "id": "9",
+        "type": "SetVariable",
+        "x": 720,
+        "y": 220,
+        "params": {
+          "variable": "score",
+          "value": "1"
+        }
+      },
+      {
+        "id": "10",
+        "type": "GetArray",
+        "x": 940,
+        "y": 220,
+        "params": {
+          "array": "waypoints",
+          "index": "0"
+        }
+      },
+      {
+        "id": "11",
+        "type": "SetCameraPosition",
+        "x": 60,
+        "y": 360,
+        "params": {
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      },
+      {
+        "id": "12",
+        "type": "GetObjectVector",
+        "x": 280,
+        "y": 360,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "13",
+        "type": "MakeVector",
+        "x": 500,
+        "y": 360,
+        "params": {
+          "x": "0",
+          "y": "1",
+          "z": "-7"
+        }
+      },
+      {
+        "id": "14",
+        "type": "VectorAdd",
+        "x": 720,
+        "y": 360,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "15",
+        "type": "VectorX",
+        "x": 940,
+        "y": 360,
+        "params": {
+          "vector": "0,0,0"
+        }
+      },
+      {
+        "id": "16",
+        "type": "VectorY",
+        "x": 60,
+        "y": 500,
+        "params": {
+          "vector": "0,0,0"
+        }
+      },
+      {
+        "id": "17",
+        "type": "VectorZ",
+        "x": 280,
+        "y": 500,
+        "params": {
+          "vector": "0,0,0"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "1",
+        "to": "2",
+        "port": "next"
+      },
+      {
+        "from": "3",
+        "to": "4",
+        "port": "next"
+      },
+      {
+        "from": "4",
+        "to": "6",
+        "port": "true"
+      },
+      {
+        "from": "8",
+        "to": "9",
+        "port": "next"
+      },
+      {
+        "from": "4",
+        "to": "11",
+        "port": "false"
+      }
+    ],
+    "data_links": [
+      {
+        "from": "5",
+        "to": "4",
+        "input": "value",
+        "port": "value"
+      },
+      {
+        "from": "7",
+        "to": "6",
+        "input": "vector",
+        "port": "value"
+      },
+      {
+        "from": "10",
+        "to": "9",
+        "input": "value",
+        "port": "value"
+      },
+      {
+        "from": "12",
+        "to": "14",
+        "input": "a",
+        "port": "value"
+      },
+      {
+        "from": "13",
+        "to": "14",
+        "input": "b",
+        "port": "value"
+      },
+      {
+        "from": "14",
+        "to": "15",
+        "input": "vector",
+        "port": "value"
+      },
+      {
+        "from": "15",
+        "to": "11",
+        "input": "x",
+        "port": "value"
+      },
+      {
+        "from": "14",
+        "to": "16",
+        "input": "vector",
+        "port": "value"
+      },
+      {
+        "from": "16",
+        "to": "11",
+        "input": "y",
+        "port": "value"
+      },
+      {
+        "from": "14",
+        "to": "17",
+        "input": "vector",
+        "port": "value"
+      },
+      {
+        "from": "17",
+        "to": "11",
+        "input": "z",
+        "port": "value"
+      }
+    ]
+  },
+  "settings": {
+    "title": "VECTOR ARRAY",
+    "code": "VEC2",
+    "maker": "00"
+  }
+}

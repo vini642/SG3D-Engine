@@ -1,0 +1,1724 @@
+{
+  "name": "SG3D v0.12 Mini Collectathon / HUD Lab",
+  "format_version": "0.12",
+  "scenes": [
+    {
+      "objects": [
+        {
+          "name": "Turning Player (+Z forward)",
+          "mesh": "facing_arrow.obj",
+          "position": [
+            0,
+            -0.6,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.95,
+          "mode": "flat",
+          "texture": "",
+          "physics": {
+            "dynamic": true,
+            "solid": true,
+            "half_extents": [
+              0.95,
+              0.95,
+              0.95
+            ]
+          },
+          "face_movement": true,
+          "facing_smooth": 0.25,
+          "facing_offset": 0
+        },
+        {
+          "name": "Floor (solid)",
+          "mesh": "platform.obj",
+          "position": [
+            0,
+            -1.85,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1,
+          "mode": "flat",
+          "texture": "",
+          "physics": {
+            "solid": true
+          }
+        },
+        {
+          "name": "Collectible",
+          "mesh": "cube.obj",
+          "position": [
+            2,
+            -0.6,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.25,
+          "mode": "additive",
+          "texture": "",
+          "physics": {
+            "solid": false
+          }
+        },
+        {
+          "name": "Back wall (solid)",
+          "mesh": "cube.obj",
+          "position": [
+            0,
+            0.2,
+            13
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1.5,
+          "mode": "flat",
+          "texture": "",
+          "physics": {
+            "solid": true
+          }
+        },
+        {
+          "name": "Bobbing Demo Cube 1",
+          "mesh": "cube.obj",
+          "texture": "checker.png",
+          "mode": "texture",
+          "position": [
+            1.5,
+            0.65,
+            7.4
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.55,
+          "physics": {
+            "solid": false,
+            "dynamic": false
+          }
+        }
+      ],
+      "scripts": {
+        "nodes": [
+          {
+            "id": "n1",
+            "type": "OnKeyHeld",
+            "x": 50,
+            "y": 40,
+            "params": {
+              "key": "LEFT"
+            }
+          },
+          {
+            "id": "n2",
+            "type": "MovePlayer",
+            "x": 320,
+            "y": 40,
+            "params": {
+              "object": "0",
+              "x": "-0.09",
+              "z": "0"
+            }
+          },
+          {
+            "id": "n3",
+            "type": "OnKeyHeld",
+            "x": 50,
+            "y": 150,
+            "params": {
+              "key": "RIGHT"
+            }
+          },
+          {
+            "id": "n4",
+            "type": "MovePlayer",
+            "x": 320,
+            "y": 150,
+            "params": {
+              "object": "0",
+              "x": "0.09",
+              "z": "0"
+            }
+          },
+          {
+            "id": "n5",
+            "type": "OnKeyHeld",
+            "x": 50,
+            "y": 260,
+            "params": {
+              "key": "UP"
+            }
+          },
+          {
+            "id": "n6",
+            "type": "MovePlayer",
+            "x": 320,
+            "y": 260,
+            "params": {
+              "object": "0",
+              "x": "0",
+              "z": "0.09"
+            }
+          },
+          {
+            "id": "n7",
+            "type": "OnKeyHeld",
+            "x": 50,
+            "y": 370,
+            "params": {
+              "key": "DOWN"
+            }
+          },
+          {
+            "id": "n8",
+            "type": "MovePlayer",
+            "x": 320,
+            "y": 370,
+            "params": {
+              "object": "0",
+              "x": "0",
+              "z": "-0.09"
+            }
+          },
+          {
+            "id": "n9",
+            "type": "OnKeyPressed",
+            "x": 50,
+            "y": 530,
+            "params": {
+              "key": "A"
+            }
+          },
+          {
+            "id": "n10",
+            "type": "JumpObject",
+            "x": 320,
+            "y": 530,
+            "params": {
+              "object": "0",
+              "impulse": ".36"
+            }
+          },
+          {
+            "id": "n11",
+            "type": "OnUpdate",
+            "x": 50,
+            "y": 655,
+            "params": {}
+          },
+          {
+            "id": "n12",
+            "type": "RotateObject",
+            "x": 320,
+            "y": 655,
+            "params": {
+              "object": "2",
+              "yaw": "2",
+              "pitch": "0"
+            }
+          },
+          {
+            "id": "n13",
+            "type": "OnCollision",
+            "x": 650,
+            "y": 50,
+            "params": {
+              "object": "0",
+              "other": "2"
+            }
+          },
+          {
+            "id": "n14",
+            "type": "MoveObject",
+            "x": 910,
+            "y": 50,
+            "params": {
+              "object": "2",
+              "x": "0",
+              "y": "20",
+              "z": "0"
+            }
+          },
+          {
+            "id": "n15",
+            "type": "AddVariable",
+            "x": 1150,
+            "y": 50,
+            "params": {
+              "variable": "collected",
+              "value": "1"
+            }
+          },
+          {
+            "id": "to2key",
+            "type": "OnKeyPressed",
+            "x": 800,
+            "y": 50,
+            "params": {
+              "key": "B"
+            }
+          },
+          {
+            "id": "to2",
+            "type": "LoadScene",
+            "x": 1040,
+            "y": 50,
+            "params": {
+              "scene": "1"
+            }
+          },
+          {
+            "id": "v11sound0_event",
+            "type": "OnKeyPressed",
+            "x": 40,
+            "y": 600,
+            "params": {
+              "key": "SELECT"
+            }
+          },
+          {
+            "id": "v11sound0_play",
+            "type": "PlaySound",
+            "x": 320,
+            "y": 600,
+            "params": {
+              "sound": "0"
+            }
+          },
+          {
+            "id": "v11anim_L_0_on",
+            "type": "OnKeyPressed",
+            "x": 40,
+            "y": 800,
+            "params": {
+              "key": "L"
+            }
+          },
+          {
+            "id": "v11anim_L_0_action",
+            "type": "StopAnimation",
+            "x": 300,
+            "y": 800,
+            "params": {
+              "animation": "0"
+            }
+          },
+          {
+            "id": "v11anim_R_0_on",
+            "type": "OnKeyPressed",
+            "x": 40,
+            "y": 800,
+            "params": {
+              "key": "R"
+            }
+          },
+          {
+            "id": "v11anim_R_0_action",
+            "type": "PlayAnimation",
+            "x": 300,
+            "y": 800,
+            "params": {
+              "animation": "0"
+            }
+          },
+          {
+            "id": "v12_ui_update_meadow",
+            "type": "OnUpdate",
+            "x": 900,
+            "y": 510,
+            "params": {}
+          },
+          {
+            "id": "v12_ui_update_meadow_set",
+            "type": "SetUIValue",
+            "x": 1130,
+            "y": 510,
+            "params": {
+              "element": "0",
+              "value": "0"
+            }
+          },
+          {
+            "id": "v12_ui_update_meadow_get",
+            "type": "GetVariable",
+            "x": 900,
+            "y": 670,
+            "params": {
+              "variable": "collected"
+            }
+          },
+          {
+            "id": "v12_ui_update_meadow_key",
+            "type": "OnKeyPressed",
+            "x": 870,
+            "y": 890,
+            "params": {
+              "key": "START"
+            }
+          },
+          {
+            "id": "v12_ui_update_meadow_hide",
+            "type": "HideUI",
+            "x": 1100,
+            "y": 890,
+            "params": {
+              "element": "3"
+            }
+          }
+        ],
+        "links": [
+          {
+            "from": "n1",
+            "port": "next",
+            "to": "n2"
+          },
+          {
+            "from": "n3",
+            "port": "next",
+            "to": "n4"
+          },
+          {
+            "from": "n5",
+            "port": "next",
+            "to": "n6"
+          },
+          {
+            "from": "n7",
+            "port": "next",
+            "to": "n8"
+          },
+          {
+            "from": "n9",
+            "port": "next",
+            "to": "n10"
+          },
+          {
+            "from": "n11",
+            "port": "next",
+            "to": "n12"
+          },
+          {
+            "from": "n13",
+            "port": "next",
+            "to": "n14"
+          },
+          {
+            "from": "n14",
+            "port": "next",
+            "to": "n15"
+          },
+          {
+            "from": "to2key",
+            "port": "next",
+            "to": "to2"
+          },
+          {
+            "from": "v11sound0_event",
+            "port": "next",
+            "to": "v11sound0_play"
+          },
+          {
+            "from": "v11anim_L_0_on",
+            "port": "next",
+            "to": "v11anim_L_0_action"
+          },
+          {
+            "from": "v11anim_R_0_on",
+            "port": "next",
+            "to": "v11anim_R_0_action"
+          },
+          {
+            "from": "v12_ui_update_meadow",
+            "port": "next",
+            "to": "v12_ui_update_meadow_set"
+          },
+          {
+            "from": "v12_ui_update_meadow_key",
+            "port": "next",
+            "to": "v12_ui_update_meadow_hide"
+          }
+        ],
+        "data_links": [
+          {
+            "from": "v12_ui_update_meadow_get",
+            "port": "value",
+            "to": "v12_ui_update_meadow_set",
+            "input": "value"
+          }
+        ]
+      },
+      "camera": {
+        "position": [
+          0,
+          1.4,
+          0
+        ],
+        "rotation": [
+          0,
+          0
+        ],
+        "follow": 0,
+        "follow_offset": [
+          0,
+          2,
+          -8
+        ]
+      },
+      "physics": {
+        "gravity": -0.025,
+        "terminal_velocity": -0.7
+      },
+      "name": "Meadow",
+      "animations": [
+        {
+          "name": "Float_0",
+          "object": 4,
+          "duration": 64,
+          "loop": true,
+          "autoplay": true,
+          "keys": [
+            {
+              "frame": 0,
+              "position": [
+                1.5,
+                0.65,
+                7.4
+              ],
+              "rotation": [
+                0,
+                0
+              ],
+              "scale": 0.55
+            },
+            {
+              "frame": 32,
+              "position": [
+                1.5,
+                1.5,
+                7.4
+              ],
+              "rotation": [
+                90,
+                0
+              ],
+              "scale": 0.75
+            },
+            {
+              "frame": 63,
+              "position": [
+                1.5,
+                0.65,
+                7.4
+              ],
+              "rotation": [
+                0,
+                0
+              ],
+              "scale": 0.55
+            }
+          ]
+        }
+      ],
+      "hud": [
+        {
+          "name": "Coins",
+          "type": "text",
+          "x": 3,
+          "y": 10,
+          "w": 48,
+          "h": 8,
+          "text": "GEMS:",
+          "fg": 255,
+          "bg": 1,
+          "value": 0,
+          "maximum": 99,
+          "visible": true
+        },
+        {
+          "name": "Life meter",
+          "type": "bar",
+          "x": 3,
+          "y": 20,
+          "w": 36,
+          "h": 5,
+          "fg": 228,
+          "bg": 32,
+          "value": 70,
+          "maximum": 100,
+          "visible": true
+        },
+        {
+          "name": "Gem icon",
+          "type": "sprite",
+          "x": 100,
+          "y": 10,
+          "w": 12,
+          "h": 12,
+          "fg": 255,
+          "bg": 0,
+          "value": 0,
+          "maximum": 0,
+          "text": "",
+          "file": "gem.png",
+          "visible": true
+        },
+        {
+          "name": "Message",
+          "type": "dialogue",
+          "x": 8,
+          "y": 59,
+          "w": 104,
+          "h": 17,
+          "text": "HELLO FROM SG3D!",
+          "fg": 255,
+          "bg": 17,
+          "value": 0,
+          "maximum": 0,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "objects": [
+        {
+          "name": "Turning Player (+Z forward)",
+          "mesh": "facing_arrow.obj",
+          "position": [
+            0,
+            -0.6,
+            8
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.95,
+          "mode": "flat",
+          "texture": "",
+          "physics": {
+            "dynamic": true,
+            "solid": true,
+            "half_extents": [
+              0.95,
+              0.95,
+              0.95
+            ]
+          },
+          "face_movement": true,
+          "facing_smooth": 0.25,
+          "facing_offset": 0
+        },
+        {
+          "name": "Ruins Floor",
+          "mesh": "platform.obj",
+          "position": [
+            0,
+            -1,
+            9
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1,
+          "mode": "flat",
+          "texture": "",
+          "physics": {
+            "solid": true
+          }
+        },
+        {
+          "name": "Counter Block",
+          "mesh": "cube.obj",
+          "position": [
+            0,
+            -0.6,
+            9
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.25,
+          "mode": "additive",
+          "texture": "",
+          "physics": {
+            "solid": false
+          }
+        },
+        {
+          "name": "Bobbing Demo Cube 2",
+          "mesh": "cube.obj",
+          "texture": "checker.png",
+          "mode": "texture",
+          "position": [
+            2.5,
+            0.65,
+            7.4
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.55,
+          "physics": {
+            "solid": false,
+            "dynamic": false
+          }
+        }
+      ],
+      "scripts": {
+        "nodes": [
+          {
+            "id": "ev",
+            "type": "OnUpdate",
+            "x": 10,
+            "y": 10,
+            "params": {}
+          },
+          {
+            "id": "rot",
+            "type": "RotateObject",
+            "x": 230,
+            "y": 10,
+            "params": {
+              "object": "0",
+              "yaw": "1.5",
+              "pitch": "0"
+            }
+          },
+          {
+            "id": "key",
+            "type": "OnKeyPressed",
+            "x": 10,
+            "y": 210,
+            "params": {
+              "key": "B"
+            }
+          },
+          {
+            "id": "switch",
+            "type": "LoadScene",
+            "x": 230,
+            "y": 210,
+            "params": {
+              "scene": "0"
+            }
+          },
+          {
+            "id": "a",
+            "type": "OnKeyPressed",
+            "x": 10,
+            "y": 450,
+            "params": {
+              "key": "A"
+            }
+          },
+          {
+            "id": "set",
+            "type": "SetVariable",
+            "x": 650,
+            "y": 450,
+            "params": {
+              "variable": "collected",
+              "value": "0"
+            }
+          },
+          {
+            "id": "var",
+            "type": "GetVariable",
+            "x": 10,
+            "y": 650,
+            "params": {
+              "variable": "collected"
+            }
+          },
+          {
+            "id": "one",
+            "type": "Number",
+            "x": 10,
+            "y": 750,
+            "params": {
+              "value": "1"
+            }
+          },
+          {
+            "id": "plus",
+            "type": "MathAdd",
+            "x": 270,
+            "y": 650,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "raise",
+            "type": "SetObjectPosition",
+            "x": 900,
+            "y": 460,
+            "params": {
+              "object": "2",
+              "x": "0",
+              "y": "0",
+              "z": "9"
+            }
+          },
+          {
+            "id": "quarter",
+            "type": "Number",
+            "x": 10,
+            "y": 890,
+            "params": {
+              "value": "0.4"
+            }
+          },
+          {
+            "id": "scaled",
+            "type": "MathMultiply",
+            "x": 460,
+            "y": 780,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "v11sound1_event",
+            "type": "OnKeyPressed",
+            "x": 40,
+            "y": 600,
+            "params": {
+              "key": "SELECT"
+            }
+          },
+          {
+            "id": "v11sound1_play",
+            "type": "PlaySound",
+            "x": 320,
+            "y": 600,
+            "params": {
+              "sound": "1"
+            }
+          },
+          {
+            "id": "v11anim_L_1_on",
+            "type": "OnKeyPressed",
+            "x": 40,
+            "y": 880,
+            "params": {
+              "key": "L"
+            }
+          },
+          {
+            "id": "v11anim_L_1_action",
+            "type": "StopAnimation",
+            "x": 300,
+            "y": 880,
+            "params": {
+              "animation": "0"
+            }
+          },
+          {
+            "id": "v11anim_R_1_on",
+            "type": "OnKeyPressed",
+            "x": 40,
+            "y": 880,
+            "params": {
+              "key": "R"
+            }
+          },
+          {
+            "id": "v11anim_R_1_action",
+            "type": "PlayAnimation",
+            "x": 300,
+            "y": 880,
+            "params": {
+              "animation": "0"
+            }
+          },
+          {
+            "id": "v12_ui_update_ruins",
+            "type": "OnUpdate",
+            "x": 900,
+            "y": 510,
+            "params": {}
+          },
+          {
+            "id": "v12_ui_update_ruins_set",
+            "type": "SetUIValue",
+            "x": 1130,
+            "y": 510,
+            "params": {
+              "element": "0",
+              "value": "0"
+            }
+          },
+          {
+            "id": "v12_ui_update_ruins_get",
+            "type": "GetVariable",
+            "x": 900,
+            "y": 670,
+            "params": {
+              "variable": "collected"
+            }
+          },
+          {
+            "id": "v12_ui_update_ruins_key",
+            "type": "OnKeyPressed",
+            "x": 870,
+            "y": 890,
+            "params": {
+              "key": "START"
+            }
+          },
+          {
+            "id": "v12_ui_update_ruins_hide",
+            "type": "HideUI",
+            "x": 1100,
+            "y": 890,
+            "params": {
+              "element": "3"
+            }
+          }
+        ],
+        "links": [
+          {
+            "from": "ev",
+            "port": "next",
+            "to": "rot"
+          },
+          {
+            "from": "key",
+            "port": "next",
+            "to": "switch"
+          },
+          {
+            "from": "a",
+            "port": "next",
+            "to": "set"
+          },
+          {
+            "from": "set",
+            "port": "next",
+            "to": "raise"
+          },
+          {
+            "from": "v11sound1_event",
+            "port": "next",
+            "to": "v11sound1_play"
+          },
+          {
+            "from": "v11anim_L_1_on",
+            "port": "next",
+            "to": "v11anim_L_1_action"
+          },
+          {
+            "from": "v11anim_R_1_on",
+            "port": "next",
+            "to": "v11anim_R_1_action"
+          },
+          {
+            "from": "v12_ui_update_ruins",
+            "port": "next",
+            "to": "v12_ui_update_ruins_set"
+          },
+          {
+            "from": "v12_ui_update_ruins_key",
+            "port": "next",
+            "to": "v12_ui_update_ruins_hide"
+          }
+        ],
+        "data_links": [
+          {
+            "from": "var",
+            "port": "value",
+            "to": "plus",
+            "input": "a"
+          },
+          {
+            "from": "one",
+            "port": "value",
+            "to": "plus",
+            "input": "b"
+          },
+          {
+            "from": "plus",
+            "port": "value",
+            "to": "set",
+            "input": "value"
+          },
+          {
+            "from": "plus",
+            "port": "value",
+            "to": "scaled",
+            "input": "a"
+          },
+          {
+            "from": "quarter",
+            "port": "value",
+            "to": "scaled",
+            "input": "b"
+          },
+          {
+            "from": "scaled",
+            "port": "value",
+            "to": "raise",
+            "input": "y"
+          },
+          {
+            "from": "v12_ui_update_ruins_get",
+            "port": "value",
+            "to": "v12_ui_update_ruins_set",
+            "input": "value"
+          }
+        ]
+      },
+      "camera": {
+        "position": [
+          0,
+          1.4,
+          0
+        ],
+        "rotation": [
+          0,
+          0
+        ],
+        "follow": 0,
+        "follow_offset": [
+          0,
+          2,
+          -8
+        ]
+      },
+      "physics": {
+        "gravity": -0.025,
+        "terminal_velocity": -0.7
+      },
+      "name": "Ruins",
+      "animations": [
+        {
+          "name": "Float_1",
+          "object": 3,
+          "duration": 64,
+          "loop": true,
+          "autoplay": true,
+          "keys": [
+            {
+              "frame": 0,
+              "position": [
+                2.5,
+                0.65,
+                7.4
+              ],
+              "rotation": [
+                0,
+                0
+              ],
+              "scale": 0.55
+            },
+            {
+              "frame": 32,
+              "position": [
+                2.5,
+                1.5,
+                7.4
+              ],
+              "rotation": [
+                90,
+                0
+              ],
+              "scale": 0.75
+            },
+            {
+              "frame": 63,
+              "position": [
+                2.5,
+                0.65,
+                7.4
+              ],
+              "rotation": [
+                0,
+                0
+              ],
+              "scale": 0.55
+            }
+          ]
+        }
+      ],
+      "hud": [
+        {
+          "name": "Coins",
+          "type": "text",
+          "x": 3,
+          "y": 10,
+          "w": 48,
+          "h": 8,
+          "text": "GEMS:",
+          "fg": 255,
+          "bg": 1,
+          "value": 0,
+          "maximum": 99,
+          "visible": true
+        },
+        {
+          "name": "Life meter",
+          "type": "bar",
+          "x": 3,
+          "y": 20,
+          "w": 36,
+          "h": 5,
+          "fg": 228,
+          "bg": 32,
+          "value": 70,
+          "maximum": 100,
+          "visible": true
+        },
+        {
+          "name": "Gem icon",
+          "type": "sprite",
+          "x": 100,
+          "y": 10,
+          "w": 12,
+          "h": 12,
+          "fg": 255,
+          "bg": 0,
+          "value": 0,
+          "maximum": 0,
+          "text": "",
+          "file": "gem.png",
+          "visible": true
+        },
+        {
+          "name": "Message",
+          "type": "dialogue",
+          "x": 8,
+          "y": 59,
+          "w": 104,
+          "h": 17,
+          "text": "HELLO FROM SG3D!",
+          "fg": 255,
+          "bg": 17,
+          "value": 0,
+          "maximum": 0,
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "active_scene": 0,
+  "initial_scene": 0,
+  "variables": {
+    "collected": 0
+  },
+  "objects": [
+    {
+      "name": "Player (dynamic)",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        -0.6,
+        8
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.95,
+      "mode": "texture",
+      "texture": "",
+      "physics": {
+        "dynamic": true,
+        "solid": true,
+        "half_extents": [
+          0.95,
+          0.95,
+          0.95
+        ]
+      }
+    },
+    {
+      "name": "Floor (solid)",
+      "mesh": "platform.obj",
+      "position": [
+        0,
+        -1.85,
+        8
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1,
+      "mode": "flat",
+      "texture": "",
+      "physics": {
+        "solid": true
+      }
+    },
+    {
+      "name": "Collectible",
+      "mesh": "cube.obj",
+      "position": [
+        2,
+        -0.6,
+        8
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.25,
+      "mode": "additive",
+      "texture": "",
+      "physics": {
+        "solid": false
+      }
+    },
+    {
+      "name": "Back wall (solid)",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        0.2,
+        13
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.5,
+      "mode": "flat",
+      "texture": "",
+      "physics": {
+        "solid": true
+      }
+    },
+    {
+      "name": "Bobbing Demo Cube 1",
+      "mesh": "cube.obj",
+      "texture": "checker.png",
+      "mode": "texture",
+      "position": [
+        1.5,
+        0.65,
+        7.4
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.55,
+      "physics": {
+        "solid": false,
+        "dynamic": false
+      }
+    }
+  ],
+  "scripts": {
+    "nodes": [
+      {
+        "id": "n1",
+        "type": "OnKeyHeld",
+        "x": 50,
+        "y": 40,
+        "params": {
+          "key": "LEFT"
+        }
+      },
+      {
+        "id": "n2",
+        "type": "MovePlayer",
+        "x": 320,
+        "y": 40,
+        "params": {
+          "object": "0",
+          "x": "-0.09",
+          "z": "0"
+        }
+      },
+      {
+        "id": "n3",
+        "type": "OnKeyHeld",
+        "x": 50,
+        "y": 150,
+        "params": {
+          "key": "RIGHT"
+        }
+      },
+      {
+        "id": "n4",
+        "type": "MovePlayer",
+        "x": 320,
+        "y": 150,
+        "params": {
+          "object": "0",
+          "x": "0.09",
+          "z": "0"
+        }
+      },
+      {
+        "id": "n5",
+        "type": "OnKeyHeld",
+        "x": 50,
+        "y": 260,
+        "params": {
+          "key": "UP"
+        }
+      },
+      {
+        "id": "n6",
+        "type": "MovePlayer",
+        "x": 320,
+        "y": 260,
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "0.09"
+        }
+      },
+      {
+        "id": "n7",
+        "type": "OnKeyHeld",
+        "x": 50,
+        "y": 370,
+        "params": {
+          "key": "DOWN"
+        }
+      },
+      {
+        "id": "n8",
+        "type": "MovePlayer",
+        "x": 320,
+        "y": 370,
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "-0.09"
+        }
+      },
+      {
+        "id": "n9",
+        "type": "OnKeyPressed",
+        "x": 50,
+        "y": 530,
+        "params": {
+          "key": "A"
+        }
+      },
+      {
+        "id": "n10",
+        "type": "JumpObject",
+        "x": 320,
+        "y": 530,
+        "params": {
+          "object": "0",
+          "impulse": ".36"
+        }
+      },
+      {
+        "id": "n11",
+        "type": "OnUpdate",
+        "x": 50,
+        "y": 655,
+        "params": {}
+      },
+      {
+        "id": "n12",
+        "type": "RotateObject",
+        "x": 320,
+        "y": 655,
+        "params": {
+          "object": "2",
+          "yaw": "2",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "n13",
+        "type": "OnCollision",
+        "x": 650,
+        "y": 50,
+        "params": {
+          "object": "0",
+          "other": "2"
+        }
+      },
+      {
+        "id": "n14",
+        "type": "MoveObject",
+        "x": 910,
+        "y": 50,
+        "params": {
+          "object": "2",
+          "x": "0",
+          "y": "20",
+          "z": "0"
+        }
+      },
+      {
+        "id": "n15",
+        "type": "AddVariable",
+        "x": 1150,
+        "y": 50,
+        "params": {
+          "variable": "collected",
+          "value": "1"
+        }
+      },
+      {
+        "id": "to2key",
+        "type": "OnKeyPressed",
+        "x": 800,
+        "y": 50,
+        "params": {
+          "key": "B"
+        }
+      },
+      {
+        "id": "to2",
+        "type": "LoadScene",
+        "x": 1040,
+        "y": 50,
+        "params": {
+          "scene": "1"
+        }
+      },
+      {
+        "id": "v11sound0_event",
+        "type": "OnKeyPressed",
+        "x": 40,
+        "y": 600,
+        "params": {
+          "key": "SELECT"
+        }
+      },
+      {
+        "id": "v11sound0_play",
+        "type": "PlaySound",
+        "x": 320,
+        "y": 600,
+        "params": {
+          "sound": "0"
+        }
+      },
+      {
+        "id": "v11anim_L_0_on",
+        "type": "OnKeyPressed",
+        "x": 40,
+        "y": 800,
+        "params": {
+          "key": "L"
+        }
+      },
+      {
+        "id": "v11anim_L_0_action",
+        "type": "StopAnimation",
+        "x": 300,
+        "y": 800,
+        "params": {
+          "animation": "0"
+        }
+      },
+      {
+        "id": "v11anim_R_0_on",
+        "type": "OnKeyPressed",
+        "x": 40,
+        "y": 800,
+        "params": {
+          "key": "R"
+        }
+      },
+      {
+        "id": "v11anim_R_0_action",
+        "type": "PlayAnimation",
+        "x": 300,
+        "y": 800,
+        "params": {
+          "animation": "0"
+        }
+      },
+      {
+        "id": "v12_ui_update_meadow",
+        "type": "OnUpdate",
+        "x": 900,
+        "y": 510,
+        "params": {}
+      },
+      {
+        "id": "v12_ui_update_meadow_set",
+        "type": "SetUIValue",
+        "x": 1130,
+        "y": 510,
+        "params": {
+          "element": "0",
+          "value": "0"
+        }
+      },
+      {
+        "id": "v12_ui_update_meadow_get",
+        "type": "GetVariable",
+        "x": 900,
+        "y": 670,
+        "params": {
+          "variable": "collected"
+        }
+      },
+      {
+        "id": "v12_ui_update_meadow_key",
+        "type": "OnKeyPressed",
+        "x": 870,
+        "y": 890,
+        "params": {
+          "key": "START"
+        }
+      },
+      {
+        "id": "v12_ui_update_meadow_hide",
+        "type": "HideUI",
+        "x": 1100,
+        "y": 890,
+        "params": {
+          "element": "3"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "n1",
+        "port": "next",
+        "to": "n2"
+      },
+      {
+        "from": "n3",
+        "port": "next",
+        "to": "n4"
+      },
+      {
+        "from": "n5",
+        "port": "next",
+        "to": "n6"
+      },
+      {
+        "from": "n7",
+        "port": "next",
+        "to": "n8"
+      },
+      {
+        "from": "n9",
+        "port": "next",
+        "to": "n10"
+      },
+      {
+        "from": "n11",
+        "port": "next",
+        "to": "n12"
+      },
+      {
+        "from": "n13",
+        "port": "next",
+        "to": "n14"
+      },
+      {
+        "from": "n14",
+        "port": "next",
+        "to": "n15"
+      },
+      {
+        "from": "to2key",
+        "port": "next",
+        "to": "to2"
+      },
+      {
+        "from": "v11sound0_event",
+        "port": "next",
+        "to": "v11sound0_play"
+      },
+      {
+        "from": "v11anim_L_0_on",
+        "port": "next",
+        "to": "v11anim_L_0_action"
+      },
+      {
+        "from": "v11anim_R_0_on",
+        "port": "next",
+        "to": "v11anim_R_0_action"
+      },
+      {
+        "from": "v12_ui_update_meadow",
+        "port": "next",
+        "to": "v12_ui_update_meadow_set"
+      },
+      {
+        "from": "v12_ui_update_meadow_key",
+        "port": "next",
+        "to": "v12_ui_update_meadow_hide"
+      }
+    ],
+    "data_links": [
+      {
+        "from": "v12_ui_update_meadow_get",
+        "port": "value",
+        "to": "v12_ui_update_meadow_set",
+        "input": "value"
+      }
+    ]
+  },
+  "camera": {
+    "position": [
+      0,
+      1.4,
+      0
+    ],
+    "rotation": [
+      0,
+      0
+    ],
+    "follow": 0,
+    "follow_offset": [
+      0,
+      2,
+      -8
+    ]
+  },
+  "physics": {
+    "gravity": -0.025,
+    "terminal_velocity": -0.7
+  },
+  "sounds": [
+    {
+      "name": "chime",
+      "file": "sounds/chime.wav"
+    },
+    {
+      "name": "click",
+      "file": "sounds/click.wav"
+    }
+  ],
+  "settings": {
+    "title": "SG3D 3D DEMO",
+    "code": "SG12",
+    "maker": "00",
+    "profiler": true
+  },
+  "animations": [
+    {
+      "name": "Float_0",
+      "object": 4,
+      "duration": 64,
+      "loop": true,
+      "autoplay": true,
+      "keys": [
+        {
+          "frame": 0,
+          "position": [
+            1.5,
+            0.65,
+            7.4
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.55
+        },
+        {
+          "frame": 32,
+          "position": [
+            1.5,
+            1.5,
+            7.4
+          ],
+          "rotation": [
+            90,
+            0
+          ],
+          "scale": 0.75
+        },
+        {
+          "frame": 63,
+          "position": [
+            1.5,
+            0.65,
+            7.4
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 0.55
+        }
+      ]
+    }
+  ],
+  "hud": [
+    {
+      "name": "Coins",
+      "type": "text",
+      "x": 3,
+      "y": 10,
+      "w": 48,
+      "h": 8,
+      "text": "GEMS:",
+      "fg": 255,
+      "bg": 1,
+      "value": 0,
+      "maximum": 99,
+      "visible": true
+    },
+    {
+      "name": "Life meter",
+      "type": "bar",
+      "x": 3,
+      "y": 20,
+      "w": 36,
+      "h": 5,
+      "fg": 228,
+      "bg": 32,
+      "value": 70,
+      "maximum": 100,
+      "visible": true
+    },
+    {
+      "name": "Gem icon",
+      "type": "sprite",
+      "x": 100,
+      "y": 10,
+      "w": 12,
+      "h": 12,
+      "fg": 255,
+      "bg": 0,
+      "value": 0,
+      "maximum": 0,
+      "text": "",
+      "file": "gem.png",
+      "visible": true
+    },
+    {
+      "name": "Message",
+      "type": "dialogue",
+      "x": 8,
+      "y": 59,
+      "w": 104,
+      "h": 17,
+      "text": "HELLO FROM SG3D!",
+      "fg": 255,
+      "bg": 17,
+      "value": 0,
+      "maximum": 0,
+      "visible": true
+    }
+  ]
+}

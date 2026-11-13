@@ -1,0 +1,215 @@
+{
+  "name": "Orbit Hotfix - Old Script Compatibility",
+  "camera": {
+    "position": [
+      0,
+      1.4,
+      0
+    ],
+    "rotation": [
+      0,
+      0
+    ],
+    "follow": 0,
+    "follow_offset": [
+      0,
+      2,
+      -8
+    ],
+    "orbit": {
+      "enabled": true,
+      "target": 0,
+      "distance": 7,
+      "height": 1.5,
+      "pitch": -8,
+      "turn_speed": 2,
+      "move_speed": 0.11,
+      "auto_move": true
+    }
+  },
+  "physics": {
+    "gravity": -0.025,
+    "terminal_velocity": -0.7
+  },
+  "objects": [
+    {
+      "name": "Player (dynamic)",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        -0.6,
+        8
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.95,
+      "mode": "texture",
+      "texture": "",
+      "physics": {
+        "dynamic": true,
+        "solid": true,
+        "half_extents": [
+          0.95,
+          0.95,
+          0.95
+        ]
+      }
+    },
+    {
+      "name": "Floor (solid)",
+      "mesh": "platform.obj",
+      "position": [
+        0,
+        -1.85,
+        8
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1,
+      "mode": "flat",
+      "texture": "",
+      "physics": {
+        "solid": true
+      }
+    },
+    {
+      "name": "Collectible",
+      "mesh": "cube.obj",
+      "position": [
+        2,
+        -0.6,
+        8
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.25,
+      "mode": "additive",
+      "texture": "",
+      "physics": {
+        "solid": false
+      }
+    },
+    {
+      "name": "Back wall (solid)",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        0.2,
+        13
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.5,
+      "mode": "flat",
+      "texture": "",
+      "physics": {
+        "solid": true
+      }
+    }
+  ],
+  "variables": {
+    "collected": 0
+  },
+  "scripts": {
+    "nodes": [
+      {
+        "id": "press_left",
+        "type": "OnKeyHeld",
+        "params": {
+          "key": "LEFT"
+        }
+      },
+      {
+        "id": "move_left",
+        "type": "MovePlayer",
+        "params": {
+          "object": "0",
+          "x": "-0.11",
+          "z": "0"
+        }
+      },
+      {
+        "id": "press_right",
+        "type": "OnKeyHeld",
+        "params": {
+          "key": "RIGHT"
+        }
+      },
+      {
+        "id": "move_right",
+        "type": "MovePlayer",
+        "params": {
+          "object": "0",
+          "x": "0.11",
+          "z": "0"
+        }
+      },
+      {
+        "id": "press_up",
+        "type": "OnKeyHeld",
+        "params": {
+          "key": "UP"
+        }
+      },
+      {
+        "id": "move_up",
+        "type": "MovePlayer",
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "0.11"
+        }
+      },
+      {
+        "id": "press_down",
+        "type": "OnKeyHeld",
+        "params": {
+          "key": "DOWN"
+        }
+      },
+      {
+        "id": "move_down",
+        "type": "MovePlayer",
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "-0.11"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "press_left",
+        "to": "move_left",
+        "port": "next"
+      },
+      {
+        "from": "press_right",
+        "to": "move_right",
+        "port": "next"
+      },
+      {
+        "from": "press_up",
+        "to": "move_up",
+        "port": "next"
+      },
+      {
+        "from": "press_down",
+        "to": "move_down",
+        "port": "next"
+      }
+    ],
+    "data_links": []
+  },
+  "skybox": {
+    "file": "pastel_panorama.png"
+  }
+}

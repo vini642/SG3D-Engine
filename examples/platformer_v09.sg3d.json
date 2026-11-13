@@ -1,0 +1,306 @@
+{
+  "name": "SG3D v0.9 Jump and Collect",
+  "camera": {
+    "position": [
+      0,
+      1.4,
+      0
+    ],
+    "rotation": [
+      0,
+      0
+    ],
+    "follow": 0,
+    "follow_offset": [
+      0,
+      2,
+      -8
+    ]
+  },
+  "physics": {
+    "gravity": -0.025,
+    "terminal_velocity": -0.7
+  },
+  "objects": [
+    {
+      "name": "Player (dynamic)",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        -0.6,
+        8
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.95,
+      "mode": "texture",
+      "texture": "",
+      "physics": {
+        "dynamic": true,
+        "solid": true,
+        "half_extents": [
+          0.95,
+          0.95,
+          0.95
+        ]
+      }
+    },
+    {
+      "name": "Floor (solid)",
+      "mesh": "platform.obj",
+      "position": [
+        0,
+        -1.85,
+        8
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1,
+      "mode": "flat",
+      "texture": "",
+      "physics": {
+        "solid": true
+      }
+    },
+    {
+      "name": "Collectible",
+      "mesh": "cube.obj",
+      "position": [
+        2,
+        -0.6,
+        8
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 0.25,
+      "mode": "additive",
+      "texture": "",
+      "physics": {
+        "solid": false
+      }
+    },
+    {
+      "name": "Back wall (solid)",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        0.2,
+        13
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.5,
+      "mode": "flat",
+      "texture": "",
+      "physics": {
+        "solid": true
+      }
+    }
+  ],
+  "variables": {
+    "collected": 0
+  },
+  "scripts": {
+    "nodes": [
+      {
+        "id": "n1",
+        "type": "OnKeyHeld",
+        "x": 50,
+        "y": 40,
+        "params": {
+          "key": "LEFT"
+        }
+      },
+      {
+        "id": "n2",
+        "type": "MovePlayer",
+        "x": 320,
+        "y": 40,
+        "params": {
+          "object": "0",
+          "x": "-0.09",
+          "z": "0"
+        }
+      },
+      {
+        "id": "n3",
+        "type": "OnKeyHeld",
+        "x": 50,
+        "y": 150,
+        "params": {
+          "key": "RIGHT"
+        }
+      },
+      {
+        "id": "n4",
+        "type": "MovePlayer",
+        "x": 320,
+        "y": 150,
+        "params": {
+          "object": "0",
+          "x": "0.09",
+          "z": "0"
+        }
+      },
+      {
+        "id": "n5",
+        "type": "OnKeyHeld",
+        "x": 50,
+        "y": 260,
+        "params": {
+          "key": "UP"
+        }
+      },
+      {
+        "id": "n6",
+        "type": "MovePlayer",
+        "x": 320,
+        "y": 260,
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "0.09"
+        }
+      },
+      {
+        "id": "n7",
+        "type": "OnKeyHeld",
+        "x": 50,
+        "y": 370,
+        "params": {
+          "key": "DOWN"
+        }
+      },
+      {
+        "id": "n8",
+        "type": "MovePlayer",
+        "x": 320,
+        "y": 370,
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "-0.09"
+        }
+      },
+      {
+        "id": "n9",
+        "type": "OnKeyPressed",
+        "x": 50,
+        "y": 530,
+        "params": {
+          "key": "A"
+        }
+      },
+      {
+        "id": "n10",
+        "type": "JumpObject",
+        "x": 320,
+        "y": 530,
+        "params": {
+          "object": "0",
+          "impulse": ".36"
+        }
+      },
+      {
+        "id": "n11",
+        "type": "OnUpdate",
+        "x": 50,
+        "y": 655,
+        "params": {}
+      },
+      {
+        "id": "n12",
+        "type": "RotateObject",
+        "x": 320,
+        "y": 655,
+        "params": {
+          "object": "2",
+          "yaw": "2",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "n13",
+        "type": "OnCollision",
+        "x": 650,
+        "y": 50,
+        "params": {
+          "object": "0",
+          "other": "2"
+        }
+      },
+      {
+        "id": "n14",
+        "type": "MoveObject",
+        "x": 910,
+        "y": 50,
+        "params": {
+          "object": "2",
+          "x": "0",
+          "y": "20",
+          "z": "0"
+        }
+      },
+      {
+        "id": "n15",
+        "type": "AddVariable",
+        "x": 1150,
+        "y": 50,
+        "params": {
+          "variable": "collected",
+          "value": "1"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "n1",
+        "port": "next",
+        "to": "n2"
+      },
+      {
+        "from": "n3",
+        "port": "next",
+        "to": "n4"
+      },
+      {
+        "from": "n5",
+        "port": "next",
+        "to": "n6"
+      },
+      {
+        "from": "n7",
+        "port": "next",
+        "to": "n8"
+      },
+      {
+        "from": "n9",
+        "port": "next",
+        "to": "n10"
+      },
+      {
+        "from": "n11",
+        "port": "next",
+        "to": "n12"
+      },
+      {
+        "from": "n13",
+        "port": "next",
+        "to": "n14"
+      },
+      {
+        "from": "n14",
+        "port": "next",
+        "to": "n15"
+      }
+    ]
+  }
+}

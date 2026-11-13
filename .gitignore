@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.coverage
+# Build/generated output
+generated/
+build/
+dist/
+*.gba
+*.elf
+*.o
+*.map
+*.log
+*.tmp
+# Local projects and embedded packs
+*.sg3d.json.bak
+*.sg3d.backup.json
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Archived releases are attached to GitHub Releases, not committed
+*.zip

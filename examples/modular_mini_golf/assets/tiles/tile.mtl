@@ -1,0 +1,9 @@
+# Original Blockbench material identifiers preserved; shared textures
+newmtl m_18df63d7-db92-58eb-f8ef-97ecf455a01b
+Kd 1 1 1
+map_Kd ../textures/grass.png
+newmtl m_d2c0d894-a81d-047c-fc66-3855f5451923
+Kd 1 1 1
+map_Kd ../textures/wall.png
+newmtl none
+Kd 1 1 1

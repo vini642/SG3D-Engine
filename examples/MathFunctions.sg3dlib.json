@@ -1,0 +1,78 @@
+{
+  "name": "MathFunctions",
+  "scripts": {
+    "nodes": [
+      {
+        "id": "lib_def",
+        "type": "FunctionDefinition",
+        "x": 50,
+        "y": 50,
+        "params": {
+          "function": "Triple"
+        }
+      },
+      {
+        "id": "lib_arg",
+        "type": "FunctionArgument",
+        "x": 50,
+        "y": 50,
+        "params": {}
+      },
+      {
+        "id": "lib_three",
+        "type": "Number",
+        "x": 50,
+        "y": 50,
+        "params": {
+          "value": "3"
+        }
+      },
+      {
+        "id": "lib_mul",
+        "type": "MathMultiply",
+        "x": 50,
+        "y": 50,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "lib_ret",
+        "type": "ReturnFunction",
+        "x": 50,
+        "y": 50,
+        "params": {
+          "value": "1"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "lib_def",
+        "port": "next",
+        "to": "lib_ret"
+      }
+    ],
+    "data_links": [
+      {
+        "from": "lib_arg",
+        "port": "value",
+        "to": "lib_mul",
+        "input": "a"
+      },
+      {
+        "from": "lib_three",
+        "port": "value",
+        "to": "lib_mul",
+        "input": "b"
+      },
+      {
+        "from": "lib_mul",
+        "port": "value",
+        "to": "lib_ret",
+        "input": "value"
+      }
+    ]
+  }
+}

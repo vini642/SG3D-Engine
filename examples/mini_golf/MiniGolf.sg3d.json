@@ -1,0 +1,307 @@
+{
+  "name": "SG3D Mini Golf \u2014 Hole 1",
+  "settings": {
+    "title": "MINI GOLF",
+    "code": "GOLF",
+    "maker": "00",
+    "profiler": false
+  },
+  "variables": {},
+  "sounds": [],
+  "objects": [
+    {
+      "name": "Golf ball",
+      "mesh": "golf_ball.obj",
+      "mode": "flat",
+      "position": [
+        -2.5,
+        0.2734375,
+        8.9
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": true,
+        "half_extents": [
+          0.28,
+          0.28,
+          0.28
+        ]
+      },
+      "c_scripts": [
+        "golf_ball.c"
+      ],
+      "properties": {
+        "strokes": 0
+      }
+    },
+    {
+      "name": "Aim arrow",
+      "mesh": "aim_arrow.obj",
+      "mode": "flat",
+      "position": [
+        -2.5,
+        0.03,
+        8.9
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      }
+    },
+    {
+      "name": "Grass course",
+      "mesh": "course.obj",
+      "mode": "flat",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      }
+    },
+    {
+      "name": "Hole and flag",
+      "mesh": "hole.obj",
+      "mode": "flat",
+      "position": [
+        2.25,
+        0,
+        17.25
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      }
+    },
+    {
+      "name": "Left rail",
+      "mesh": "rail.obj",
+      "mode": "flat",
+      "position": [
+        -4.18,
+        0.14,
+        13.5
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": true,
+        "half_extents": [
+          0.18,
+          0.325,
+          5.9
+        ]
+      }
+    },
+    {
+      "name": "Right rail",
+      "mesh": "rail_right.obj",
+      "mode": "flat",
+      "position": [
+        4.18,
+        0.14,
+        13.5
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": true,
+        "half_extents": [
+          0.18,
+          0.325,
+          5.9
+        ]
+      }
+    },
+    {
+      "name": "Back rail",
+      "mesh": "rail_back.obj",
+      "mode": "flat",
+      "position": [
+        0,
+        0.14,
+        19.27
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": true,
+        "half_extents": [
+          4.4,
+          0.325,
+          0.18
+        ]
+      }
+    },
+    {
+      "name": "Front rail",
+      "mesh": "rail_front.obj",
+      "mode": "flat",
+      "position": [
+        0,
+        0.14,
+        7.74
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": true,
+        "half_extents": [
+          4.4,
+          0.325,
+          0.18
+        ]
+      }
+    },
+    {
+      "name": "Red bumper",
+      "mesh": "obstacle.obj",
+      "mode": "flat",
+      "position": [
+        -0.25,
+        0.15,
+        13.1
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": true,
+        "half_extents": [
+          1.1,
+          0.29,
+          0.25
+        ]
+      }
+    }
+  ],
+  "camera": {
+    "position": [
+      0,
+      7.3,
+      0.5
+    ],
+    "rotation": [
+      0,
+      30
+    ]
+  },
+  "scripts": {
+    "nodes": [],
+    "links": []
+  },
+  "physics": {
+    "gravity": 0
+  },
+  "animations": [],
+  "hud": [
+    {
+      "type": "text",
+      "text": "MINI GOLF",
+      "x": 2,
+      "y": 2,
+      "w": 64,
+      "h": 7,
+      "fg": 255,
+      "bg": 0,
+      "visible": true,
+      "value": 0,
+      "maximum": 0
+    },
+    {
+      "type": "text",
+      "text": "SHOTS:",
+      "x": 77,
+      "y": 2,
+      "w": 40,
+      "h": 7,
+      "fg": 255,
+      "bg": 0,
+      "visible": true,
+      "value": 0,
+      "maximum": 99
+    },
+    {
+      "type": "bar",
+      "text": "",
+      "x": 12,
+      "y": 68,
+      "w": 75,
+      "h": 4,
+      "fg": 252,
+      "bg": 36,
+      "visible": true,
+      "value": 0,
+      "maximum": 184
+    },
+    {
+      "type": "text",
+      "text": "L/R AIM A HIT B RESET",
+      "x": 2,
+      "y": 74,
+      "w": 117,
+      "h": 6,
+      "fg": 255,
+      "bg": 0,
+      "visible": true,
+      "value": 0,
+      "maximum": 0
+    },
+    {
+      "type": "text",
+      "text": "HOLE! A RETRY",
+      "x": 28,
+      "y": 28,
+      "w": 80,
+      "h": 10,
+      "fg": 255,
+      "bg": 0,
+      "visible": false,
+      "value": 0,
+      "maximum": 0
+    }
+  ],
+  "skybox": {}
+}

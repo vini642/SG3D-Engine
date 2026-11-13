@@ -1,0 +1,367 @@
+{
+  "name": "SG3D Mini Golf \u2014 Your Modular Course",
+  "settings": {
+    "title": "MODULAR GOLF",
+    "code": "MG02",
+    "maker": "00",
+    "profiler": false
+  },
+  "variables": {},
+  "sounds": [],
+  "objects": [
+    {
+      "name": "Golf ball",
+      "mesh": "assets/ball/ball.obj",
+      "mode": "texture",
+      "position": [
+        0,
+        0.225,
+        0
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "c_scripts": [
+        "golf_ball.c"
+      ]
+    },
+    {
+      "name": "Aim arrow",
+      "mesh": "assets/extras/aim_arrow.obj",
+      "mode": "flat",
+      "position": [
+        0,
+        0.133,
+        0
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      }
+    },
+    {
+      "name": "Cup and flag",
+      "mesh": "assets/extras/cup_flag.obj",
+      "mode": "flat",
+      "position": [
+        2,
+        1.63,
+        6
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      }
+    },
+    {
+      "name": "Tee / start",
+      "mesh": "assets/tiles/tile_start_end.obj",
+      "mode": "texture",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 1,
+        "rise": 0
+      }
+    },
+    {
+      "name": "Straight 1",
+      "mesh": "assets/tiles/tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        0,
+        0,
+        1
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0
+      }
+    },
+    {
+      "name": "Left turn",
+      "mesh": "assets/tiles/tile_turn_left.obj",
+      "mode": "texture",
+      "position": [
+        0,
+        0,
+        2
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 2,
+        "rise": 0
+      }
+    },
+    {
+      "name": "Straight 2",
+      "mesh": "assets/tiles/tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        1,
+        0,
+        2
+      ],
+      "rotation": [
+        90,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0
+      }
+    },
+    {
+      "name": "Right turn",
+      "mesh": "assets/tiles/tile_turn_right.obj",
+      "mode": "texture",
+      "position": [
+        2,
+        0,
+        2
+      ],
+      "rotation": [
+        90,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 3,
+        "rise": 0
+      }
+    },
+    {
+      "name": "Gentle slope",
+      "mesh": "assets/tiles/tile_incline_22.obj",
+      "mode": "texture",
+      "position": [
+        2,
+        0,
+        3
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 4,
+        "rise": 0.5
+      }
+    },
+    {
+      "name": "Elevated platform",
+      "mesh": "assets/tiles/tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        2,
+        0.5,
+        4
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0
+      }
+    },
+    {
+      "name": "Steep slope",
+      "mesh": "assets/tiles/tile_incline_45.obj",
+      "mode": "texture",
+      "position": [
+        2,
+        0.5,
+        5
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 4,
+        "rise": 1.0
+      }
+    },
+    {
+      "name": "Finish",
+      "mesh": "assets/tiles/tile_start_end.obj",
+      "mode": "texture",
+      "position": [
+        2,
+        1.5,
+        6
+      ],
+      "rotation": [
+        180,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 1,
+        "rise": 0
+      }
+    }
+  ],
+  "camera": {
+    "position": [
+      0.8,
+      4.8,
+      -4.0
+    ],
+    "rotation": [
+      0,
+      30
+    ]
+  },
+  "scripts": {
+    "nodes": [],
+    "links": []
+  },
+  "physics": {
+    "gravity": 0
+  },
+  "animations": [],
+  "hud": [
+    {
+      "type": "text",
+      "text": "MINI GOLF   SHOTS:",
+      "x": 2,
+      "y": 2,
+      "w": 114,
+      "h": 8,
+      "fg": 255,
+      "bg": 0,
+      "visible": true,
+      "value": 0,
+      "maximum": 0
+    },
+    {
+      "type": "text",
+      "text": "",
+      "x": 105,
+      "y": 2,
+      "w": 13,
+      "h": 8,
+      "fg": 255,
+      "bg": 0,
+      "visible": true,
+      "value": 0,
+      "maximum": 99
+    },
+    {
+      "type": "bar",
+      "text": "",
+      "x": 8,
+      "y": 12,
+      "w": 96,
+      "h": 5,
+      "fg": 252,
+      "bg": 36,
+      "visible": true,
+      "value": 0,
+      "maximum": 85
+    },
+    {
+      "type": "text",
+      "text": "LEFT/RIGHT AIM  HOLD A SHOT",
+      "x": 2,
+      "y": 74,
+      "w": 116,
+      "h": 6,
+      "fg": 255,
+      "bg": 0,
+      "visible": true,
+      "value": 0,
+      "maximum": 0
+    },
+    {
+      "type": "text",
+      "text": "HOLE COMPLETE! A RESTART",
+      "x": 4,
+      "y": 30,
+      "w": 114,
+      "h": 9,
+      "fg": 255,
+      "bg": 0,
+      "visible": false,
+      "value": 0,
+      "maximum": 0
+    }
+  ],
+  "skybox": {}
+}

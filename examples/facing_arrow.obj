@@ -1,0 +1,27 @@
+# 3D arrow model: point is +Z (our engine default forward direction)
+# Arrow body sits around y=0; tip projects along positive Z.
+o FacingArrow
+v -0.4 -0.35 -0.4
+v  0.4 -0.35 -0.4
+v  0.4  0.35 -0.4
+v -0.4  0.35 -0.4
+v -0.4 -0.35  0.2
+v  0.4 -0.35  0.2
+v  0.4  0.35  0.2
+v -0.4  0.35  0.2
+v -0.7 0.0 0.2
+v  0.7 0.0 0.2
+v  0.0 0.0 1.1
+# rear and sides
+f 1 4 3 2
+f 1 2 6 5
+f 4 8 7 3
+f 1 5 8 4
+f 2 3 7 6
+# wedge tip: elongated on the front
+f 5 6 11
+f 6 10 11
+f 10 7 11
+f 7 8 11
+f 8 9 11
+f 9 5 11

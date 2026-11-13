@@ -1,0 +1,79 @@
+newmtl grass
+Kd 0.2 0.53 0.24
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl fairway
+Kd 0.28 0.69 0.32
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl grass_dark
+Kd 0.13 0.42 0.2
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl rail
+Kd 0.88 0.85 0.68
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl rail_top
+Kd 0.99 0.95 0.79
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl red
+Kd 0.86 0.25 0.2
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl red_top
+Kd 1 0.52 0.29
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl ball
+Kd 1 1 1
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl ball_shadow
+Kd 0.22 0.28 0.23
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl aim
+Kd 1 0.85 0.17
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl hole
+Kd 0.04 0.08 0.12
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl rim
+Kd 0.98 0.89 0.5
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl flag
+Kd 1 0.41 0.39
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl flagpole
+Kd 0.89 0.92 0.96
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl outline
+Kd 0.36 0.23 0.13
+Ka 1 1 1
+Ks 0 0 0
+
+newmtl tee
+Kd 0.75 0.91 0.77
+Ka 1 1 1
+Ks 0 0 0

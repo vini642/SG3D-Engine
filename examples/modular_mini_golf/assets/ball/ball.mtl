@@ -1,0 +1,5 @@
+newmtl m_3a2366da-569a-1cdf-c4ce-a860993b50ee
+Kd 1 1 1
+map_Kd ../textures/ball.png
+newmtl none
+Kd 1 1 1

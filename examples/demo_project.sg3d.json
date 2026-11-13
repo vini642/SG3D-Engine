@@ -1,0 +1,9 @@
+{
+  "name": "Nova's First SG3D Scene",
+  "camera": {"position": [0, 0, 0], "rotation": [0, 0]},
+  "objects": [
+    {"name":"Hello Cube", "mesh":"cube.obj", "position":[-1.6,0,7], "rotation":[30,15], "scale":1.0, "mode":"texture", "texture":""},
+    {"name":"Pyramid", "mesh":"pyramid.obj", "position":[1.8,0,8], "rotation":[35,0], "scale":1.2, "mode":"flat", "texture":""},
+    {"name":"Glowing Cube", "mesh":"cube.obj", "position":[0,-1.8,12], "rotation":[0,0], "scale":0.7, "mode":"additive", "texture":""}
+  ]
+}

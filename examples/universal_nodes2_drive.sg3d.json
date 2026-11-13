@@ -1,0 +1,297 @@
+{
+  "name": "Universal Nodes 2.0 Arcade Driving",
+  "objects": [
+    {
+      "name": "Car made from generic objects",
+      "mesh": "cube.obj",
+      "position": [
+        0,
+        0,
+        7
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1,
+      "mode": "texture",
+      "texture": "checker.png",
+      "physics": {
+        "dynamic": false,
+        "solid": true
+      },
+      "properties": {}
+    }
+  ],
+  "camera": {
+    "position": [
+      0,
+      2,
+      0
+    ],
+    "rotation": [
+      0,
+      0
+    ]
+  },
+  "scripts": {
+    "nodes": [
+      {
+        "id": "1",
+        "type": "OnUpdate",
+        "x": 75,
+        "y": 100,
+        "params": {}
+      },
+      {
+        "id": "2",
+        "type": "SetVariable",
+        "x": 290,
+        "y": 100,
+        "params": {
+          "variable": "speed",
+          "value": "1"
+        }
+      },
+      {
+        "id": "3",
+        "type": "GetVariable",
+        "x": 505,
+        "y": 100,
+        "params": {
+          "variable": "speed"
+        }
+      },
+      {
+        "id": "4",
+        "type": "Number",
+        "x": 720,
+        "y": 100,
+        "params": {
+          "value": "0.95"
+        }
+      },
+      {
+        "id": "5",
+        "type": "MathMultiply",
+        "x": 935,
+        "y": 100,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "6",
+        "type": "MoveLocal",
+        "x": 75,
+        "y": 250,
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "0"
+        }
+      },
+      {
+        "id": "7",
+        "type": "GetVariable",
+        "x": 290,
+        "y": 250,
+        "params": {
+          "variable": "speed"
+        }
+      },
+      {
+        "id": "8",
+        "type": "OnKeyHeld",
+        "x": 505,
+        "y": 250,
+        "params": {
+          "key": "A"
+        }
+      },
+      {
+        "id": "9",
+        "type": "AddVariable",
+        "x": 720,
+        "y": 250,
+        "params": {
+          "variable": "speed",
+          "value": "0.015"
+        }
+      },
+      {
+        "id": "10",
+        "type": "OnKeyHeld",
+        "x": 935,
+        "y": 250,
+        "params": {
+          "key": "B"
+        }
+      },
+      {
+        "id": "11",
+        "type": "AddVariable",
+        "x": 75,
+        "y": 400,
+        "params": {
+          "variable": "speed",
+          "value": "-0.03"
+        }
+      },
+      {
+        "id": "12",
+        "type": "OnKeyHeld",
+        "x": 290,
+        "y": 400,
+        "params": {
+          "key": "LEFT"
+        }
+      },
+      {
+        "id": "13",
+        "type": "RotateObject",
+        "x": 505,
+        "y": 400,
+        "params": {
+          "object": "0",
+          "yaw": "-3",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "14",
+        "type": "OnKeyHeld",
+        "x": 720,
+        "y": 400,
+        "params": {
+          "key": "RIGHT"
+        }
+      },
+      {
+        "id": "15",
+        "type": "RotateObject",
+        "x": 935,
+        "y": 400,
+        "params": {
+          "object": "0",
+          "yaw": "3",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "16",
+        "type": "MathClamp",
+        "x": 75,
+        "y": 550,
+        "params": {
+          "value": "0",
+          "min": "-0.1",
+          "max": "0.25"
+        }
+      },
+      {
+        "id": "17",
+        "type": "GetVariable",
+        "x": 290,
+        "y": 550,
+        "params": {
+          "variable": "speed"
+        }
+      },
+      {
+        "id": "18",
+        "type": "SetVariable",
+        "x": 505,
+        "y": 550,
+        "params": {
+          "variable": "speed",
+          "value": "1"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "1",
+        "to": "2",
+        "port": "next"
+      },
+      {
+        "from": "8",
+        "to": "9",
+        "port": "next"
+      },
+      {
+        "from": "10",
+        "to": "11",
+        "port": "next"
+      },
+      {
+        "from": "12",
+        "to": "13",
+        "port": "next"
+      },
+      {
+        "from": "14",
+        "to": "15",
+        "port": "next"
+      },
+      {
+        "from": "2",
+        "to": "18",
+        "port": "next"
+      },
+      {
+        "from": "18",
+        "to": "6",
+        "port": "next"
+      }
+    ],
+    "data_links": [
+      {
+        "from": "3",
+        "to": "5",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "4",
+        "to": "5",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "5",
+        "to": "2",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "7",
+        "to": "6",
+        "port": "value",
+        "input": "z"
+      },
+      {
+        "from": "17",
+        "to": "16",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "16",
+        "to": "18",
+        "port": "value",
+        "input": "value"
+      }
+    ]
+  },
+  "variables": {
+    "speed": 0
+  },
+  "settings": {
+    "title": "NODE DRIVE",
+    "code": "ND20",
+    "maker": "00"
+  }
+}

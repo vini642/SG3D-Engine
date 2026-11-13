@@ -1,0 +1,5942 @@
+{
+  "name": "SG3D Mini Golf \u2014 Universal Nodes 3.0 collision probes",
+  "settings": {
+    "title": "NODE GOLF",
+    "code": "NG01",
+    "maker": "00",
+    "profiler": false
+  },
+  "variables": {
+    "aim": 0,
+    "speed": 0,
+    "charge": 0,
+    "charging": 0,
+    "strokes": 0,
+    "won": 0,
+    "overview": 0,
+    "camheight": 2,
+    "camback": 2,
+    "campitch": 28,
+    "tile_count": 0,
+    "wall_probe": 0,
+    "last_local_x": 0
+  },
+  "sounds": [],
+  "objects": [
+    {
+      "name": "Golf ball",
+      "mesh": "assets/0002_0002_0002_0002_0002_0002_ball.obj",
+      "mode": "texture",
+      "position": [
+        0,
+        0.225,
+        0
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "c_scripts": []
+    },
+    {
+      "name": "Aim arrow",
+      "mesh": "assets/0005_0005_0005_0005_0005_0005_aim_arrow.obj",
+      "mode": "flat",
+      "position": [
+        0,
+        0.133,
+        0
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "c_scripts": []
+    },
+    {
+      "name": "Cup and flag",
+      "mesh": "assets/0007_0007_0007_0007_0007_0007_cup_flag.obj",
+      "mode": "flat",
+      "position": [
+        7.0,
+        1.63,
+        4.0
+      ],
+      "rotation": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {},
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Straight 1",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        0,
+        0,
+        1
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": []
+    },
+    {
+      "name": "Left turn",
+      "mesh": "assets/0012_0012_0012_0012_0012_0013_tile_turn_left.obj",
+      "mode": "texture",
+      "position": [
+        0,
+        0,
+        2
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 2,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": []
+    },
+    {
+      "name": "Straight 2",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        1,
+        0,
+        2
+      ],
+      "rotation": [
+        90,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": []
+    },
+    {
+      "name": "Right turn",
+      "mesh": "assets/0013_0013_0013_0013_0013_0014_tile_turn_right.obj",
+      "mode": "texture",
+      "position": [
+        2,
+        0,
+        2
+      ],
+      "rotation": [
+        90,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 3,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": []
+    },
+    {
+      "name": "Gentle slope",
+      "mesh": "assets/0014_0014_0014_0014_0014_0015_tile_incline_22.obj",
+      "mode": "texture",
+      "position": [
+        2,
+        0,
+        3
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 4,
+        "rise": 0.5,
+        "golf_tile": 1
+      },
+      "c_scripts": []
+    },
+    {
+      "name": "Elevated platform",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        2,
+        0.5,
+        4
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": []
+    },
+    {
+      "name": "Steep slope",
+      "mesh": "assets/0015_0015_0015_0015_0015_0016_tile_incline_45.obj",
+      "mode": "texture",
+      "position": [
+        2,
+        0.5,
+        5
+      ],
+      "rotation": [
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 4,
+        "rise": 1.0,
+        "golf_tile": 1
+      },
+      "c_scripts": []
+    },
+    {
+      "name": "Elevated platform Copy",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        2.0,
+        1.5,
+        6.0
+      ],
+      "rotation": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Right turn Copy",
+      "mesh": "assets/0013_0013_0013_0013_0013_0014_tile_turn_right.obj",
+      "mode": "texture",
+      "position": [
+        2.0,
+        1.5,
+        7.0
+      ],
+      "rotation": [
+        -90.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 3,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Elevated platform Copy Copy",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        3.0,
+        1.5,
+        7.0
+      ],
+      "rotation": [
+        90.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Elevated platform Copy Copy Copy",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        4.0,
+        1.5,
+        7.0
+      ],
+      "rotation": [
+        90.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Elevated platform Copy Copy Copy Copy",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        5.0,
+        1.5,
+        7.0
+      ],
+      "rotation": [
+        90.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Elevated platform Copy Copy Copy Copy Copy",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        6.0,
+        1.5,
+        7.0
+      ],
+      "rotation": [
+        90.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Right turn Copy Copy",
+      "mesh": "assets/0013_0013_0013_0013_0013_0014_tile_turn_right.obj",
+      "mode": "texture",
+      "position": [
+        7.0,
+        1.5,
+        7.0
+      ],
+      "rotation": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 3,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Elevated platform Copy Copy Copy Copy Copy Copy",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        7.0,
+        1.5,
+        6.0
+      ],
+      "rotation": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Elevated platform Copy Copy Copy Copy Copy Copy Copy",
+      "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+      "mode": "texture",
+      "position": [
+        7.0,
+        1.5,
+        5.0
+      ],
+      "rotation": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "physics": {
+        "dynamic": false,
+        "solid": false
+      },
+      "properties": {
+        "tile_kind": 0,
+        "rise": 0,
+        "golf_tile": 1
+      },
+      "c_scripts": [],
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0
+    },
+    {
+      "name": "Tile",
+      "mesh": "assets/0016_0016_0016_0016_0016_Tile.obj",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "mode": "texture",
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0,
+      "c_scripts": [],
+      "properties": {
+        "golf_tile": 1,
+        "tile_kind": 1,
+        "rise": 0,
+        "golf_start": 1
+      }
+    },
+    {
+      "name": "Tile Copy",
+      "mesh": "assets/0016_0016_0016_0016_0016_Tile.obj",
+      "position": [
+        7.0,
+        1.5,
+        4.0
+      ],
+      "rotation": [
+        0.0,
+        0.0
+      ],
+      "scale": 1.0,
+      "mode": "texture",
+      "texture": "",
+      "face_movement": false,
+      "facing_smooth": 0.25,
+      "facing_offset": 0.0,
+      "c_scripts": [],
+      "properties": {
+        "golf_tile": 1,
+        "tile_kind": 1,
+        "rise": 0
+      }
+    }
+  ],
+  "camera": {
+    "position": [
+      -0.09999999999999931,
+      2.700000000000001,
+      5.899999999999998
+    ],
+    "rotation": [
+      90.72000000000025,
+      27.48000000000011
+    ],
+    "orbit": {}
+  },
+  "scripts": {
+    "nodes": [
+      {
+        "id": "N001",
+        "type": "FunctionDefinition",
+        "x": 25,
+        "y": 1100,
+        "params": {
+          "function": "ResetBall"
+        }
+      },
+      {
+        "id": "N002",
+        "type": "SetObjectPosition",
+        "x": 250,
+        "y": 1100,
+        "params": {
+          "object": "0",
+          "x": "0",
+          "y": "0.23046875",
+          "z": "0"
+        }
+      },
+      {
+        "id": "N003",
+        "type": "GetObjectX",
+        "x": 25,
+        "y": 910,
+        "params": {
+          "object": "19"
+        }
+      },
+      {
+        "id": "N004",
+        "type": "GetObjectZ",
+        "x": 250,
+        "y": 910,
+        "params": {
+          "object": "19"
+        }
+      },
+      {
+        "id": "N005",
+        "type": "MathAdd",
+        "x": 475,
+        "y": 910,
+        "params": {
+          "a": "0",
+          "b": "0.23046875"
+        }
+      },
+      {
+        "id": "N006",
+        "type": "GetObjectY",
+        "x": 475,
+        "y": 800,
+        "params": {
+          "object": "19"
+        }
+      },
+      {
+        "id": "N007",
+        "type": "SetVariable",
+        "x": 480,
+        "y": 1100,
+        "params": {
+          "variable": "speed",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N008",
+        "type": "SetVariable",
+        "x": 700,
+        "y": 1100,
+        "params": {
+          "variable": "charge",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N009",
+        "type": "SetVariable",
+        "x": 920,
+        "y": 1100,
+        "params": {
+          "variable": "charging",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N010",
+        "type": "SetVariable",
+        "x": 1140,
+        "y": 1100,
+        "params": {
+          "variable": "won",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N011",
+        "type": "SetVariable",
+        "x": 1360,
+        "y": 1100,
+        "params": {
+          "variable": "aim",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N012",
+        "type": "SetObjectRotation",
+        "x": 1580,
+        "y": 1100,
+        "params": {
+          "object": "0",
+          "yaw": "0",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "N013",
+        "type": "SetObjectPosition",
+        "x": 1800,
+        "y": 1100,
+        "params": {
+          "object": "1",
+          "x": "0",
+          "y": "-16",
+          "z": "0"
+        }
+      },
+      {
+        "id": "N014",
+        "type": "HideUI",
+        "x": 2020,
+        "y": 1100,
+        "params": {
+          "element": "4"
+        }
+      },
+      {
+        "id": "N015",
+        "type": "ReturnFunction",
+        "x": 2240,
+        "y": 1100,
+        "params": {
+          "value": "0"
+        }
+      },
+      {
+        "id": "N016",
+        "type": "OnStart",
+        "x": 25,
+        "y": 100,
+        "params": {}
+      },
+      {
+        "id": "N017",
+        "type": "SetVariable",
+        "x": 250,
+        "y": 100,
+        "params": {
+          "variable": "strokes",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N018",
+        "type": "CallFunction",
+        "x": 475,
+        "y": 100,
+        "params": {
+          "function": "ResetBall",
+          "argument": "0",
+          "result": ""
+        }
+      },
+      {
+        "id": "N019",
+        "type": "OnKeyPressed",
+        "x": 25,
+        "y": 300,
+        "params": {
+          "key": "START"
+        }
+      },
+      {
+        "id": "N020",
+        "type": "SetVariable",
+        "x": 250,
+        "y": 300,
+        "params": {
+          "variable": "strokes",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N021",
+        "type": "CallFunction",
+        "x": 475,
+        "y": 300,
+        "params": {
+          "function": "ResetBall",
+          "argument": "0",
+          "result": ""
+        }
+      },
+      {
+        "id": "N022",
+        "type": "OnKeyPressed",
+        "x": 25,
+        "y": 450,
+        "params": {
+          "key": "B"
+        }
+      },
+      {
+        "id": "N023",
+        "type": "IfVariable",
+        "x": 260,
+        "y": 450,
+        "params": {
+          "variable": "strokes",
+          "op": ">",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N024",
+        "type": "AddVariable",
+        "x": 740,
+        "y": 450,
+        "params": {
+          "variable": "strokes",
+          "value": "1"
+        }
+      },
+      {
+        "id": "N025",
+        "type": "IfVariable",
+        "x": 510,
+        "y": 450,
+        "params": {
+          "variable": "won",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N026",
+        "type": "CallFunction",
+        "x": 740,
+        "y": 450,
+        "params": {
+          "function": "ResetBall",
+          "argument": "0",
+          "result": ""
+        }
+      },
+      {
+        "id": "N027",
+        "type": "CallFunction",
+        "x": 740,
+        "y": 555,
+        "params": {
+          "function": "ResetBall",
+          "argument": "0",
+          "result": ""
+        }
+      },
+      {
+        "id": "N028",
+        "type": "CallFunction",
+        "x": 740,
+        "y": 650,
+        "params": {
+          "function": "ResetBall",
+          "argument": "0",
+          "result": ""
+        }
+      },
+      {
+        "id": "N029",
+        "type": "OnKeyPressed",
+        "x": 25,
+        "y": 650,
+        "params": {
+          "key": "A"
+        }
+      },
+      {
+        "id": "N030",
+        "type": "IfVariable",
+        "x": 250,
+        "y": 650,
+        "params": {
+          "variable": "won",
+          "op": ">",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N031",
+        "type": "SetVariable",
+        "x": 470,
+        "y": 650,
+        "params": {
+          "variable": "strokes",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N032",
+        "type": "CallFunction",
+        "x": 690,
+        "y": 650,
+        "params": {
+          "function": "ResetBall",
+          "argument": "0",
+          "result": ""
+        }
+      },
+      {
+        "id": "N033",
+        "type": "OnKeyHeld",
+        "x": 25,
+        "y": 1450,
+        "params": {
+          "key": "LEFT"
+        }
+      },
+      {
+        "id": "N034",
+        "type": "IfVariable",
+        "x": 250,
+        "y": 1450,
+        "params": {
+          "variable": "speed",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N035",
+        "type": "IfVariable",
+        "x": 470,
+        "y": 1450,
+        "params": {
+          "variable": "won",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N036",
+        "type": "AddVariable",
+        "x": 690,
+        "y": 1450,
+        "params": {
+          "variable": "aim",
+          "value": "-2"
+        }
+      },
+      {
+        "id": "N037",
+        "type": "OnKeyHeld",
+        "x": 25,
+        "y": 1640,
+        "params": {
+          "key": "RIGHT"
+        }
+      },
+      {
+        "id": "N038",
+        "type": "IfVariable",
+        "x": 250,
+        "y": 1640,
+        "params": {
+          "variable": "speed",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N039",
+        "type": "IfVariable",
+        "x": 470,
+        "y": 1640,
+        "params": {
+          "variable": "won",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N040",
+        "type": "AddVariable",
+        "x": 690,
+        "y": 1640,
+        "params": {
+          "variable": "aim",
+          "value": "2"
+        }
+      },
+      {
+        "id": "N041",
+        "type": "OnUpdate",
+        "x": 25,
+        "y": 1850,
+        "params": {}
+      },
+      {
+        "id": "N042",
+        "type": "IfVariable",
+        "x": 250,
+        "y": 1850,
+        "params": {
+          "variable": "won",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N043",
+        "type": "IfVariable",
+        "x": 480,
+        "y": 1850,
+        "params": {
+          "variable": "speed",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N044",
+        "type": "IfKeyHeld",
+        "x": 710,
+        "y": 1850,
+        "params": {
+          "key": "A"
+        }
+      },
+      {
+        "id": "N045",
+        "type": "AddVariable",
+        "x": 930,
+        "y": 1800,
+        "params": {
+          "variable": "charge",
+          "value": "3"
+        }
+      },
+      {
+        "id": "N046",
+        "type": "MathClamp",
+        "x": 930,
+        "y": 1690,
+        "params": {
+          "value": "0",
+          "min": "0",
+          "max": "85"
+        }
+      },
+      {
+        "id": "N047",
+        "type": "GetVariable",
+        "x": 740,
+        "y": 1690,
+        "params": {
+          "variable": "charge"
+        }
+      },
+      {
+        "id": "N048",
+        "type": "SetVariable",
+        "x": 1150,
+        "y": 1800,
+        "params": {
+          "variable": "charge",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N049",
+        "type": "SetVariable",
+        "x": 1380,
+        "y": 1800,
+        "params": {
+          "variable": "charging",
+          "value": "1"
+        }
+      },
+      {
+        "id": "N050",
+        "type": "IfVariable",
+        "x": 950,
+        "y": 1950,
+        "params": {
+          "variable": "charging",
+          "op": ">",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N051",
+        "type": "MathMax",
+        "x": 1160,
+        "y": 2050,
+        "params": {
+          "a": "0",
+          "b": "19"
+        }
+      },
+      {
+        "id": "N052",
+        "type": "GetVariable",
+        "x": 930,
+        "y": 2050,
+        "params": {
+          "variable": "charge"
+        }
+      },
+      {
+        "id": "N053",
+        "type": "MathDivide",
+        "x": 1380,
+        "y": 2050,
+        "params": {
+          "a": "0",
+          "b": "256"
+        }
+      },
+      {
+        "id": "N054",
+        "type": "SetVariable",
+        "x": 1160,
+        "y": 1950,
+        "params": {
+          "variable": "speed",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N055",
+        "type": "AddVariable",
+        "x": 1380,
+        "y": 1950,
+        "params": {
+          "variable": "strokes",
+          "value": "1"
+        }
+      },
+      {
+        "id": "N056",
+        "type": "SetVariable",
+        "x": 1600,
+        "y": 1950,
+        "params": {
+          "variable": "charge",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N057",
+        "type": "SetVariable",
+        "x": 1820,
+        "y": 1950,
+        "params": {
+          "variable": "charging",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N058",
+        "type": "FunctionDefinition",
+        "x": 25,
+        "y": 2400,
+        "params": {
+          "function": "RollingDrag"
+        }
+      },
+      {
+        "id": "N059",
+        "type": "FunctionArgument",
+        "x": 250,
+        "y": 2500,
+        "params": {}
+      },
+      {
+        "id": "N060",
+        "type": "MathMultiply",
+        "x": 490,
+        "y": 2500,
+        "params": {
+          "a": "0",
+          "b": "0.9609375"
+        }
+      },
+      {
+        "id": "N061",
+        "type": "ReturnFunction",
+        "x": 720,
+        "y": 2400,
+        "params": {
+          "value": "0"
+        }
+      },
+      {
+        "id": "N062",
+        "type": "OnUpdate",
+        "x": 25,
+        "y": 2750,
+        "params": {}
+      },
+      {
+        "id": "N063",
+        "type": "IfVariable",
+        "x": 250,
+        "y": 2750,
+        "params": {
+          "variable": "won",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N064",
+        "type": "IfVariable",
+        "x": 475,
+        "y": 2750,
+        "params": {
+          "variable": "speed",
+          "op": ">",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N065",
+        "type": "SetObjectRotation",
+        "x": 700,
+        "y": 2750,
+        "params": {
+          "object": "0",
+          "yaw": "0",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "N066",
+        "type": "GetVariable",
+        "x": 700,
+        "y": 2640,
+        "params": {
+          "variable": "aim"
+        }
+      },
+      {
+        "id": "N067",
+        "type": "MoveLocal",
+        "x": 925,
+        "y": 2750,
+        "params": {
+          "object": "0",
+          "x": "0",
+          "z": "0"
+        }
+      },
+      {
+        "id": "N068",
+        "type": "GetVariable",
+        "x": 925,
+        "y": 2640,
+        "params": {
+          "variable": "speed"
+        }
+      },
+      {
+        "id": "N069",
+        "type": "CallFunction",
+        "x": 1150,
+        "y": 2750,
+        "params": {
+          "function": "RollingDrag",
+          "argument": "0",
+          "result": "speed"
+        }
+      },
+      {
+        "id": "N070",
+        "type": "GetVariable",
+        "x": 1150,
+        "y": 2640,
+        "params": {
+          "variable": "speed"
+        }
+      },
+      {
+        "id": "N071",
+        "type": "IfVariable",
+        "x": 1370,
+        "y": 2750,
+        "params": {
+          "variable": "speed",
+          "op": "<",
+          "value": "0.0078125"
+        }
+      },
+      {
+        "id": "N072",
+        "type": "SetVariable",
+        "x": 1590,
+        "y": 2750,
+        "params": {
+          "variable": "speed",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N073",
+        "type": "OnUpdate",
+        "x": 25,
+        "y": 3130,
+        "params": {}
+      },
+      {
+        "id": "N074",
+        "type": "IfVariable",
+        "x": 250,
+        "y": 3130,
+        "params": {
+          "variable": "won",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N075",
+        "type": "IfBool",
+        "x": 475,
+        "y": 3130,
+        "params": {
+          "value": "false"
+        }
+      },
+      {
+        "id": "N076",
+        "type": "GetObjectX",
+        "x": 25,
+        "y": 3290,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "N077",
+        "type": "GetObjectX",
+        "x": 245,
+        "y": 3290,
+        "params": {
+          "object": "2"
+        }
+      },
+      {
+        "id": "N078",
+        "type": "MathSubtract",
+        "x": 470,
+        "y": 3290,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N079",
+        "type": "GetObjectZ",
+        "x": 25,
+        "y": 3470,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "N080",
+        "type": "GetObjectZ",
+        "x": 245,
+        "y": 3470,
+        "params": {
+          "object": "2"
+        }
+      },
+      {
+        "id": "N081",
+        "type": "MathSubtract",
+        "x": 470,
+        "y": 3470,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N082",
+        "type": "MathMultiply",
+        "x": 700,
+        "y": 3290,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N083",
+        "type": "MathMultiply",
+        "x": 700,
+        "y": 3470,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N084",
+        "type": "MathAdd",
+        "x": 930,
+        "y": 3390,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N085",
+        "type": "Compare",
+        "x": 1150,
+        "y": 3390,
+        "params": {
+          "a": "0",
+          "b": "0.015625",
+          "op": "<"
+        }
+      },
+      {
+        "id": "N086",
+        "type": "IfVariable",
+        "x": 700,
+        "y": 3130,
+        "params": {
+          "variable": "speed",
+          "op": "<",
+          "value": "0.25"
+        }
+      },
+      {
+        "id": "N087",
+        "type": "SetVariable",
+        "x": 930,
+        "y": 3130,
+        "params": {
+          "variable": "won",
+          "value": "1"
+        }
+      },
+      {
+        "id": "N088",
+        "type": "SetVariable",
+        "x": 1150,
+        "y": 3130,
+        "params": {
+          "variable": "speed",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N089",
+        "type": "ShowUI",
+        "x": 1370,
+        "y": 3130,
+        "params": {
+          "element": "4"
+        }
+      },
+      {
+        "id": "N090",
+        "type": "OnUpdate",
+        "x": 25,
+        "y": 3800,
+        "params": {}
+      },
+      {
+        "id": "N091",
+        "type": "IfVariable",
+        "x": 250,
+        "y": 3800,
+        "params": {
+          "variable": "won",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N092",
+        "type": "IfVariable",
+        "x": 475,
+        "y": 3800,
+        "params": {
+          "variable": "speed",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N093",
+        "type": "SetObjectPosition",
+        "x": 700,
+        "y": 3800,
+        "params": {
+          "object": "1",
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      },
+      {
+        "id": "N094",
+        "type": "GetObjectX",
+        "x": 700,
+        "y": 3640,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "N095",
+        "type": "GetObjectZ",
+        "x": 925,
+        "y": 3640,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "N096",
+        "type": "MathSubtract",
+        "x": 1150,
+        "y": 3640,
+        "params": {
+          "a": "0",
+          "b": "0.09375"
+        }
+      },
+      {
+        "id": "N097",
+        "type": "GetObjectY",
+        "x": 1150,
+        "y": 3530,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "N098",
+        "type": "SetObjectRotation",
+        "x": 950,
+        "y": 3800,
+        "params": {
+          "object": "1",
+          "yaw": "0",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "N099",
+        "type": "GetVariable",
+        "x": 950,
+        "y": 3680,
+        "params": {
+          "variable": "aim"
+        }
+      },
+      {
+        "id": "N100",
+        "type": "SetObjectPosition",
+        "x": 700,
+        "y": 3940,
+        "params": {
+          "object": "1",
+          "x": "0",
+          "y": "-16",
+          "z": "0"
+        }
+      },
+      {
+        "id": "N101",
+        "type": "SetObjectPosition",
+        "x": 700,
+        "y": 4040,
+        "params": {
+          "object": "1",
+          "x": "0",
+          "y": "-16",
+          "z": "0"
+        }
+      },
+      {
+        "id": "N102",
+        "type": "OnKeyPressed",
+        "x": 25,
+        "y": 4300,
+        "params": {
+          "key": "R"
+        }
+      },
+      {
+        "id": "N103",
+        "type": "IfVariable",
+        "x": 250,
+        "y": 4300,
+        "params": {
+          "variable": "overview",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N104",
+        "type": "SetVariable",
+        "x": 470,
+        "y": 4260,
+        "params": {
+          "variable": "overview",
+          "value": "1"
+        }
+      },
+      {
+        "id": "N105",
+        "type": "SetVariable",
+        "x": 470,
+        "y": 4380,
+        "params": {
+          "variable": "overview",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N106",
+        "type": "OnUpdate",
+        "x": 25,
+        "y": 4600,
+        "params": {}
+      },
+      {
+        "id": "N107",
+        "type": "IfVariable",
+        "x": 250,
+        "y": 4600,
+        "params": {
+          "variable": "overview",
+          "op": "==",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N108",
+        "type": "SetVariable",
+        "x": 470,
+        "y": 4510,
+        "params": {
+          "variable": "camheight",
+          "value": "2"
+        }
+      },
+      {
+        "id": "N109",
+        "type": "SetVariable",
+        "x": 680,
+        "y": 4510,
+        "params": {
+          "variable": "camback",
+          "value": "2"
+        }
+      },
+      {
+        "id": "N110",
+        "type": "SetVariable",
+        "x": 890,
+        "y": 4510,
+        "params": {
+          "variable": "campitch",
+          "value": "28"
+        }
+      },
+      {
+        "id": "N111",
+        "type": "SetVariable",
+        "x": 470,
+        "y": 4720,
+        "params": {
+          "variable": "camheight",
+          "value": "5"
+        }
+      },
+      {
+        "id": "N112",
+        "type": "SetVariable",
+        "x": 680,
+        "y": 4720,
+        "params": {
+          "variable": "camback",
+          "value": "4"
+        }
+      },
+      {
+        "id": "N113",
+        "type": "SetVariable",
+        "x": 890,
+        "y": 4720,
+        "params": {
+          "variable": "campitch",
+          "value": "42"
+        }
+      },
+      {
+        "id": "N114",
+        "type": "OnUpdate",
+        "x": 25,
+        "y": 5050,
+        "params": {}
+      },
+      {
+        "id": "N115",
+        "type": "SetCameraPosition",
+        "x": 1400,
+        "y": 5050,
+        "params": {
+          "x": "0",
+          "y": "0",
+          "z": "0"
+        }
+      },
+      {
+        "id": "N116",
+        "type": "GetObjectX",
+        "x": 20,
+        "y": 5100,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "N117",
+        "type": "MathAdd",
+        "x": 450,
+        "y": 5100,
+        "params": {
+          "a": "0",
+          "b": "0.25"
+        }
+      },
+      {
+        "id": "N118",
+        "type": "GetCameraX",
+        "x": 680,
+        "y": 5100,
+        "params": {}
+      },
+      {
+        "id": "N119",
+        "type": "MathSubtract",
+        "x": 900,
+        "y": 5100,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N120",
+        "type": "MathDivide",
+        "x": 1110,
+        "y": 5100,
+        "params": {
+          "a": "0",
+          "b": "4"
+        }
+      },
+      {
+        "id": "N121",
+        "type": "MathAdd",
+        "x": 1330,
+        "y": 5200,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N122",
+        "type": "GetObjectY",
+        "x": 20,
+        "y": 5350,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "N123",
+        "type": "GetVariable",
+        "x": 225,
+        "y": 5350,
+        "params": {
+          "variable": "camheight"
+        }
+      },
+      {
+        "id": "N124",
+        "type": "MathAdd",
+        "x": 450,
+        "y": 5350,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N125",
+        "type": "GetCameraY",
+        "x": 680,
+        "y": 5350,
+        "params": {}
+      },
+      {
+        "id": "N126",
+        "type": "MathSubtract",
+        "x": 900,
+        "y": 5350,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N127",
+        "type": "MathDivide",
+        "x": 1110,
+        "y": 5350,
+        "params": {
+          "a": "0",
+          "b": "4"
+        }
+      },
+      {
+        "id": "N128",
+        "type": "MathAdd",
+        "x": 1330,
+        "y": 5450,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N129",
+        "type": "GetObjectZ",
+        "x": 20,
+        "y": 5600,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "N130",
+        "type": "GetVariable",
+        "x": 225,
+        "y": 5600,
+        "params": {
+          "variable": "camback"
+        }
+      },
+      {
+        "id": "N131",
+        "type": "MathSubtract",
+        "x": 450,
+        "y": 5600,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N132",
+        "type": "GetCameraZ",
+        "x": 680,
+        "y": 5600,
+        "params": {}
+      },
+      {
+        "id": "N133",
+        "type": "MathSubtract",
+        "x": 900,
+        "y": 5600,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N134",
+        "type": "MathDivide",
+        "x": 1110,
+        "y": 5600,
+        "params": {
+          "a": "0",
+          "b": "4"
+        }
+      },
+      {
+        "id": "N135",
+        "type": "MathAdd",
+        "x": 1330,
+        "y": 5700,
+        "params": {
+          "a": "0",
+          "b": "0"
+        }
+      },
+      {
+        "id": "N136",
+        "type": "SetCameraRotation",
+        "x": 1610,
+        "y": 5050,
+        "params": {
+          "yaw": "0",
+          "pitch": "0"
+        }
+      },
+      {
+        "id": "N137",
+        "type": "GetVariable",
+        "x": 1610,
+        "y": 4940,
+        "params": {
+          "variable": "campitch"
+        }
+      },
+      {
+        "id": "N138",
+        "type": "OnUpdate",
+        "x": 25,
+        "y": 5900,
+        "params": {}
+      },
+      {
+        "id": "N139",
+        "type": "SetUIValue",
+        "x": 250,
+        "y": 5900,
+        "params": {
+          "element": "1",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N140",
+        "type": "GetVariable",
+        "x": 250,
+        "y": 5790,
+        "params": {
+          "variable": "strokes"
+        }
+      },
+      {
+        "id": "N141",
+        "type": "SetUIValue",
+        "x": 480,
+        "y": 5900,
+        "params": {
+          "element": "2",
+          "value": "0"
+        }
+      },
+      {
+        "id": "N142",
+        "type": "GetVariable",
+        "x": 480,
+        "y": 5790,
+        "params": {
+          "variable": "charge"
+        }
+      },
+      {
+        "id": "u3_1",
+        "type": "OnStart",
+        "x": 2960,
+        "y": 400,
+        "params": {}
+      },
+      {
+        "id": "u3_2",
+        "type": "ForEachObject",
+        "x": 3220,
+        "y": 400,
+        "params": {
+          "property": "golf_tile"
+        }
+      },
+      {
+        "id": "u3_3",
+        "type": "AddVariable",
+        "x": 3480,
+        "y": 400,
+        "params": {
+          "variable": "tile_count",
+          "value": "1"
+        }
+      },
+      {
+        "id": "u3_4",
+        "type": "LoopObject",
+        "x": 3740,
+        "y": 400,
+        "params": {}
+      },
+      {
+        "id": "u3_5",
+        "type": "GetObjectVector",
+        "x": 2700,
+        "y": 590,
+        "params": {
+          "object": "0"
+        }
+      },
+      {
+        "id": "u3_6",
+        "type": "WorldToLocal",
+        "x": 2960,
+        "y": 590,
+        "params": {
+          "object": "0",
+          "vector": "0,0,0"
+        }
+      },
+      {
+        "id": "u3_7",
+        "type": "VectorX",
+        "x": 3220,
+        "y": 590,
+        "params": {
+          "vector": "0,0,0"
+        }
+      },
+      {
+        "id": "u3_8",
+        "type": "SetVariable",
+        "x": 3480,
+        "y": 590,
+        "params": {
+          "variable": "last_local_x",
+          "value": "1"
+        }
+      },
+      {
+        "id": "u3_9",
+        "type": "CircleSegmentOverlap",
+        "x": 3740,
+        "y": 590,
+        "params": {
+          "point": "0,0,0",
+          "a": "0",
+          "b": "0",
+          "radius": "0.11"
+        }
+      },
+      {
+        "id": "u3_10",
+        "type": "MakeVector",
+        "x": 2700,
+        "y": 780,
+        "params": {
+          "x": "-0.38",
+          "y": "0",
+          "z": "-0.5"
+        }
+      },
+      {
+        "id": "u3_11",
+        "type": "MakeVector",
+        "x": 2960,
+        "y": 780,
+        "params": {
+          "x": "-0.38",
+          "y": "0",
+          "z": "0.5"
+        }
+      },
+      {
+        "id": "u3_12",
+        "type": "IfBool",
+        "x": 3220,
+        "y": 780,
+        "params": {
+          "value": "1"
+        }
+      },
+      {
+        "id": "u3_13",
+        "type": "AddVariable",
+        "x": 3480,
+        "y": 780,
+        "params": {
+          "variable": "wall_probe",
+          "value": "1"
+        }
+      }
+    ],
+    "links": [
+      {
+        "from": "N001",
+        "to": "N002",
+        "port": "next"
+      },
+      {
+        "from": "N002",
+        "to": "N007",
+        "port": "next"
+      },
+      {
+        "from": "N007",
+        "to": "N008",
+        "port": "next"
+      },
+      {
+        "from": "N008",
+        "to": "N009",
+        "port": "next"
+      },
+      {
+        "from": "N009",
+        "to": "N010",
+        "port": "next"
+      },
+      {
+        "from": "N010",
+        "to": "N011",
+        "port": "next"
+      },
+      {
+        "from": "N011",
+        "to": "N012",
+        "port": "next"
+      },
+      {
+        "from": "N012",
+        "to": "N013",
+        "port": "next"
+      },
+      {
+        "from": "N013",
+        "to": "N014",
+        "port": "next"
+      },
+      {
+        "from": "N014",
+        "to": "N015",
+        "port": "next"
+      },
+      {
+        "from": "N016",
+        "to": "N017",
+        "port": "next"
+      },
+      {
+        "from": "N017",
+        "to": "N018",
+        "port": "next"
+      },
+      {
+        "from": "N019",
+        "to": "N020",
+        "port": "next"
+      },
+      {
+        "from": "N020",
+        "to": "N021",
+        "port": "next"
+      },
+      {
+        "from": "N022",
+        "to": "N023",
+        "port": "next"
+      },
+      {
+        "from": "N023",
+        "to": "N025",
+        "port": "true"
+      },
+      {
+        "from": "N025",
+        "to": "N024",
+        "port": "true"
+      },
+      {
+        "from": "N025",
+        "to": "N027",
+        "port": "false"
+      },
+      {
+        "from": "N024",
+        "to": "N026",
+        "port": "next"
+      },
+      {
+        "from": "N023",
+        "to": "N028",
+        "port": "false"
+      },
+      {
+        "from": "N029",
+        "to": "N030",
+        "port": "next"
+      },
+      {
+        "from": "N030",
+        "to": "N031",
+        "port": "true"
+      },
+      {
+        "from": "N031",
+        "to": "N032",
+        "port": "next"
+      },
+      {
+        "from": "N033",
+        "to": "N034",
+        "port": "next"
+      },
+      {
+        "from": "N034",
+        "to": "N035",
+        "port": "true"
+      },
+      {
+        "from": "N035",
+        "to": "N036",
+        "port": "true"
+      },
+      {
+        "from": "N037",
+        "to": "N038",
+        "port": "next"
+      },
+      {
+        "from": "N038",
+        "to": "N039",
+        "port": "true"
+      },
+      {
+        "from": "N039",
+        "to": "N040",
+        "port": "true"
+      },
+      {
+        "from": "N041",
+        "to": "N042",
+        "port": "next"
+      },
+      {
+        "from": "N042",
+        "to": "N043",
+        "port": "true"
+      },
+      {
+        "from": "N043",
+        "to": "N044",
+        "port": "true"
+      },
+      {
+        "from": "N044",
+        "to": "N045",
+        "port": "true"
+      },
+      {
+        "from": "N045",
+        "to": "N048",
+        "port": "next"
+      },
+      {
+        "from": "N048",
+        "to": "N049",
+        "port": "next"
+      },
+      {
+        "from": "N044",
+        "to": "N050",
+        "port": "false"
+      },
+      {
+        "from": "N050",
+        "to": "N054",
+        "port": "true"
+      },
+      {
+        "from": "N054",
+        "to": "N055",
+        "port": "next"
+      },
+      {
+        "from": "N055",
+        "to": "N056",
+        "port": "next"
+      },
+      {
+        "from": "N056",
+        "to": "N057",
+        "port": "next"
+      },
+      {
+        "from": "N058",
+        "to": "N061",
+        "port": "next"
+      },
+      {
+        "from": "N062",
+        "to": "N063",
+        "port": "next"
+      },
+      {
+        "from": "N063",
+        "to": "N064",
+        "port": "true"
+      },
+      {
+        "from": "N064",
+        "to": "N065",
+        "port": "true"
+      },
+      {
+        "from": "N065",
+        "to": "N067",
+        "port": "next"
+      },
+      {
+        "from": "N067",
+        "to": "N069",
+        "port": "next"
+      },
+      {
+        "from": "N069",
+        "to": "N071",
+        "port": "next"
+      },
+      {
+        "from": "N071",
+        "to": "N072",
+        "port": "true"
+      },
+      {
+        "from": "N073",
+        "to": "N074",
+        "port": "next"
+      },
+      {
+        "from": "N074",
+        "to": "N075",
+        "port": "true"
+      },
+      {
+        "from": "N075",
+        "to": "N086",
+        "port": "true"
+      },
+      {
+        "from": "N086",
+        "to": "N087",
+        "port": "true"
+      },
+      {
+        "from": "N087",
+        "to": "N088",
+        "port": "next"
+      },
+      {
+        "from": "N088",
+        "to": "N089",
+        "port": "next"
+      },
+      {
+        "from": "N090",
+        "to": "N091",
+        "port": "next"
+      },
+      {
+        "from": "N091",
+        "to": "N092",
+        "port": "true"
+      },
+      {
+        "from": "N091",
+        "to": "N101",
+        "port": "false"
+      },
+      {
+        "from": "N092",
+        "to": "N093",
+        "port": "true"
+      },
+      {
+        "from": "N092",
+        "to": "N100",
+        "port": "false"
+      },
+      {
+        "from": "N093",
+        "to": "N098",
+        "port": "next"
+      },
+      {
+        "from": "N102",
+        "to": "N103",
+        "port": "next"
+      },
+      {
+        "from": "N103",
+        "to": "N104",
+        "port": "true"
+      },
+      {
+        "from": "N103",
+        "to": "N105",
+        "port": "false"
+      },
+      {
+        "from": "N106",
+        "to": "N107",
+        "port": "next"
+      },
+      {
+        "from": "N107",
+        "to": "N108",
+        "port": "true"
+      },
+      {
+        "from": "N107",
+        "to": "N111",
+        "port": "false"
+      },
+      {
+        "from": "N108",
+        "to": "N109",
+        "port": "next"
+      },
+      {
+        "from": "N109",
+        "to": "N110",
+        "port": "next"
+      },
+      {
+        "from": "N111",
+        "to": "N112",
+        "port": "next"
+      },
+      {
+        "from": "N112",
+        "to": "N113",
+        "port": "next"
+      },
+      {
+        "from": "N114",
+        "to": "N115",
+        "port": "next"
+      },
+      {
+        "from": "N115",
+        "to": "N136",
+        "port": "next"
+      },
+      {
+        "from": "N138",
+        "to": "N139",
+        "port": "next"
+      },
+      {
+        "from": "N139",
+        "to": "N141",
+        "port": "next"
+      },
+      {
+        "from": "u3_1",
+        "to": "u3_2",
+        "port": "next"
+      },
+      {
+        "from": "u3_2",
+        "to": "u3_3",
+        "port": "body"
+      },
+      {
+        "from": "u3_3",
+        "to": "u3_8",
+        "port": "next"
+      },
+      {
+        "from": "u3_8",
+        "to": "u3_12",
+        "port": "next"
+      },
+      {
+        "from": "u3_12",
+        "to": "u3_13",
+        "port": "true"
+      }
+    ],
+    "data_links": [
+      {
+        "from": "N003",
+        "to": "N002",
+        "port": "value",
+        "input": "x"
+      },
+      {
+        "from": "N004",
+        "to": "N002",
+        "port": "value",
+        "input": "z"
+      },
+      {
+        "from": "N006",
+        "to": "N005",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N005",
+        "to": "N002",
+        "port": "value",
+        "input": "y"
+      },
+      {
+        "from": "N047",
+        "to": "N046",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "N046",
+        "to": "N048",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "N052",
+        "to": "N051",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N051",
+        "to": "N053",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N053",
+        "to": "N054",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "N059",
+        "to": "N060",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N060",
+        "to": "N061",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "N066",
+        "to": "N065",
+        "port": "value",
+        "input": "yaw"
+      },
+      {
+        "from": "N068",
+        "to": "N067",
+        "port": "value",
+        "input": "z"
+      },
+      {
+        "from": "N070",
+        "to": "N069",
+        "port": "value",
+        "input": "argument"
+      },
+      {
+        "from": "N076",
+        "to": "N078",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N077",
+        "to": "N078",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N079",
+        "to": "N081",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N080",
+        "to": "N081",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N078",
+        "to": "N082",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N078",
+        "to": "N082",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N081",
+        "to": "N083",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N081",
+        "to": "N083",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N082",
+        "to": "N084",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N083",
+        "to": "N084",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N084",
+        "to": "N085",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N085",
+        "to": "N075",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "N094",
+        "to": "N093",
+        "port": "value",
+        "input": "x"
+      },
+      {
+        "from": "N095",
+        "to": "N093",
+        "port": "value",
+        "input": "z"
+      },
+      {
+        "from": "N097",
+        "to": "N096",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N096",
+        "to": "N093",
+        "port": "value",
+        "input": "y"
+      },
+      {
+        "from": "N099",
+        "to": "N098",
+        "port": "value",
+        "input": "yaw"
+      },
+      {
+        "from": "N116",
+        "to": "N117",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N117",
+        "to": "N119",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N118",
+        "to": "N119",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N119",
+        "to": "N120",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N118",
+        "to": "N121",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N120",
+        "to": "N121",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N121",
+        "to": "N115",
+        "port": "value",
+        "input": "x"
+      },
+      {
+        "from": "N122",
+        "to": "N124",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N123",
+        "to": "N124",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N124",
+        "to": "N126",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N125",
+        "to": "N126",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N126",
+        "to": "N127",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N125",
+        "to": "N128",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N127",
+        "to": "N128",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N128",
+        "to": "N115",
+        "port": "value",
+        "input": "y"
+      },
+      {
+        "from": "N129",
+        "to": "N131",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N130",
+        "to": "N131",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N131",
+        "to": "N133",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N132",
+        "to": "N133",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N133",
+        "to": "N134",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N132",
+        "to": "N135",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "N134",
+        "to": "N135",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "N135",
+        "to": "N115",
+        "port": "value",
+        "input": "z"
+      },
+      {
+        "from": "N137",
+        "to": "N136",
+        "port": "value",
+        "input": "pitch"
+      },
+      {
+        "from": "N140",
+        "to": "N139",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "N142",
+        "to": "N141",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "u3_4",
+        "to": "u3_6",
+        "port": "value",
+        "input": "object"
+      },
+      {
+        "from": "u3_5",
+        "to": "u3_6",
+        "port": "value",
+        "input": "vector"
+      },
+      {
+        "from": "u3_6",
+        "to": "u3_7",
+        "port": "value",
+        "input": "vector"
+      },
+      {
+        "from": "u3_7",
+        "to": "u3_8",
+        "port": "value",
+        "input": "value"
+      },
+      {
+        "from": "u3_6",
+        "to": "u3_9",
+        "port": "value",
+        "input": "point"
+      },
+      {
+        "from": "u3_10",
+        "to": "u3_9",
+        "port": "value",
+        "input": "a"
+      },
+      {
+        "from": "u3_11",
+        "to": "u3_9",
+        "port": "value",
+        "input": "b"
+      },
+      {
+        "from": "u3_9",
+        "to": "u3_12",
+        "port": "value",
+        "input": "value"
+      }
+    ]
+  },
+  "physics": {
+    "gravity": 0
+  },
+  "animations": [],
+  "hud": [
+    {
+      "type": "text",
+      "text": "MINI GOLF   SHOTS:",
+      "x": 2,
+      "y": 2,
+      "w": 114,
+      "h": 8,
+      "fg": 255,
+      "bg": 0,
+      "visible": true,
+      "value": 0,
+      "maximum": 0
+    },
+    {
+      "type": "text",
+      "text": "",
+      "x": 105,
+      "y": 2,
+      "w": 13,
+      "h": 8,
+      "fg": 255,
+      "bg": 0,
+      "visible": true,
+      "value": 0,
+      "maximum": 99
+    },
+    {
+      "type": "bar",
+      "text": "",
+      "x": 8,
+      "y": 12,
+      "w": 96,
+      "h": 5,
+      "fg": 252,
+      "bg": 36,
+      "visible": true,
+      "value": 0,
+      "maximum": 85
+    },
+    {
+      "type": "text",
+      "text": "LEFT/RIGHT AIM  HOLD A SHOT",
+      "x": 2,
+      "y": 74,
+      "w": 116,
+      "h": 6,
+      "fg": 255,
+      "bg": 0,
+      "visible": true,
+      "value": 0,
+      "maximum": 0
+    },
+    {
+      "type": "text",
+      "text": "HOLE COMPLETE! A RESTART",
+      "x": 4,
+      "y": 30,
+      "w": 114,
+      "h": 9,
+      "fg": 255,
+      "bg": 0,
+      "visible": false,
+      "value": 0,
+      "maximum": 0
+    }
+  ],
+  "skybox": {},
+  "scenes": [
+    {
+      "name": "SG3D Mini Golf \u2014 Your Modular Course",
+      "objects": [
+        {
+          "name": "Golf ball",
+          "mesh": "assets/0002_0002_0002_0002_0002_0002_ball.obj",
+          "mode": "texture",
+          "position": [
+            0,
+            0.225,
+            0
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "c_scripts": []
+        },
+        {
+          "name": "Aim arrow",
+          "mesh": "assets/0005_0005_0005_0005_0005_0005_aim_arrow.obj",
+          "mode": "flat",
+          "position": [
+            0,
+            0.133,
+            0
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "c_scripts": []
+        },
+        {
+          "name": "Cup and flag",
+          "mesh": "assets/0007_0007_0007_0007_0007_0007_cup_flag.obj",
+          "mode": "flat",
+          "position": [
+            7.0,
+            1.63,
+            4.0
+          ],
+          "rotation": [
+            0.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {},
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Straight 1",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            0,
+            0,
+            1
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": []
+        },
+        {
+          "name": "Left turn",
+          "mesh": "assets/0012_0012_0012_0012_0012_0013_tile_turn_left.obj",
+          "mode": "texture",
+          "position": [
+            0,
+            0,
+            2
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 2,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": []
+        },
+        {
+          "name": "Straight 2",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            1,
+            0,
+            2
+          ],
+          "rotation": [
+            90,
+            0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": []
+        },
+        {
+          "name": "Right turn",
+          "mesh": "assets/0013_0013_0013_0013_0013_0014_tile_turn_right.obj",
+          "mode": "texture",
+          "position": [
+            2,
+            0,
+            2
+          ],
+          "rotation": [
+            90,
+            0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 3,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": []
+        },
+        {
+          "name": "Gentle slope",
+          "mesh": "assets/0014_0014_0014_0014_0014_0015_tile_incline_22.obj",
+          "mode": "texture",
+          "position": [
+            2,
+            0,
+            3
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 4,
+            "rise": 0.5,
+            "golf_tile": 1
+          },
+          "c_scripts": []
+        },
+        {
+          "name": "Elevated platform",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            2,
+            0.5,
+            4
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": []
+        },
+        {
+          "name": "Steep slope",
+          "mesh": "assets/0015_0015_0015_0015_0015_0016_tile_incline_45.obj",
+          "mode": "texture",
+          "position": [
+            2,
+            0.5,
+            5
+          ],
+          "rotation": [
+            0,
+            0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 4,
+            "rise": 1.0,
+            "golf_tile": 1
+          },
+          "c_scripts": []
+        },
+        {
+          "name": "Elevated platform Copy",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            2.0,
+            1.5,
+            6.0
+          ],
+          "rotation": [
+            0.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Right turn Copy",
+          "mesh": "assets/0013_0013_0013_0013_0013_0014_tile_turn_right.obj",
+          "mode": "texture",
+          "position": [
+            2.0,
+            1.5,
+            7.0
+          ],
+          "rotation": [
+            -90.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 3,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Elevated platform Copy Copy",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            3.0,
+            1.5,
+            7.0
+          ],
+          "rotation": [
+            90.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Elevated platform Copy Copy Copy",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            4.0,
+            1.5,
+            7.0
+          ],
+          "rotation": [
+            90.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Elevated platform Copy Copy Copy Copy",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            5.0,
+            1.5,
+            7.0
+          ],
+          "rotation": [
+            90.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Elevated platform Copy Copy Copy Copy Copy",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            6.0,
+            1.5,
+            7.0
+          ],
+          "rotation": [
+            90.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Right turn Copy Copy",
+          "mesh": "assets/0013_0013_0013_0013_0013_0014_tile_turn_right.obj",
+          "mode": "texture",
+          "position": [
+            7.0,
+            1.5,
+            7.0
+          ],
+          "rotation": [
+            0.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 3,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Elevated platform Copy Copy Copy Copy Copy Copy",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            7.0,
+            1.5,
+            6.0
+          ],
+          "rotation": [
+            0.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Elevated platform Copy Copy Copy Copy Copy Copy Copy",
+          "mesh": "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj",
+          "mode": "texture",
+          "position": [
+            7.0,
+            1.5,
+            5.0
+          ],
+          "rotation": [
+            0.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "physics": {
+            "dynamic": false,
+            "solid": false
+          },
+          "properties": {
+            "tile_kind": 0,
+            "rise": 0,
+            "golf_tile": 1
+          },
+          "c_scripts": [],
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0
+        },
+        {
+          "name": "Tile",
+          "mesh": "assets/0016_0016_0016_0016_0016_Tile.obj",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "mode": "texture",
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0,
+          "c_scripts": [],
+          "properties": {
+            "golf_tile": 1,
+            "tile_kind": 1,
+            "rise": 0,
+            "golf_start": 1
+          }
+        },
+        {
+          "name": "Tile Copy",
+          "mesh": "assets/0016_0016_0016_0016_0016_Tile.obj",
+          "position": [
+            7.0,
+            1.5,
+            4.0
+          ],
+          "rotation": [
+            0.0,
+            0.0
+          ],
+          "scale": 1.0,
+          "mode": "texture",
+          "texture": "",
+          "face_movement": false,
+          "facing_smooth": 0.25,
+          "facing_offset": 0.0,
+          "c_scripts": [],
+          "properties": {
+            "golf_tile": 1,
+            "tile_kind": 1,
+            "rise": 0
+          }
+        }
+      ],
+      "camera": {
+        "position": [
+          -0.09999999999999931,
+          2.700000000000001,
+          5.899999999999998
+        ],
+        "rotation": [
+          90.72000000000025,
+          27.48000000000011
+        ],
+        "orbit": {}
+      },
+      "scripts": {
+        "nodes": [
+          {
+            "id": "N001",
+            "type": "FunctionDefinition",
+            "x": 25,
+            "y": 1100,
+            "params": {
+              "function": "ResetBall"
+            }
+          },
+          {
+            "id": "N002",
+            "type": "SetObjectPosition",
+            "x": 250,
+            "y": 1100,
+            "params": {
+              "object": "0",
+              "x": "0",
+              "y": "0.23046875",
+              "z": "0"
+            }
+          },
+          {
+            "id": "N003",
+            "type": "GetObjectX",
+            "x": 25,
+            "y": 910,
+            "params": {
+              "object": "19"
+            }
+          },
+          {
+            "id": "N004",
+            "type": "GetObjectZ",
+            "x": 250,
+            "y": 910,
+            "params": {
+              "object": "19"
+            }
+          },
+          {
+            "id": "N005",
+            "type": "MathAdd",
+            "x": 475,
+            "y": 910,
+            "params": {
+              "a": "0",
+              "b": "0.23046875"
+            }
+          },
+          {
+            "id": "N006",
+            "type": "GetObjectY",
+            "x": 475,
+            "y": 800,
+            "params": {
+              "object": "19"
+            }
+          },
+          {
+            "id": "N007",
+            "type": "SetVariable",
+            "x": 480,
+            "y": 1100,
+            "params": {
+              "variable": "speed",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N008",
+            "type": "SetVariable",
+            "x": 700,
+            "y": 1100,
+            "params": {
+              "variable": "charge",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N009",
+            "type": "SetVariable",
+            "x": 920,
+            "y": 1100,
+            "params": {
+              "variable": "charging",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N010",
+            "type": "SetVariable",
+            "x": 1140,
+            "y": 1100,
+            "params": {
+              "variable": "won",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N011",
+            "type": "SetVariable",
+            "x": 1360,
+            "y": 1100,
+            "params": {
+              "variable": "aim",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N012",
+            "type": "SetObjectRotation",
+            "x": 1580,
+            "y": 1100,
+            "params": {
+              "object": "0",
+              "yaw": "0",
+              "pitch": "0"
+            }
+          },
+          {
+            "id": "N013",
+            "type": "SetObjectPosition",
+            "x": 1800,
+            "y": 1100,
+            "params": {
+              "object": "1",
+              "x": "0",
+              "y": "-16",
+              "z": "0"
+            }
+          },
+          {
+            "id": "N014",
+            "type": "HideUI",
+            "x": 2020,
+            "y": 1100,
+            "params": {
+              "element": "4"
+            }
+          },
+          {
+            "id": "N015",
+            "type": "ReturnFunction",
+            "x": 2240,
+            "y": 1100,
+            "params": {
+              "value": "0"
+            }
+          },
+          {
+            "id": "N016",
+            "type": "OnStart",
+            "x": 25,
+            "y": 100,
+            "params": {}
+          },
+          {
+            "id": "N017",
+            "type": "SetVariable",
+            "x": 250,
+            "y": 100,
+            "params": {
+              "variable": "strokes",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N018",
+            "type": "CallFunction",
+            "x": 475,
+            "y": 100,
+            "params": {
+              "function": "ResetBall",
+              "argument": "0",
+              "result": ""
+            }
+          },
+          {
+            "id": "N019",
+            "type": "OnKeyPressed",
+            "x": 25,
+            "y": 300,
+            "params": {
+              "key": "START"
+            }
+          },
+          {
+            "id": "N020",
+            "type": "SetVariable",
+            "x": 250,
+            "y": 300,
+            "params": {
+              "variable": "strokes",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N021",
+            "type": "CallFunction",
+            "x": 475,
+            "y": 300,
+            "params": {
+              "function": "ResetBall",
+              "argument": "0",
+              "result": ""
+            }
+          },
+          {
+            "id": "N022",
+            "type": "OnKeyPressed",
+            "x": 25,
+            "y": 450,
+            "params": {
+              "key": "B"
+            }
+          },
+          {
+            "id": "N023",
+            "type": "IfVariable",
+            "x": 260,
+            "y": 450,
+            "params": {
+              "variable": "strokes",
+              "op": ">",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N024",
+            "type": "AddVariable",
+            "x": 740,
+            "y": 450,
+            "params": {
+              "variable": "strokes",
+              "value": "1"
+            }
+          },
+          {
+            "id": "N025",
+            "type": "IfVariable",
+            "x": 510,
+            "y": 450,
+            "params": {
+              "variable": "won",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N026",
+            "type": "CallFunction",
+            "x": 740,
+            "y": 450,
+            "params": {
+              "function": "ResetBall",
+              "argument": "0",
+              "result": ""
+            }
+          },
+          {
+            "id": "N027",
+            "type": "CallFunction",
+            "x": 740,
+            "y": 555,
+            "params": {
+              "function": "ResetBall",
+              "argument": "0",
+              "result": ""
+            }
+          },
+          {
+            "id": "N028",
+            "type": "CallFunction",
+            "x": 740,
+            "y": 650,
+            "params": {
+              "function": "ResetBall",
+              "argument": "0",
+              "result": ""
+            }
+          },
+          {
+            "id": "N029",
+            "type": "OnKeyPressed",
+            "x": 25,
+            "y": 650,
+            "params": {
+              "key": "A"
+            }
+          },
+          {
+            "id": "N030",
+            "type": "IfVariable",
+            "x": 250,
+            "y": 650,
+            "params": {
+              "variable": "won",
+              "op": ">",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N031",
+            "type": "SetVariable",
+            "x": 470,
+            "y": 650,
+            "params": {
+              "variable": "strokes",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N032",
+            "type": "CallFunction",
+            "x": 690,
+            "y": 650,
+            "params": {
+              "function": "ResetBall",
+              "argument": "0",
+              "result": ""
+            }
+          },
+          {
+            "id": "N033",
+            "type": "OnKeyHeld",
+            "x": 25,
+            "y": 1450,
+            "params": {
+              "key": "LEFT"
+            }
+          },
+          {
+            "id": "N034",
+            "type": "IfVariable",
+            "x": 250,
+            "y": 1450,
+            "params": {
+              "variable": "speed",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N035",
+            "type": "IfVariable",
+            "x": 470,
+            "y": 1450,
+            "params": {
+              "variable": "won",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N036",
+            "type": "AddVariable",
+            "x": 690,
+            "y": 1450,
+            "params": {
+              "variable": "aim",
+              "value": "-2"
+            }
+          },
+          {
+            "id": "N037",
+            "type": "OnKeyHeld",
+            "x": 25,
+            "y": 1640,
+            "params": {
+              "key": "RIGHT"
+            }
+          },
+          {
+            "id": "N038",
+            "type": "IfVariable",
+            "x": 250,
+            "y": 1640,
+            "params": {
+              "variable": "speed",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N039",
+            "type": "IfVariable",
+            "x": 470,
+            "y": 1640,
+            "params": {
+              "variable": "won",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N040",
+            "type": "AddVariable",
+            "x": 690,
+            "y": 1640,
+            "params": {
+              "variable": "aim",
+              "value": "2"
+            }
+          },
+          {
+            "id": "N041",
+            "type": "OnUpdate",
+            "x": 25,
+            "y": 1850,
+            "params": {}
+          },
+          {
+            "id": "N042",
+            "type": "IfVariable",
+            "x": 250,
+            "y": 1850,
+            "params": {
+              "variable": "won",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N043",
+            "type": "IfVariable",
+            "x": 480,
+            "y": 1850,
+            "params": {
+              "variable": "speed",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N044",
+            "type": "IfKeyHeld",
+            "x": 710,
+            "y": 1850,
+            "params": {
+              "key": "A"
+            }
+          },
+          {
+            "id": "N045",
+            "type": "AddVariable",
+            "x": 930,
+            "y": 1800,
+            "params": {
+              "variable": "charge",
+              "value": "3"
+            }
+          },
+          {
+            "id": "N046",
+            "type": "MathClamp",
+            "x": 930,
+            "y": 1690,
+            "params": {
+              "value": "0",
+              "min": "0",
+              "max": "85"
+            }
+          },
+          {
+            "id": "N047",
+            "type": "GetVariable",
+            "x": 740,
+            "y": 1690,
+            "params": {
+              "variable": "charge"
+            }
+          },
+          {
+            "id": "N048",
+            "type": "SetVariable",
+            "x": 1150,
+            "y": 1800,
+            "params": {
+              "variable": "charge",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N049",
+            "type": "SetVariable",
+            "x": 1380,
+            "y": 1800,
+            "params": {
+              "variable": "charging",
+              "value": "1"
+            }
+          },
+          {
+            "id": "N050",
+            "type": "IfVariable",
+            "x": 950,
+            "y": 1950,
+            "params": {
+              "variable": "charging",
+              "op": ">",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N051",
+            "type": "MathMax",
+            "x": 1160,
+            "y": 2050,
+            "params": {
+              "a": "0",
+              "b": "19"
+            }
+          },
+          {
+            "id": "N052",
+            "type": "GetVariable",
+            "x": 930,
+            "y": 2050,
+            "params": {
+              "variable": "charge"
+            }
+          },
+          {
+            "id": "N053",
+            "type": "MathDivide",
+            "x": 1380,
+            "y": 2050,
+            "params": {
+              "a": "0",
+              "b": "256"
+            }
+          },
+          {
+            "id": "N054",
+            "type": "SetVariable",
+            "x": 1160,
+            "y": 1950,
+            "params": {
+              "variable": "speed",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N055",
+            "type": "AddVariable",
+            "x": 1380,
+            "y": 1950,
+            "params": {
+              "variable": "strokes",
+              "value": "1"
+            }
+          },
+          {
+            "id": "N056",
+            "type": "SetVariable",
+            "x": 1600,
+            "y": 1950,
+            "params": {
+              "variable": "charge",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N057",
+            "type": "SetVariable",
+            "x": 1820,
+            "y": 1950,
+            "params": {
+              "variable": "charging",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N058",
+            "type": "FunctionDefinition",
+            "x": 25,
+            "y": 2400,
+            "params": {
+              "function": "RollingDrag"
+            }
+          },
+          {
+            "id": "N059",
+            "type": "FunctionArgument",
+            "x": 250,
+            "y": 2500,
+            "params": {}
+          },
+          {
+            "id": "N060",
+            "type": "MathMultiply",
+            "x": 490,
+            "y": 2500,
+            "params": {
+              "a": "0",
+              "b": "0.9609375"
+            }
+          },
+          {
+            "id": "N061",
+            "type": "ReturnFunction",
+            "x": 720,
+            "y": 2400,
+            "params": {
+              "value": "0"
+            }
+          },
+          {
+            "id": "N062",
+            "type": "OnUpdate",
+            "x": 25,
+            "y": 2750,
+            "params": {}
+          },
+          {
+            "id": "N063",
+            "type": "IfVariable",
+            "x": 250,
+            "y": 2750,
+            "params": {
+              "variable": "won",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N064",
+            "type": "IfVariable",
+            "x": 475,
+            "y": 2750,
+            "params": {
+              "variable": "speed",
+              "op": ">",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N065",
+            "type": "SetObjectRotation",
+            "x": 700,
+            "y": 2750,
+            "params": {
+              "object": "0",
+              "yaw": "0",
+              "pitch": "0"
+            }
+          },
+          {
+            "id": "N066",
+            "type": "GetVariable",
+            "x": 700,
+            "y": 2640,
+            "params": {
+              "variable": "aim"
+            }
+          },
+          {
+            "id": "N067",
+            "type": "MoveLocal",
+            "x": 925,
+            "y": 2750,
+            "params": {
+              "object": "0",
+              "x": "0",
+              "z": "0"
+            }
+          },
+          {
+            "id": "N068",
+            "type": "GetVariable",
+            "x": 925,
+            "y": 2640,
+            "params": {
+              "variable": "speed"
+            }
+          },
+          {
+            "id": "N069",
+            "type": "CallFunction",
+            "x": 1150,
+            "y": 2750,
+            "params": {
+              "function": "RollingDrag",
+              "argument": "0",
+              "result": "speed"
+            }
+          },
+          {
+            "id": "N070",
+            "type": "GetVariable",
+            "x": 1150,
+            "y": 2640,
+            "params": {
+              "variable": "speed"
+            }
+          },
+          {
+            "id": "N071",
+            "type": "IfVariable",
+            "x": 1370,
+            "y": 2750,
+            "params": {
+              "variable": "speed",
+              "op": "<",
+              "value": "0.0078125"
+            }
+          },
+          {
+            "id": "N072",
+            "type": "SetVariable",
+            "x": 1590,
+            "y": 2750,
+            "params": {
+              "variable": "speed",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N073",
+            "type": "OnUpdate",
+            "x": 25,
+            "y": 3130,
+            "params": {}
+          },
+          {
+            "id": "N074",
+            "type": "IfVariable",
+            "x": 250,
+            "y": 3130,
+            "params": {
+              "variable": "won",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N075",
+            "type": "IfBool",
+            "x": 475,
+            "y": 3130,
+            "params": {
+              "value": "false"
+            }
+          },
+          {
+            "id": "N076",
+            "type": "GetObjectX",
+            "x": 25,
+            "y": 3290,
+            "params": {
+              "object": "0"
+            }
+          },
+          {
+            "id": "N077",
+            "type": "GetObjectX",
+            "x": 245,
+            "y": 3290,
+            "params": {
+              "object": "2"
+            }
+          },
+          {
+            "id": "N078",
+            "type": "MathSubtract",
+            "x": 470,
+            "y": 3290,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N079",
+            "type": "GetObjectZ",
+            "x": 25,
+            "y": 3470,
+            "params": {
+              "object": "0"
+            }
+          },
+          {
+            "id": "N080",
+            "type": "GetObjectZ",
+            "x": 245,
+            "y": 3470,
+            "params": {
+              "object": "2"
+            }
+          },
+          {
+            "id": "N081",
+            "type": "MathSubtract",
+            "x": 470,
+            "y": 3470,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N082",
+            "type": "MathMultiply",
+            "x": 700,
+            "y": 3290,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N083",
+            "type": "MathMultiply",
+            "x": 700,
+            "y": 3470,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N084",
+            "type": "MathAdd",
+            "x": 930,
+            "y": 3390,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N085",
+            "type": "Compare",
+            "x": 1150,
+            "y": 3390,
+            "params": {
+              "a": "0",
+              "b": "0.015625",
+              "op": "<"
+            }
+          },
+          {
+            "id": "N086",
+            "type": "IfVariable",
+            "x": 700,
+            "y": 3130,
+            "params": {
+              "variable": "speed",
+              "op": "<",
+              "value": "0.25"
+            }
+          },
+          {
+            "id": "N087",
+            "type": "SetVariable",
+            "x": 930,
+            "y": 3130,
+            "params": {
+              "variable": "won",
+              "value": "1"
+            }
+          },
+          {
+            "id": "N088",
+            "type": "SetVariable",
+            "x": 1150,
+            "y": 3130,
+            "params": {
+              "variable": "speed",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N089",
+            "type": "ShowUI",
+            "x": 1370,
+            "y": 3130,
+            "params": {
+              "element": "4"
+            }
+          },
+          {
+            "id": "N090",
+            "type": "OnUpdate",
+            "x": 25,
+            "y": 3800,
+            "params": {}
+          },
+          {
+            "id": "N091",
+            "type": "IfVariable",
+            "x": 250,
+            "y": 3800,
+            "params": {
+              "variable": "won",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N092",
+            "type": "IfVariable",
+            "x": 475,
+            "y": 3800,
+            "params": {
+              "variable": "speed",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N093",
+            "type": "SetObjectPosition",
+            "x": 700,
+            "y": 3800,
+            "params": {
+              "object": "1",
+              "x": "0",
+              "y": "0",
+              "z": "0"
+            }
+          },
+          {
+            "id": "N094",
+            "type": "GetObjectX",
+            "x": 700,
+            "y": 3640,
+            "params": {
+              "object": "0"
+            }
+          },
+          {
+            "id": "N095",
+            "type": "GetObjectZ",
+            "x": 925,
+            "y": 3640,
+            "params": {
+              "object": "0"
+            }
+          },
+          {
+            "id": "N096",
+            "type": "MathSubtract",
+            "x": 1150,
+            "y": 3640,
+            "params": {
+              "a": "0",
+              "b": "0.09375"
+            }
+          },
+          {
+            "id": "N097",
+            "type": "GetObjectY",
+            "x": 1150,
+            "y": 3530,
+            "params": {
+              "object": "0"
+            }
+          },
+          {
+            "id": "N098",
+            "type": "SetObjectRotation",
+            "x": 950,
+            "y": 3800,
+            "params": {
+              "object": "1",
+              "yaw": "0",
+              "pitch": "0"
+            }
+          },
+          {
+            "id": "N099",
+            "type": "GetVariable",
+            "x": 950,
+            "y": 3680,
+            "params": {
+              "variable": "aim"
+            }
+          },
+          {
+            "id": "N100",
+            "type": "SetObjectPosition",
+            "x": 700,
+            "y": 3940,
+            "params": {
+              "object": "1",
+              "x": "0",
+              "y": "-16",
+              "z": "0"
+            }
+          },
+          {
+            "id": "N101",
+            "type": "SetObjectPosition",
+            "x": 700,
+            "y": 4040,
+            "params": {
+              "object": "1",
+              "x": "0",
+              "y": "-16",
+              "z": "0"
+            }
+          },
+          {
+            "id": "N102",
+            "type": "OnKeyPressed",
+            "x": 25,
+            "y": 4300,
+            "params": {
+              "key": "R"
+            }
+          },
+          {
+            "id": "N103",
+            "type": "IfVariable",
+            "x": 250,
+            "y": 4300,
+            "params": {
+              "variable": "overview",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N104",
+            "type": "SetVariable",
+            "x": 470,
+            "y": 4260,
+            "params": {
+              "variable": "overview",
+              "value": "1"
+            }
+          },
+          {
+            "id": "N105",
+            "type": "SetVariable",
+            "x": 470,
+            "y": 4380,
+            "params": {
+              "variable": "overview",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N106",
+            "type": "OnUpdate",
+            "x": 25,
+            "y": 4600,
+            "params": {}
+          },
+          {
+            "id": "N107",
+            "type": "IfVariable",
+            "x": 250,
+            "y": 4600,
+            "params": {
+              "variable": "overview",
+              "op": "==",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N108",
+            "type": "SetVariable",
+            "x": 470,
+            "y": 4510,
+            "params": {
+              "variable": "camheight",
+              "value": "2"
+            }
+          },
+          {
+            "id": "N109",
+            "type": "SetVariable",
+            "x": 680,
+            "y": 4510,
+            "params": {
+              "variable": "camback",
+              "value": "2"
+            }
+          },
+          {
+            "id": "N110",
+            "type": "SetVariable",
+            "x": 890,
+            "y": 4510,
+            "params": {
+              "variable": "campitch",
+              "value": "28"
+            }
+          },
+          {
+            "id": "N111",
+            "type": "SetVariable",
+            "x": 470,
+            "y": 4720,
+            "params": {
+              "variable": "camheight",
+              "value": "5"
+            }
+          },
+          {
+            "id": "N112",
+            "type": "SetVariable",
+            "x": 680,
+            "y": 4720,
+            "params": {
+              "variable": "camback",
+              "value": "4"
+            }
+          },
+          {
+            "id": "N113",
+            "type": "SetVariable",
+            "x": 890,
+            "y": 4720,
+            "params": {
+              "variable": "campitch",
+              "value": "42"
+            }
+          },
+          {
+            "id": "N114",
+            "type": "OnUpdate",
+            "x": 25,
+            "y": 5050,
+            "params": {}
+          },
+          {
+            "id": "N115",
+            "type": "SetCameraPosition",
+            "x": 1400,
+            "y": 5050,
+            "params": {
+              "x": "0",
+              "y": "0",
+              "z": "0"
+            }
+          },
+          {
+            "id": "N116",
+            "type": "GetObjectX",
+            "x": 20,
+            "y": 5100,
+            "params": {
+              "object": "0"
+            }
+          },
+          {
+            "id": "N117",
+            "type": "MathAdd",
+            "x": 450,
+            "y": 5100,
+            "params": {
+              "a": "0",
+              "b": "0.25"
+            }
+          },
+          {
+            "id": "N118",
+            "type": "GetCameraX",
+            "x": 680,
+            "y": 5100,
+            "params": {}
+          },
+          {
+            "id": "N119",
+            "type": "MathSubtract",
+            "x": 900,
+            "y": 5100,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N120",
+            "type": "MathDivide",
+            "x": 1110,
+            "y": 5100,
+            "params": {
+              "a": "0",
+              "b": "4"
+            }
+          },
+          {
+            "id": "N121",
+            "type": "MathAdd",
+            "x": 1330,
+            "y": 5200,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N122",
+            "type": "GetObjectY",
+            "x": 20,
+            "y": 5350,
+            "params": {
+              "object": "0"
+            }
+          },
+          {
+            "id": "N123",
+            "type": "GetVariable",
+            "x": 225,
+            "y": 5350,
+            "params": {
+              "variable": "camheight"
+            }
+          },
+          {
+            "id": "N124",
+            "type": "MathAdd",
+            "x": 450,
+            "y": 5350,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N125",
+            "type": "GetCameraY",
+            "x": 680,
+            "y": 5350,
+            "params": {}
+          },
+          {
+            "id": "N126",
+            "type": "MathSubtract",
+            "x": 900,
+            "y": 5350,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N127",
+            "type": "MathDivide",
+            "x": 1110,
+            "y": 5350,
+            "params": {
+              "a": "0",
+              "b": "4"
+            }
+          },
+          {
+            "id": "N128",
+            "type": "MathAdd",
+            "x": 1330,
+            "y": 5450,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N129",
+            "type": "GetObjectZ",
+            "x": 20,
+            "y": 5600,
+            "params": {
+              "object": "0"
+            }
+          },
+          {
+            "id": "N130",
+            "type": "GetVariable",
+            "x": 225,
+            "y": 5600,
+            "params": {
+              "variable": "camback"
+            }
+          },
+          {
+            "id": "N131",
+            "type": "MathSubtract",
+            "x": 450,
+            "y": 5600,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N132",
+            "type": "GetCameraZ",
+            "x": 680,
+            "y": 5600,
+            "params": {}
+          },
+          {
+            "id": "N133",
+            "type": "MathSubtract",
+            "x": 900,
+            "y": 5600,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N134",
+            "type": "MathDivide",
+            "x": 1110,
+            "y": 5600,
+            "params": {
+              "a": "0",
+              "b": "4"
+            }
+          },
+          {
+            "id": "N135",
+            "type": "MathAdd",
+            "x": 1330,
+            "y": 5700,
+            "params": {
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "N136",
+            "type": "SetCameraRotation",
+            "x": 1610,
+            "y": 5050,
+            "params": {
+              "yaw": "0",
+              "pitch": "0"
+            }
+          },
+          {
+            "id": "N137",
+            "type": "GetVariable",
+            "x": 1610,
+            "y": 4940,
+            "params": {
+              "variable": "campitch"
+            }
+          },
+          {
+            "id": "N138",
+            "type": "OnUpdate",
+            "x": 25,
+            "y": 5900,
+            "params": {}
+          },
+          {
+            "id": "N139",
+            "type": "SetUIValue",
+            "x": 250,
+            "y": 5900,
+            "params": {
+              "element": "1",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N140",
+            "type": "GetVariable",
+            "x": 250,
+            "y": 5790,
+            "params": {
+              "variable": "strokes"
+            }
+          },
+          {
+            "id": "N141",
+            "type": "SetUIValue",
+            "x": 480,
+            "y": 5900,
+            "params": {
+              "element": "2",
+              "value": "0"
+            }
+          },
+          {
+            "id": "N142",
+            "type": "GetVariable",
+            "x": 480,
+            "y": 5790,
+            "params": {
+              "variable": "charge"
+            }
+          },
+          {
+            "id": "u3_1",
+            "type": "OnStart",
+            "x": 2960,
+            "y": 400,
+            "params": {}
+          },
+          {
+            "id": "u3_2",
+            "type": "ForEachObject",
+            "x": 3220,
+            "y": 400,
+            "params": {
+              "property": "golf_tile"
+            }
+          },
+          {
+            "id": "u3_3",
+            "type": "AddVariable",
+            "x": 3480,
+            "y": 400,
+            "params": {
+              "variable": "tile_count",
+              "value": "1"
+            }
+          },
+          {
+            "id": "u3_4",
+            "type": "LoopObject",
+            "x": 3740,
+            "y": 400,
+            "params": {}
+          },
+          {
+            "id": "u3_5",
+            "type": "GetObjectVector",
+            "x": 2700,
+            "y": 590,
+            "params": {
+              "object": "0"
+            }
+          },
+          {
+            "id": "u3_6",
+            "type": "WorldToLocal",
+            "x": 2960,
+            "y": 590,
+            "params": {
+              "object": "0",
+              "vector": "0,0,0"
+            }
+          },
+          {
+            "id": "u3_7",
+            "type": "VectorX",
+            "x": 3220,
+            "y": 590,
+            "params": {
+              "vector": "0,0,0"
+            }
+          },
+          {
+            "id": "u3_8",
+            "type": "SetVariable",
+            "x": 3480,
+            "y": 590,
+            "params": {
+              "variable": "last_local_x",
+              "value": "1"
+            }
+          },
+          {
+            "id": "u3_9",
+            "type": "CircleSegmentOverlap",
+            "x": 3740,
+            "y": 590,
+            "params": {
+              "point": "0,0,0",
+              "a": "0",
+              "b": "0",
+              "radius": "0.11"
+            }
+          },
+          {
+            "id": "u3_10",
+            "type": "MakeVector",
+            "x": 2700,
+            "y": 780,
+            "params": {
+              "x": "-0.38",
+              "y": "0",
+              "z": "-0.5"
+            }
+          },
+          {
+            "id": "u3_11",
+            "type": "MakeVector",
+            "x": 2960,
+            "y": 780,
+            "params": {
+              "x": "-0.38",
+              "y": "0",
+              "z": "0.5"
+            }
+          },
+          {
+            "id": "u3_12",
+            "type": "IfBool",
+            "x": 3220,
+            "y": 780,
+            "params": {
+              "value": "1"
+            }
+          },
+          {
+            "id": "u3_13",
+            "type": "AddVariable",
+            "x": 3480,
+            "y": 780,
+            "params": {
+              "variable": "wall_probe",
+              "value": "1"
+            }
+          }
+        ],
+        "links": [
+          {
+            "from": "N001",
+            "to": "N002",
+            "port": "next"
+          },
+          {
+            "from": "N002",
+            "to": "N007",
+            "port": "next"
+          },
+          {
+            "from": "N007",
+            "to": "N008",
+            "port": "next"
+          },
+          {
+            "from": "N008",
+            "to": "N009",
+            "port": "next"
+          },
+          {
+            "from": "N009",
+            "to": "N010",
+            "port": "next"
+          },
+          {
+            "from": "N010",
+            "to": "N011",
+            "port": "next"
+          },
+          {
+            "from": "N011",
+            "to": "N012",
+            "port": "next"
+          },
+          {
+            "from": "N012",
+            "to": "N013",
+            "port": "next"
+          },
+          {
+            "from": "N013",
+            "to": "N014",
+            "port": "next"
+          },
+          {
+            "from": "N014",
+            "to": "N015",
+            "port": "next"
+          },
+          {
+            "from": "N016",
+            "to": "N017",
+            "port": "next"
+          },
+          {
+            "from": "N017",
+            "to": "N018",
+            "port": "next"
+          },
+          {
+            "from": "N019",
+            "to": "N020",
+            "port": "next"
+          },
+          {
+            "from": "N020",
+            "to": "N021",
+            "port": "next"
+          },
+          {
+            "from": "N022",
+            "to": "N023",
+            "port": "next"
+          },
+          {
+            "from": "N023",
+            "to": "N025",
+            "port": "true"
+          },
+          {
+            "from": "N025",
+            "to": "N024",
+            "port": "true"
+          },
+          {
+            "from": "N025",
+            "to": "N027",
+            "port": "false"
+          },
+          {
+            "from": "N024",
+            "to": "N026",
+            "port": "next"
+          },
+          {
+            "from": "N023",
+            "to": "N028",
+            "port": "false"
+          },
+          {
+            "from": "N029",
+            "to": "N030",
+            "port": "next"
+          },
+          {
+            "from": "N030",
+            "to": "N031",
+            "port": "true"
+          },
+          {
+            "from": "N031",
+            "to": "N032",
+            "port": "next"
+          },
+          {
+            "from": "N033",
+            "to": "N034",
+            "port": "next"
+          },
+          {
+            "from": "N034",
+            "to": "N035",
+            "port": "true"
+          },
+          {
+            "from": "N035",
+            "to": "N036",
+            "port": "true"
+          },
+          {
+            "from": "N037",
+            "to": "N038",
+            "port": "next"
+          },
+          {
+            "from": "N038",
+            "to": "N039",
+            "port": "true"
+          },
+          {
+            "from": "N039",
+            "to": "N040",
+            "port": "true"
+          },
+          {
+            "from": "N041",
+            "to": "N042",
+            "port": "next"
+          },
+          {
+            "from": "N042",
+            "to": "N043",
+            "port": "true"
+          },
+          {
+            "from": "N043",
+            "to": "N044",
+            "port": "true"
+          },
+          {
+            "from": "N044",
+            "to": "N045",
+            "port": "true"
+          },
+          {
+            "from": "N045",
+            "to": "N048",
+            "port": "next"
+          },
+          {
+            "from": "N048",
+            "to": "N049",
+            "port": "next"
+          },
+          {
+            "from": "N044",
+            "to": "N050",
+            "port": "false"
+          },
+          {
+            "from": "N050",
+            "to": "N054",
+            "port": "true"
+          },
+          {
+            "from": "N054",
+            "to": "N055",
+            "port": "next"
+          },
+          {
+            "from": "N055",
+            "to": "N056",
+            "port": "next"
+          },
+          {
+            "from": "N056",
+            "to": "N057",
+            "port": "next"
+          },
+          {
+            "from": "N058",
+            "to": "N061",
+            "port": "next"
+          },
+          {
+            "from": "N062",
+            "to": "N063",
+            "port": "next"
+          },
+          {
+            "from": "N063",
+            "to": "N064",
+            "port": "true"
+          },
+          {
+            "from": "N064",
+            "to": "N065",
+            "port": "true"
+          },
+          {
+            "from": "N065",
+            "to": "N067",
+            "port": "next"
+          },
+          {
+            "from": "N067",
+            "to": "N069",
+            "port": "next"
+          },
+          {
+            "from": "N069",
+            "to": "N071",
+            "port": "next"
+          },
+          {
+            "from": "N071",
+            "to": "N072",
+            "port": "true"
+          },
+          {
+            "from": "N073",
+            "to": "N074",
+            "port": "next"
+          },
+          {
+            "from": "N074",
+            "to": "N075",
+            "port": "true"
+          },
+          {
+            "from": "N075",
+            "to": "N086",
+            "port": "true"
+          },
+          {
+            "from": "N086",
+            "to": "N087",
+            "port": "true"
+          },
+          {
+            "from": "N087",
+            "to": "N088",
+            "port": "next"
+          },
+          {
+            "from": "N088",
+            "to": "N089",
+            "port": "next"
+          },
+          {
+            "from": "N090",
+            "to": "N091",
+            "port": "next"
+          },
+          {
+            "from": "N091",
+            "to": "N092",
+            "port": "true"
+          },
+          {
+            "from": "N091",
+            "to": "N101",
+            "port": "false"
+          },
+          {
+            "from": "N092",
+            "to": "N093",
+            "port": "true"
+          },
+          {
+            "from": "N092",
+            "to": "N100",
+            "port": "false"
+          },
+          {
+            "from": "N093",
+            "to": "N098",
+            "port": "next"
+          },
+          {
+            "from": "N102",
+            "to": "N103",
+            "port": "next"
+          },
+          {
+            "from": "N103",
+            "to": "N104",
+            "port": "true"
+          },
+          {
+            "from": "N103",
+            "to": "N105",
+            "port": "false"
+          },
+          {
+            "from": "N106",
+            "to": "N107",
+            "port": "next"
+          },
+          {
+            "from": "N107",
+            "to": "N108",
+            "port": "true"
+          },
+          {
+            "from": "N107",
+            "to": "N111",
+            "port": "false"
+          },
+          {
+            "from": "N108",
+            "to": "N109",
+            "port": "next"
+          },
+          {
+            "from": "N109",
+            "to": "N110",
+            "port": "next"
+          },
+          {
+            "from": "N111",
+            "to": "N112",
+            "port": "next"
+          },
+          {
+            "from": "N112",
+            "to": "N113",
+            "port": "next"
+          },
+          {
+            "from": "N114",
+            "to": "N115",
+            "port": "next"
+          },
+          {
+            "from": "N115",
+            "to": "N136",
+            "port": "next"
+          },
+          {
+            "from": "N138",
+            "to": "N139",
+            "port": "next"
+          },
+          {
+            "from": "N139",
+            "to": "N141",
+            "port": "next"
+          },
+          {
+            "from": "u3_1",
+            "to": "u3_2",
+            "port": "next"
+          },
+          {
+            "from": "u3_2",
+            "to": "u3_3",
+            "port": "body"
+          },
+          {
+            "from": "u3_3",
+            "to": "u3_8",
+            "port": "next"
+          },
+          {
+            "from": "u3_8",
+            "to": "u3_12",
+            "port": "next"
+          },
+          {
+            "from": "u3_12",
+            "to": "u3_13",
+            "port": "true"
+          }
+        ],
+        "data_links": [
+          {
+            "from": "N003",
+            "to": "N002",
+            "port": "value",
+            "input": "x"
+          },
+          {
+            "from": "N004",
+            "to": "N002",
+            "port": "value",
+            "input": "z"
+          },
+          {
+            "from": "N006",
+            "to": "N005",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N005",
+            "to": "N002",
+            "port": "value",
+            "input": "y"
+          },
+          {
+            "from": "N047",
+            "to": "N046",
+            "port": "value",
+            "input": "value"
+          },
+          {
+            "from": "N046",
+            "to": "N048",
+            "port": "value",
+            "input": "value"
+          },
+          {
+            "from": "N052",
+            "to": "N051",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N051",
+            "to": "N053",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N053",
+            "to": "N054",
+            "port": "value",
+            "input": "value"
+          },
+          {
+            "from": "N059",
+            "to": "N060",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N060",
+            "to": "N061",
+            "port": "value",
+            "input": "value"
+          },
+          {
+            "from": "N066",
+            "to": "N065",
+            "port": "value",
+            "input": "yaw"
+          },
+          {
+            "from": "N068",
+            "to": "N067",
+            "port": "value",
+            "input": "z"
+          },
+          {
+            "from": "N070",
+            "to": "N069",
+            "port": "value",
+            "input": "argument"
+          },
+          {
+            "from": "N076",
+            "to": "N078",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N077",
+            "to": "N078",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N079",
+            "to": "N081",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N080",
+            "to": "N081",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N078",
+            "to": "N082",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N078",
+            "to": "N082",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N081",
+            "to": "N083",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N081",
+            "to": "N083",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N082",
+            "to": "N084",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N083",
+            "to": "N084",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N084",
+            "to": "N085",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N085",
+            "to": "N075",
+            "port": "value",
+            "input": "value"
+          },
+          {
+            "from": "N094",
+            "to": "N093",
+            "port": "value",
+            "input": "x"
+          },
+          {
+            "from": "N095",
+            "to": "N093",
+            "port": "value",
+            "input": "z"
+          },
+          {
+            "from": "N097",
+            "to": "N096",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N096",
+            "to": "N093",
+            "port": "value",
+            "input": "y"
+          },
+          {
+            "from": "N099",
+            "to": "N098",
+            "port": "value",
+            "input": "yaw"
+          },
+          {
+            "from": "N116",
+            "to": "N117",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N117",
+            "to": "N119",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N118",
+            "to": "N119",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N119",
+            "to": "N120",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N118",
+            "to": "N121",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N120",
+            "to": "N121",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N121",
+            "to": "N115",
+            "port": "value",
+            "input": "x"
+          },
+          {
+            "from": "N122",
+            "to": "N124",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N123",
+            "to": "N124",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N124",
+            "to": "N126",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N125",
+            "to": "N126",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N126",
+            "to": "N127",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N125",
+            "to": "N128",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N127",
+            "to": "N128",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N128",
+            "to": "N115",
+            "port": "value",
+            "input": "y"
+          },
+          {
+            "from": "N129",
+            "to": "N131",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N130",
+            "to": "N131",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N131",
+            "to": "N133",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N132",
+            "to": "N133",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N133",
+            "to": "N134",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N132",
+            "to": "N135",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "N134",
+            "to": "N135",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "N135",
+            "to": "N115",
+            "port": "value",
+            "input": "z"
+          },
+          {
+            "from": "N137",
+            "to": "N136",
+            "port": "value",
+            "input": "pitch"
+          },
+          {
+            "from": "N140",
+            "to": "N139",
+            "port": "value",
+            "input": "value"
+          },
+          {
+            "from": "N142",
+            "to": "N141",
+            "port": "value",
+            "input": "value"
+          },
+          {
+            "from": "u3_4",
+            "to": "u3_6",
+            "port": "value",
+            "input": "object"
+          },
+          {
+            "from": "u3_5",
+            "to": "u3_6",
+            "port": "value",
+            "input": "vector"
+          },
+          {
+            "from": "u3_6",
+            "to": "u3_7",
+            "port": "value",
+            "input": "vector"
+          },
+          {
+            "from": "u3_7",
+            "to": "u3_8",
+            "port": "value",
+            "input": "value"
+          },
+          {
+            "from": "u3_6",
+            "to": "u3_9",
+            "port": "value",
+            "input": "point"
+          },
+          {
+            "from": "u3_10",
+            "to": "u3_9",
+            "port": "value",
+            "input": "a"
+          },
+          {
+            "from": "u3_11",
+            "to": "u3_9",
+            "port": "value",
+            "input": "b"
+          },
+          {
+            "from": "u3_9",
+            "to": "u3_12",
+            "port": "value",
+            "input": "value"
+          }
+        ]
+      },
+      "physics": {
+        "gravity": 0
+      },
+      "animations": [],
+      "hud": [
+        {
+          "type": "text",
+          "text": "MINI GOLF   SHOTS:",
+          "x": 2,
+          "y": 2,
+          "w": 114,
+          "h": 8,
+          "fg": 255,
+          "bg": 0,
+          "visible": true,
+          "value": 0,
+          "maximum": 0
+        },
+        {
+          "type": "text",
+          "text": "",
+          "x": 105,
+          "y": 2,
+          "w": 13,
+          "h": 8,
+          "fg": 255,
+          "bg": 0,
+          "visible": true,
+          "value": 0,
+          "maximum": 99
+        },
+        {
+          "type": "bar",
+          "text": "",
+          "x": 8,
+          "y": 12,
+          "w": 96,
+          "h": 5,
+          "fg": 252,
+          "bg": 36,
+          "visible": true,
+          "value": 0,
+          "maximum": 85
+        },
+        {
+          "type": "text",
+          "text": "LEFT/RIGHT AIM  HOLD A SHOT",
+          "x": 2,
+          "y": 74,
+          "w": 116,
+          "h": 6,
+          "fg": 255,
+          "bg": 0,
+          "visible": true,
+          "value": 0,
+          "maximum": 0
+        },
+        {
+          "type": "text",
+          "text": "HOLE COMPLETE! A RESTART",
+          "x": 4,
+          "y": 30,
+          "w": 114,
+          "h": 9,
+          "fg": 255,
+          "bg": 0,
+          "visible": false,
+          "value": 0,
+          "maximum": 0
+        }
+      ],
+      "skybox": {}
+    }
+  ],
+  "initial_scene": 0,
+  "active_scene": 0,
+  "embedded_assets": {
+    "assets/0002_0002_0002_0002_0002_0002_ball.obj": "eNq9V8uOGzkMvPsrBOQsiw+REq97zzcEHo+DDOLMLDbZfP+W2phk1ume7V4nsYFmm2IXq0hKtt+kt4f7U3p4TH+cn44f706Pxw/J9rKX3acv5/PDXSIifbd4uTucz3tE7nZP6eH49PnPD6e/TruvKdOeidyo9aamxuaSKNGeXITMyZmp9mBF8Kw/zSBcgFeFJhrAW2Jno/Miizl5eUHfplrkG4uRlxXmDRI3KlzP40vivUVXC7OmTNpZT5l9wq5UpXWO2lh61eYjnvZAiEbiZKK9yqhHbdG6tCpsPZrrFJj4Em9Urbde3YMrsQyC2pijNXGTFh79woQouJmHapdOUhEZYGQWoFfBMeSCvOR/JWP0cG2tMXnXFgsJ+Rv+v1/tBXBFbdtIqv0Z2ESkm6lTbS+QXVXZQCD6d+SVTOYDZ7T9BspTex2j01RDvb4cBKCQWafm9dvQeJVqKiyN+kIov9rIXzAze4Kng1lAOFhwPE/LjwvLOpAmQIxQD3KtvlicC7jsWZmrD8mMzcLtZ22u60C+6lZU7eqBIF0AfoXE8oxdzaT3tdO7PjI2coiF6f1hzvt34Bg91SCchO0KeGFfzBwSqw+bZ0lXm0D+Y3hocQ5/ndptc/K/ZvDWA2O2ZOtHcON0Pw6OhlwGncFYFxRxlWs8fDnhsO9FrVYcX8YMl5p3ESZ29yZWF0PzfOxKTnmeVF7Fafw8eEy3iM9zoDMqlzjlJVLzwHke+aZSrYtcbH7e0P28vv0rWS1qWl/pbR28oVb5Vk1bBmLd9P/9+YQ/U+nTOz2Iut8fMo6XQ+bj/ft8rMdTPnSnCL0zOp127xMXvJMUwVWLFoZPSi2SajFctXgR+GppRZOVjquWKAqfFaZSkxdmGDyLB+HGZy02kAEx3FZsQmUvnlrhBlML9+IXAlFa6kUIBkS4tAlEpPQURRSGi9TSp5RiBT+CqIjDIqqVmOhJB5sEJhLjxooSLJbAGzkYGVSGBUsFqSEULvAQZFEbdiyB/dALF5jqyKR9usEakIfuoRrgdWSrPN1AOcCH+uEbmpG31mHHGtBtolIB76PAbdheKrB9YlIBji+6YjRsFANwm4gYkDukmg6L5DaKd+FhQA6INR8WuQ3AcaFho6ajjTEsio6i0T9HuT1i",
+    "assets/0003_0003_0003_0003_0003_0003_ball.mtl": "eNrLSy3PLclRyI03TjQyNjNLSdQ1NbNM1DVMTknTTTZJTtVNtDAzsLQ0TjI1SE3l8k5RMARBrtzEgnggx8DAwCQeJ5GUmJOjV5CXzpUHsSQvPw/JCAA3qCGC",
+    "assets/0004_0004_0004_0004_0004_0004_ball.png": "eNrrDPBz5+WS4mJgYOD19HAJAtIcIMzBBiSP8O/rBlJeni6OIRWMLWcPcjIo8rA4eEp/ux8Z1H7chklcQITt5KZZJ84c/ilrvCiiX7j6fWtcqO6ZE04ND9PWfOBy7d+xLiDjcTvf3bokERaNLfwMDP//a7fZGwBNZQOZyszgb2f+kTG2UxEowuDp6ueyzimhCQCATC6/",
+    "assets/0005_0005_0005_0005_0005_0005_aim_arrow.obj": "eNp1jUsKgDAMRPc9xVxASW2reBpRUBBaCrV+jm+ILurCTV4eQzIhe79OIKJ2+B3zldO41SF7FTGmFE91oKKarAOB2bP/qtGi2hQmq+2fN2VSfe72bebSt3KBRgMjNOiYHdMKLZzQoVU3+eQvWw==",
+    "assets/0006_0006_0006_0006_0006_0006_extras.mtl": "eNrLSy3PLclRSCwqyi/n8k5RMFQw0LMwBRKGplx5ELmM/JxUkJSBnoElSMIAxLKAyRbAZS2NYIQFXDYtJzEdZqyxAZjgAgBdqx6l",
+    "assets/0007_0007_0007_0007_0007_0007_cup_flag.obj": "eNp1UFsOgjAQ/OcUcwGa3T6gnMagATUpgQgaj2+7QkAi/eh0Jzsz2+2mEO5nEFFxOrya9/SoR9VNIetxeQ7ZCwRSRBqU3op17FuYeMcjPHnr3cqn6svTtl/Ukc+PBPlRwk6R/0i2IfmaciB5jk38H259aLIWDA0jaGAFLZygQyFYoBQs4QU9KsEKOi6pDfV1SFayHS9hbllWKq3eV4rY79qFmgcb5sEIzGANNn/MbBIZu7U2cQWLR5oqeViwAxfZBwARbEM=",
+    "assets/0008_0008_0008_0008_0008_0012_tile_straight.obj": "eNrVlMtuGzEMRffzFQK61lCURD223ecbAs8LMWo7i7j9/l5O/MpMHG+CAl1YvB7eS43hA/4wT5thNNuD+bl77X9146F/MdL61jf742637Yxzrj7fPY7b3djC2TSvZj++vTR/jGsFH/Z6yofv9ubBbfPcsMuoXWXtbdjepo+GDWtx5+Lakk+Nz+UdO+TJurZ9+vAaeDj78TseVOrAg7EX5d4vVmEvah7yLiw3v99G/A9m/8xlmFIYsh266q2UsbNTGSdb89hPUWTjuGsm44kJb0OoJlDAGSkSo5NJyBuhhDNRxlmokEdHqFJAhh0KgoySiD0FNDECSe0WFCGuKEg7EnQxjCkh5D1KJB9QMDVSWqKzIGcBztdkhbyYcHmwsPDKc53z7SidrrvKBVJtrTWLFKnh3sCl4/wLyu3Xe2/xuPld8A2+d0Op0W4KD9bF3NupT8mGIjJJFK5eWWEQVqkYBnlOa6TAWhMFT0Ud6ASqBsBFFCVOtMKYqKqBKYI1hiMqipqIYRZCESQryrBHkOg1H9MsPMU8i0SxQFzpsyt87JofuwbIrgk6b67lJlsZvth1/57Ch3P+b+YKxUqM/YU15WaBDcUqdEeBIXVhSwn4kNlVZoF1VlXo5kJOtxmSCVxldaWkQrdbngUWG3JZZyGAZNER2anARZlnESnjxtL8BfGkmD4=",
+    "assets/0009_0009_0009_0009_0009_0009_tile.mtl": "eNp1jbEOgyAURXe/gqQzDagoplvXDv0Eg7yHkgIaoLWfXzvZoeYmN7lnuOdE7tGONihHrm7WjwGDnohXGaPdmAUM2RqLMZElYsL4QriQNKmIQDK+83OjRcDVZ0d8zyWYpoKWwtCVVEgcqJFoaNeiNrUQivGhuAHh3xReLf02GOOsP6wxqpTOSxh3C5SagexqqiQHyupWU6ObhlZSCCNqwbuy+mfh/WGtyrlfSZgD7hcfkc5W2A==",
+    "assets/0010_0010_0010_0010_0010_0010_grass.png": "eNoVlQlUFFcWQBsB6fq/qhoQhYAxeLQZR0OioTogXRpAFLpA6GpRWe1qlH3rbjYFFGj2fZc9LEKATJRgzDDDIipBAWUAOZEBjcIYwXFARDwYEGEq5/z333v/vP/+efe9c36G2MkOA4aAw+FgIntbCauN/xSuOrvbNmTeZZVauMTORm1i4PN41kHk9m7hHA7c8qeocSqqDDicTVFiR5ejTKM2U40z+UCSjxO+CF8K+V6ACIV0BspUYnQiEChQvgzy3RDCh0unQaYKY8oxQo7yT3IJP4ROAkyDNp+BfFdEWgRlV3h0Nkb4IHx3hO+BEOEYXcKji3lEKErnoEwRlLC2EjNh488AaT6gczH+SS2mBme+xZnLKJ2OEsHQRAqJEMj3BIQ/YIqhhM2QiRJBkO8BxCogKcTF6ZBKgMJQQJzjkjEYlY1TObgwCCECgDAMiBIhnQzoRER0EVBZOJWKkgogkKPEWS4RCMgwQMVDST5G52GiZFQUD4kgQIShZCRKXsDICEgloXQ+JinApMVQWoLSRbhAiTEFkE6FxDnE5Azgn+LKWGh1PBMZlBTh0kJIqwBThspYDmegtADI6ngMe1iIi1QoFYMQCpQMh1QKKooD5Hn2RRYpJlQAKg5QaZgwGBGEoXQ2SiVCoRwIQxBJHkb4AVk9T1qKMuxikaYApgQyFZgwiEslsyQxUSwgQxEqFSPlgFRCcToqCMcIBUYXYNQlIAxFHNjCM3FahYhiEf5pLuGPSIpxvitXoETpYpxp4DElqDgVMgWA76Ila+CJVJBKx+gstgVQlAAFoSiVgTG17GBAOgXSBTidjwvCoDgJkIFccSJLDJKRkIxGRZcAnQGZYtSErf0yewunVCgZhYpTIFPPo1RsKkh4c6mLQJKJipMBoUTFaZBS1NpzOOofRbbWLuerDp2IdSw6rdej5a81z/H7zAomtYrP+LhRV8I1yzX6/FONeWpHjCMM+0L6d2sbu23RTJmKsx3y1co9ZJv2y1X1Ocbb3KD6+t5TBo472uZra264+pffaDSNeNae8tuTb/61MBO9cHD2vVBfO/iHjSsvrJRf/njIIfEwZ6fR7Da4+VSTmd5sYT/+iCnzvommaeh2NP/YfCQu3ujT73rX5J1bDqiCrdQ/vWPVtUgiU+s9I9eOGsyXctHtzrt2Pu/RiDLKtXiAHOmo3szs5t7+XzvPimeuc+dWzYql6L/ZF3SKRzrT0rOdo3r/bTPJ6L03seTWj3KGby/zr/kPVpq36btHD80Ve1DWlxfGqh/qd38ku3S7huyzPihap52+l5Y9Mf062Ivpjdg44D/jLTK/rrO7u+UWOXD6fu1CgKaVUOuGbj0ztB6ZN+zFy6Wsdb2S6DenzxKRxjnVXj4Jr4PDfbViHGIbljQ17ZwsYrbK9H6bif77y9bW8apjGtNPvlc+1P2rbpXxF/VyJkR5b+LGys6GDnlh7u3tlnhe5MSS2juPHSGmm8q9v55d7LVM6FxOtv/k5MP1hFjPgsdFi42Gv+6995I7WBx5rxDT7R3+x4oh2hL1IJfYZH+R5zl4xDcqrNtQo9/8unNUseajrcfCp9vNvHatldaeHQvaMb8XbXKIT1obeBNRWqkbU56vn6159tirmcbrlN70xOqJriDgnLiwAdK25fQDDZn09xZm9s29eJ72TRfqbXK7f7T2uz0favyiRqrVkiuFqxOrSpqO9fvLxLXxlFe1q7wpAdwvedF1seWtjoNSfwwN+dnvMTH5S6TMfZG3lDM85Wg0/M8ls7DF18eJX8WD+lfxHsWFdOuOS9Z9fdtnbtlMrZz7iE/yFSfbmm0OMB1xuL5Jz2jIdEfPdwrlN9ZP5X/s21uQl3S1zOimsOBo3Qn5a0/R7d6O+kI/ifeghfHIFs0JA4v4UJ+8jeaKkWcry/J3Tal33SwPpg5pd1PLeRpddhVOgTqjPZf78sSHB6Y6hftVIxqfP3D5KgE+f92Wddi59T+KwUpHc6JbPCYQRw6YVbRscllrGp/c9up8bx2yEfxMcEV9n+m47fGMfcvhnvfp1fcJS6MBiYf7fy8RNueO2zl/2PzFMbepCzZzymlH811NFUjm45f9LU8/zM5G7vGez2/4ym+xvjRnTT+obu7dRO/61BLjEThWvl6ktImviHnhm1Xa9GRx5x3yfl3G85/FvJ4Z2vvpl6Yvd93N0qkMpAJqLVp9dG66ev1N7b17T5uq2VNwcM42E39o/GjrT8F7ygL0B/dTk8aNbTHbrQ2611ejoo+TNWauTW+3tmf3dmZmTahOfTI6+tnkHw3xHHfBD7GTd35yYf8njuiok+01G0b1f7wvvH0=",
+    "assets/0011_0011_0011_0011_0011_0011_wall.png": "eNrrDPBz5+WS4mJgYOD19HAJAtICIMzBBiTlP/9PBFL/PF0cQyoYey4GZjEx8rBcSPUP4NqqrvFl+fT3gr9C9391/sii1WF+obYxcpGGRt9MH7XNgcff/vovpPO/Tr9/ws5ZlnyPDfaWzb7KcPxw3at5+88vd+a9f088tDbkwPFHwvIhio49Ygt9Lrs/FzXI/Lxpwvr381/9DuV86mtgx57RZOMocXbTLLviWzek2dL8GeasbF53Pi72gISElWyBwBo7J9YS5+eRAn2rm0ILXFkl0i4u+H4xc4JdKd8LZxtHLWOX7/oP6/pnMzzSLqiqEVXQdJo3Ja6U9YFjmdaDOJGi/oqg4qO+DkdmVJ39/k6qnlVB0oL3S9aByavPNBmyMa1zev4ycwH/OmAA/P//suVLIZDBBgoJZoZbcXsbg2qDsoAiDJ6ufi7rnBKaAJQ0he4=",
+    "assets/0012_0012_0012_0012_0012_0013_tile_turn_left.obj": "eNrlVstu2zAQvOsrCPRMLR+7fFx77zcEsSUhQR3nkLTf31kmtmXZihs0txqwdqydWSrRcKRv5sf9MJrHvfm+e97+3Iz77YORPvShe3rd7R43xjlX71YPr4+7sQez657N0/jy0P02rhd8fdCjnP22sxPz5qFhl1J7obVzsZ2rX403Xos7FNeX/N64DlfogO/US9rVkyfBzdm3r3GvUAfujT0i97awAntEbcgbsL779TLiPpinO1+GKcUh22FTg5UybuxUxsnWPG4nFrl3ftNNJpAnXA2hmkgRRyYmj04moWCEEo6JMo6FCgV0hCpFaLxDgdCjJPKBIpoYAaV2C4qQryhQOxJ0McxTgigEFKYQUTCVKZ2sgzsZs97xuQOOZ+zilL9kXTilX3rpgvCB277cUu+rneDCWn2tNYsUqXFt4JJx+APK/OfaVdxufpUJh7B1Q6ls74sfrOO8tdM2JRuLyCQsvgb1DIwUhLKpFOA0A0OFrBU2KZSVAGtGqiBERlHjiVammKgqwRPDch4MVkeqgmMDQgxDq6NBZxgyqJ5TA4E4N5CIC8CqCd3Zxx8DrXW5nn+u2HNN728OaATAD9aPmW+sv6r3KwO+0vS4FixZJWKxk8eun11uhb8OzH9MWzzqgmNOjmsQF30crU8HW9u1rvUrO6Jtl6uqw666PvPTWwcBKvA5G+SqcAOBRBpgEriclYUmfI5/L7K5NIB0rgo0iB2A7o9KCcqsrJQUaFjnBpDT0OleVAGURUdkpwDZnn0DTBm7ryzfAt7udosqs8zfs7SdU85eFebpfyAtnwiL9D+nzeP87wPwk8H6Cdn/GPMa7vBqNRr23ABiXhqAl+A4jfLoKev7ggmVclEQ4a/aQKCCR4XTWZUKHhNeZ5XQQKISFYBe8GahiY/5BcqorOoaqFS9AixToYvdH5l8Ubw=",
+    "assets/0013_0013_0013_0013_0013_0014_tile_turn_right.obj": "eNrlVstyGjEQvPMVqspZjEaa0eOae77BZWApu4LxwU6+Pz2yMbDsQlzxLVuFplcz3VqgNdpv7sf9ZnCPe/d997z+uRr26weny7iMi6fX3e5x5UII7W52eH3cDUtULhbP7ml4eVj8dmGp+HC0Uc/u/cnEafKQ8GOqv+D6U7I/Zb86dmwhHEJY1vKemIYz5YDvpZdlk5NHwk3t28+4N2iCe+c/UHhb2ID/QF3kDXhe/HoZ8D+4pzuum21Om+I3qxa91mHlt3XY+laG9VZU7wOvFlsXiQlPQ4guUcIoJMTIFFKKTiljzFQwVqoUkVFqlMDhgAAiI2TiSAlJSIBp2YqgxA0B7ECKLMSYMkgxIgjFhABVoTy2zsg5I+Ncd1YqI4WPiVEJX9Qcdb7cSu/LHeHIUsvWWlGt2tKc4Lji8A3q6e3cU9xOfpX5NnEdNrWJv6+88UHK2m/XOftUVbcqyi2aVxgOa1Qdw3nBolBii5lSpGoVyCRqDoYTBHOcWkRhpmYFTAKvMSrErGgMSR0oCZxsVka5wInR+JI7iCSlg0xSAY7u86f2C2cXj80l7fy66F7zfL4h0NMovbp+KnJ1/St8nhH4StfjWbBo04TFjiabnh3vhb/ulP/YZnHGxSCSg7SoIXEaPOeDr/1c1vPMluj7ZZJ12FbTmp/eO+icCp+LQ0NV6SCSagdCCpeLVSEJn+PnRVOuHaAtNwPWgQOA7Y9GGcxiVTkbsC5dOkCDBq+YFghgVpMowQCaeuEOhAp2Xz3bRac9t7er8eTZFE8WXpz5Y70LtSmtcV//+074yQ77Cdr/2O8j3iPg2eaiUpEOChXtAJ6C86yl4wgo9sLgcDaUagCHQ2kd4FQIAKaFgwOvLWxaNXaQqSYDdpbg1cI6P/QrmMmqWuigUWMDWKaBlxZ/AE4PUew=",
+    "assets/0014_0014_0014_0014_0014_0015_tile_incline_22.obj": "eNrtVMtu2zAQvOsrCPRML5fc5ePae78hsC0JMeo4h6T9/s7KjziSnaBAUfRQA+aOuDNDCRrtF/dt3Q9ud3Bf98/b75vhsH10uoqr2D297ve7jQshtIe7y+tuP6zA7Lpn9zS8PHY/XVgp/jnaqpdrxrW/3njXPrf8XOwXav9e7q/1r44dWwnnEla1nBq34R064Im6pN3cfBN86v35PR4MmuHB+QuaiE0kFm6h4ceZ7blFSuSkTQV7WoMcyf4G+y55upcj8Nz9eBnwSt3TA9d+zKkvvt+06LUOGz/WYfStDNtRVNeBN93oIjHhoQjVJUpYhYQYnUJK0SllrJkK1kqVIjpKjRI0HFAgZJRMHCmhCQsorVtRlLihQB1I0YUZU4YoRhShmFDgKpTnKSzvQzjP4IchTWXmcNxYUq5djjtvPn88kUfzKzhL5grvtahWbeme4ZxxsrwctLANv9X8xzLcx23o4eLXlXsfpGz9uM3Zp6o6qii3aJFjBLVRdYwAB6tCia1mSpGqMdBJ1BxyKygWXLUKYqZmBCZBZBkMsUSbQtIElAQfhH0RoAsCHU0veQKRpEwgk1SAtxD7RQr9MoZ+mUO/DOJ5bpbZZF0QPpi9fz/Mn/r8jy4iVUkaMaYphmaYAOYlG7CJiSgaCzNTETOdWHUCGK7NgM1R6Gy2QpkRz2KsnA3YrC0TwJiFrpgXBFBWsyjBAA4qPAGhghNr9wtZh8Uf",
+    "assets/0015_0015_0015_0015_0015_0016_tile_incline_45.obj": "eNrtVMtu2zAQvOsrCPRMLZfk8nHtPd8Q2HogRm3nEKffn1nZjl3JjlGgKHroRTvizowkeDzfzNOqH8xmb75vX7sf62HfvRhpfeub3WG73ayNc64+370cNtuhBbNpXs1ueHtpfhrXiuGWvSg63bvp3l4O+Hp5Xti51C609lpsr9UHHLMOdx6uLfm0uA3v0AFP1CXt5uFF8ND78TvuFarh3thPpMTsMruUC3NJEnPS756fHbk3FuYed3qTI7DcvL8N+DHN7plLP6bQZ9uvq7dShrUdyzDamodujCIrx+tmNJ6Y8EmEaQIFXCNFYmwyCXkjlHBNlHEtVMhjI1QpQMMOA0LGSMSeApawgFK3BUOIKwbUjgRbmDEliLzHiOQDBlwjpXn+ZvGbpe/reIY8c9CDXz2OFF5wLj5/PI9H8ys4y2Vba80iRWq4ZzhnnCw/H7Swdb+1/KcS3PvO9aVGuyrcWxdzZ8cuJRuKyChRuHoNHCOmlYphxNfpjBRYZ6LgqSgDm0DVILURQ2MrOkFMVJXAFBFYBiNqnlURwwSEIv4O+n8APSLOXvUxTcBTzBNIFAvAJcJ2kUG7DKFdptAuY3gu1XmnLghftO7fj/JDn//BRUHGSowmRWG6CaArWYG2JYKoLPSlIGQyscoEUKxVgXYodNqrUCaEMysrJQXas3kCqFjosnpBAGVRi+wU4EGZJxAp44ml+QCJmMJr",
+    "assets/0016_0016_0016_0016_0016_Tile.obj": "eNrVlstu2zAQRff+CgJd08Phm9vu+w2BHzISNA+gSfv9vZexY0eSbQQwCtSANdea4aGCXM7om/mx2g7m4dl8f3zZ/FwPz5t7k5Z+6RdPb4+PD2vjnJa7ucvT6m349bB6fF2icrF4MU/D6/3ij3HLhK96XtOn3/bkxmnykLDjpXay1p4utqer34waZXCH4Ja17BPz8kw55L50WjZ787jgKvv6Mz5TEvhs7Idy7xtT2A/VIe/C6uL364D/g3m607rd5bAtdrtu3qY6rO2uDjvbyrDZxZRWTteLnfGigqcRRBMk4BoliiJTJIk3STKuWQquVap4ZJI0CVijDgELFSGLeglIYnGQCJYCBIgmhCqaJSKL2+BybUVIog0BbCcJWWylkoH0HiGKDwjYM0oeG2vkq5GtLvsulBHh48aoRCc1R87Njbbf7ihHhlu21kpKNbVwDjiuOPwF9fTnuae4nryVNbd+47a1RbuqurUulo3dbXK2oaa0SzFp83QS7OWTFNPEw38GNvOFEfaoUlgAgzapBoYLjjFKUMYswUtlBTJBGhAhItCwiRGFWRoLYFp41JEeahdJQusCjnUQrFKJsKyCE+l3cmPoAu6G43le6HcY2nOXmLvwEksXQAHujya2ExfaqQ3t1Id2asRDexy3y0nBhYb67818lfN/W7dKhInQJNHtXBdodErBVgcPsQrtLbFPGnS9FLvwklIXURI8xJbJJNtoZ9Uu0DsbBdsk6GydwGbwMzfKnoLNM3SB9gl65nMhCX4hK2cKNtzSBcpB57kiFvzKjYqjAL1oF1EK6HXeyV3HdvqZ9Fdod/LRGVNfYOh1yHvFZ8LMc3wCzD/HBYaeg9zyJGEDMFsK2O1o5fm7Xz1ft3pLwSuidzFmF5tPLmgYLCy3Pz32XNbqmYPXT+XsqsPhnWd++YRypOB0NMMRE7vAcEldwPU4GxwPGCeFbycGc6ZUCgya0rrAhMGA4njgEMJwUrKq7yJLDRScS3iP4XwAtmJgeW5UMwWHVekCLND5bsUk+IGs5rpo0pQC5Q10Pj2wDfzIjVrsokpLFGA10ONfSOp7Bg==",
+    "assets/0017_0017_0017_0017_0017_materials.mtl": "eNptzL0OgjAQAOCdp2jifKR/B+3qanyGpu1d0QiFAEYf31EGlm/8LuIeicWzius451fimh8CW93qpvJn2kcxBeWodIZ6oOQ1oOMExXEB33MuFjFKlZopLuFGQkrlwhnDGrctqNAudfjXpLMk5y1Epwik7TOU3HVgHGJBi8prc6h9OGPn7/5e+TjXufIPVKg/7A==",
+    "assets/0018_0018_0018_0018_0018_grass_1_.png": "eNoVlQlUFFcWQBsB6fq/qhoQhYAxeLQZR0OioTogXRpAFLpA6GpRWe1qlH3rbjYFFGj2fZc9LEKATJRgzDDDIipBAWUAOZEBjcIYwXFARDwYEGEq5/z333v/vP/+efe9c36G2MkOA4aAw+FgIntbCauN/xSuOrvbNmTeZZVauMTORm1i4PN41kHk9m7hHA7c8qeocSqqDDicTVFiR5ejTKM2U40z+UCSjxO+CF8K+V6ACIV0BspUYnQiEChQvgzy3RDCh0unQaYKY8oxQo7yT3IJP4ROAkyDNp+BfFdEWgRlV3h0Nkb4IHx3hO+BEOEYXcKji3lEKErnoEwRlLC2EjNh488AaT6gczH+SS2mBme+xZnLKJ2OEsHQRAqJEMj3BIQ/YIqhhM2QiRJBkO8BxCogKcTF6ZBKgMJQQJzjkjEYlY1TObgwCCECgDAMiBIhnQzoRER0EVBZOJWKkgogkKPEWS4RCMgwQMVDST5G52GiZFQUD4kgQIShZCRKXsDICEgloXQ+JinApMVQWoLSRbhAiTEFkE6FxDnE5Azgn+LKWGh1PBMZlBTh0kJIqwBThspYDmegtADI6ngMe1iIi1QoFYMQCpQMh1QKKooD5Hn2RRYpJlQAKg5QaZgwGBGEoXQ2SiVCoRwIQxBJHkb4AVk9T1qKMuxikaYApgQyFZgwiEslsyQxUSwgQxEqFSPlgFRCcToqCMcIBUYXYNQlIAxFHNjCM3FahYhiEf5pLuGPSIpxvitXoETpYpxp4DElqDgVMgWA76Ila+CJVJBKx+gstgVQlAAFoSiVgTG17GBAOgXSBTidjwvCoDgJkIFccSJLDJKRkIxGRZcAnQGZYtSErf0yewunVCgZhYpTIFPPo1RsKkh4c6mLQJKJipMBoUTFaZBS1NpzOOofRbbWLuerDp2IdSw6rdej5a81z/H7zAomtYrP+LhRV8I1yzX6/FONeWpHjCMM+0L6d2sbu23RTJmKsx3y1co9ZJv2y1X1Ocbb3KD6+t5TBo472uZra264+pffaDSNeNae8tuTb/61MBO9cHD2vVBfO/iHjSsvrJRf/njIIfEwZ6fR7Da4+VSTmd5sYT/+iCnzvommaeh2NP/YfCQu3ujT73rX5J1bDqiCrdQ/vWPVtUgiU+s9I9eOGsyXctHtzrt2Pu/RiDLKtXiAHOmo3szs5t7+XzvPimeuc+dWzYql6L/ZF3SKRzrT0rOdo3r/bTPJ6L03seTWj3KGby/zr/kPVpq36btHD80Ve1DWlxfGqh/qd38ku3S7huyzPihap52+l5Y9Mf062Ivpjdg44D/jLTK/rrO7u+UWOXD6fu1CgKaVUOuGbj0ztB6ZN+zFy6Wsdb2S6DenzxKRxjnVXj4Jr4PDfbViHGIbljQ17ZwsYrbK9H6bif77y9bW8apjGtNPvlc+1P2rbpXxF/VyJkR5b+LGys6GDnlh7u3tlnhe5MSS2juPHSGmm8q9v55d7LVM6FxOtv/k5MP1hFjPgsdFi42Gv+6995I7WBx5rxDT7R3+x4oh2hL1IJfYZH+R5zl4xDcqrNtQo9/8unNUseajrcfCp9vNvHatldaeHQvaMb8XbXKIT1obeBNRWqkbU56vn6159tirmcbrlN70xOqJriDgnLiwAdK25fQDDZn09xZm9s29eJ72TRfqbXK7f7T2uz0favyiRqrVkiuFqxOrSpqO9fvLxLXxlFe1q7wpAdwvedF1seWtjoNSfwwN+dnvMTH5S6TMfZG3lDM85Wg0/M8ls7DF18eJX8WD+lfxHsWFdOuOS9Z9fdtnbtlMrZz7iE/yFSfbmm0OMB1xuL5Jz2jIdEfPdwrlN9ZP5X/s21uQl3S1zOimsOBo3Qn5a0/R7d6O+kI/ifeghfHIFs0JA4v4UJ+8jeaKkWcry/J3Tal33SwPpg5pd1PLeRpddhVOgTqjPZf78sSHB6Y6hftVIxqfP3D5KgE+f92Wddi59T+KwUpHc6JbPCYQRw6YVbRscllrGp/c9up8bx2yEfxMcEV9n+m47fGMfcvhnvfp1fcJS6MBiYf7fy8RNueO2zl/2PzFMbepCzZzymlH811NFUjm45f9LU8/zM5G7vGez2/4ym+xvjRnTT+obu7dRO/61BLjEThWvl6ktImviHnhm1Xa9GRx5x3yfl3G85/FvJ4Z2vvpl6Yvd93N0qkMpAJqLVp9dG66ev1N7b17T5uq2VNwcM42E39o/GjrT8F7ygL0B/dTk8aNbTHbrQ2611ejoo+TNWauTW+3tmf3dmZmTahOfTI6+tnkHw3xHHfBD7GTd35yYf8njuiok+01G0b1f7wvvH0=",
+    "assets/0019_0019_0019_0019_0019_texture.png": "eNrrDPBz5+WS4mJgYOD19HAJAtICIMzBBiTlP/9PBFL/PF0cQyoYey4GZjEx8rBcSPUP4NqqrvFl+fT3gr9C9391/sii1WF+obYxcpGGRt9MH7XNgcff/vovpPO/Tr9/ws5ZlnyPDfaWzb7KcPxw3at5+88vd+a9f088tDbkwPFHwvIhio49Ygt9Lrs/FzXI/Lxpwvr381/9DuV86mtgx57RZOMocXbTLLviWzek2dL8GeasbF53Pi72gISElWyBwBo7J9YS5+eRAn2rm0ILXFkl0i4u+H4xc4JdKd8LZxtHLWOX7/oP6/pnMzzSLqiqEVXQdJo3Ja6U9YFjmdaDOJGi/oqg4qO+DkdmVJ39/k6qnlVB0oL3S9aByavPNBmyMa1zev4ycwH/OmAA/P//suVLIZDBBgoJZoZbcXsbg2qDsoAiDJ6ufi7rnBKaAJQ0he4="
+  },
+  "embedded_format": 1,
+  "arrays": {}
+}
